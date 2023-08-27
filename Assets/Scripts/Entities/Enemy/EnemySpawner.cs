@@ -1,10 +1,12 @@
-/* using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject player;
     [SerializeField]
     private GameObject Enemy1;
     [SerializeField]
@@ -53,7 +55,7 @@ public class EnemySpawner : MonoBehaviour
         yield return new WaitForSeconds(interval);
 
         Vector3 _spawnPoint = new Vector3(0, 0, 0) + transform.position;
-        float _distanceFromPlayer = (PlayerController.playerController.gameObject.transform.position - _spawnPoint).magnitude;
+        float _distanceFromPlayer = (player.transform.position - _spawnPoint).magnitude;
         if (_distanceFromPlayer > playerSafeRadius)
         {
             SpawnEnemy(enemy);
@@ -70,9 +72,8 @@ public class EnemySpawner : MonoBehaviour
     private void SpawnEnemy(GameObject enemy)
     {
         Vector3 _spawnPoint = new Vector3(0, 0, 0) + transform.position;
-        float _distanceFromPlayer = (PlayerController.playerController.gameObject.transform.position - _spawnPoint).magnitude;
+        float _distanceFromPlayer = (player.transform.position - _spawnPoint).magnitude;
         GameObject newEnemy = Instantiate(enemy, _spawnPoint, Quaternion.identity);
         numEnemies++;
     }
 }
-*/
