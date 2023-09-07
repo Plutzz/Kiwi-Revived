@@ -4,15 +4,15 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("WALKING")]
-    [SerializeField] public float maxSpeed = 5f;            // Base movement speed
-    [SerializeField] private float acceleration = 10f;        // Acceleration factor
-    [SerializeField] public float deceleration = 10f;        // Deceleration factor
-    [SerializeField] private Transform groundCheck;           // Transform of an object at the character's feet
-    [SerializeField] private Transform headCheck;           // Transform of an object at the character's head
+    [SerializeField] public float maxSpeed = 5f;                    // Base movement speed
+    [SerializeField] private float acceleration = 10f;              // Acceleration factor
+    [SerializeField] public float deceleration = 10f;               // Deceleration factor
+    [SerializeField] private Transform groundCheck;                 // Transform of an object at the character's feet
+    [SerializeField] private Transform headCheck;                   // Transform of an object at the character's head
     [SerializeField] private Vector2 groundCheckSize = new Vector2(0.5f, 0.1f); // Size of the ground check
-    [SerializeField] private LayerMask groundLayer;           // Layer mask for the ground
+    [SerializeField] private LayerMask groundLayer;                 // Layer mask for the ground
 
-    [Header("JUMPING")][SerializeField] public float jumpHeight = 30;
+    [Header("JUMPING")][SerializeField] public float jumpHeight = 30;  
     [SerializeField] private float jumpApexThreshold = 10f;
     [SerializeField] private float coyoteTimeThreshold = 0.1f;
     [SerializeField] private float jumpBuffer = 0.1f;
@@ -115,7 +115,25 @@ public class PlayerMovement : MonoBehaviour
 
     private void CollisionCheck()
     {
+        bool _groundedLastFrame = IsGrounded;
         IsGrounded = Physics2D.OverlapBox(groundCheck.position, groundCheckSize, 0f, groundLayer);
+        if(_groundedLastFrame && !IsGrounded) 
+        { 
+        timeLeftGrounded = Time.time;
+            Debug.Log(timeLeftGrounded);
+            if (!JumpingThisFrame)
+            {
+                coyoteUsable = true;
+                Debug.Log("CANUSECOYOTE");
+                
+            }
+            else
+            {
+                coyoteUsable = false;
+            }
+        }
+        
+
         HitHead = Physics2D.OverlapBox(headCheck.position, groundCheckSize, 0f, groundLayer);
     }
 
@@ -145,7 +163,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Jump if: grounded or within coyote threshold || sufficient jump buffer
-        if (JumpDown && IsGrounded || HasBufferedJump)
+        if (JumpDown && CanUseCoyote || HasBufferedJump)
         {
             currentVelocityY = jumpHeight;
             endedJumpEarly = false;
