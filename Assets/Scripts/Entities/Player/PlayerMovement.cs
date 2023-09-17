@@ -120,11 +120,9 @@ public class PlayerMovement : MonoBehaviour
         if(_groundedLastFrame && !IsGrounded) 
         { 
         timeLeftGrounded = Time.time;
-            Debug.Log(timeLeftGrounded);
             if (!JumpingThisFrame)
             {
                 coyoteUsable = true;
-                Debug.Log("CANUSECOYOTE");
                 
             }
             else
