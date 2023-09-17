@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: FluidMaterial
-  m_Shader: {fileID: -6465566751694194690, guid: f343180397b0dd44792acfc74ee7b445, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 2ea7dc497615585439e2395e40028f5f, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -116,6 +116,7 @@ Material:
     - _EnableExternalAlpha: 0
     - _EnvironmentReflections: 1
     - _FoamThickness: 10
+    - _Foam_Thickness: 5
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
