@@ -3,20 +3,14 @@ using UnityEngine;
 using UnityEngine.UI;
 
 //This script controlls the timer
-public class Timer : MonoBehaviour
+public class Timer : Singleton<Timer>
 {
     [Header("Time Varibles (Seconds)")]
     [Tooltip("How long the timer lasts in the resource run")]
-    public static Timer instance;
     public float TimeLeft;
     public bool TimerOn = false;
 
     public TextMeshProUGUI TimerTxt;
-
-    private void Awake()
-    {
-        instance = this; 
-    }
     void Start()
     {
         TimerOn = true;

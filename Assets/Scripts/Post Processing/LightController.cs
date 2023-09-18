@@ -9,6 +9,6 @@ public class LightController : MonoBehaviour
 
     void Update()
     {
-        playerLight.pointLightOuterRadius = Timer.instance.TimeLeft;
+        playerLight.pointLightOuterRadius = Timer.Instance.TimeLeft;
     }
 }

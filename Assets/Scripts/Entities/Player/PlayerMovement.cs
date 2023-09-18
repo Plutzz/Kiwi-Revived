@@ -1,6 +1,11 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
+/// <summary>
+/// Movement script for player using a Rigidbody2D
+/// Features: acceleration/deceleration, Ground Check and Head Check, Coyote time, Jump Buffering, End Jump early
+/// </summary>
+
 public class PlayerMovement : MonoBehaviour
 {
     [Header("WALKING")]
@@ -12,11 +17,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Vector2 groundCheckSize = new Vector2(0.5f, 0.1f); // Size of the ground check
     [SerializeField] private LayerMask groundLayer;                 // Layer mask for the ground
 
-    [Header("JUMPING")][SerializeField] public float jumpHeight = 30;  
-    [SerializeField] private float jumpApexThreshold = 10f;
-    [SerializeField] private float coyoteTimeThreshold = 0.1f;
-    [SerializeField] private float jumpBuffer = 0.1f;
-    [SerializeField] private float jumpEndEarlyGravityModifier = 3;
+    [Header("JUMPING")][SerializeField] public float jumpHeight = 30;  // Amount of force added when player jumps     
+    [SerializeField] private float coyoteTimeThreshold = 0.1f;      // How long player can jump for after leaving platform
+    [SerializeField] private float jumpApexThreshold = 10f;         // Apex threshold
+    [SerializeField] private float jumpBuffer = 0.1f;               // Amount of time player can input jump before landing and it still registers
+    [SerializeField] private float jumpEndEarlyGravityModifier = 3; // How much downwards force is added when player releases jump early or hits a celing
 
     [Header("GRAVITY")]
     [SerializeField] private float minFallSpeed = 1f;
@@ -32,9 +37,9 @@ public class PlayerMovement : MonoBehaviour
 
     private bool coyoteUsable;
     private bool endedJumpEarly = true;
-    private float apexPoint; // Becomes 1 at the apex of a jump
     private float lastJumpPressed;
     private float currentVelocityY;
+    private float apexPoint;
     private bool CanUseCoyote => coyoteUsable && !IsGrounded && timeLeftGrounded + coyoteTimeThreshold > Time.time;
     private bool HasBufferedJump => IsGrounded && lastJumpPressed + jumpBuffer > Time.time;
     public bool JumpingThisFrame { get; private set; }
@@ -52,7 +57,8 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         if (rb == null) return;
-
+        
+        //IF GAME IS PAUSED SKIP THIS FRAME
         //if (PauseMenu.getGameIsPaused()) return;
 
         // Get input for movement
@@ -82,6 +88,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    // Gets player inputs needed to calculate movement
     private void GetInputs()
     {
         // Get input for movement
@@ -90,6 +97,7 @@ public class PlayerMovement : MonoBehaviour
         JumpUp = Input.GetButtonUp("Jump");
     }
 
+    // Calculates the horizontal movement of the player
     private void CalculateWalk()
     {
 
@@ -113,6 +121,7 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    // Checks for collisions with the ground check and celing check game objects
     private void CollisionCheck()
     {
         bool _groundedLastFrame = IsGrounded;
@@ -135,6 +144,7 @@ public class PlayerMovement : MonoBehaviour
         HitHead = Physics2D.OverlapBox(headCheck.position, groundCheckSize, 0f, groundLayer);
     }
 
+    // Updates players velocity
     private void Move()
     {
         rb.velocity = new Vector2(currentVelocityX, currentVelocityY);
@@ -153,6 +163,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    // Calculate the force added when player jumps or releases jump
     private void CalculateJump()
     {
         if (JumpDown)
@@ -187,6 +198,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    // Calculates how Y velocity will change from gravity
     private void CalculateGravity()
     {
         if (IsGrounded)
@@ -204,9 +216,11 @@ public class PlayerMovement : MonoBehaviour
 
             // Clamp
             if (currentVelocityY < fallClamp) currentVelocityY = fallClamp;
-        }
+        } 
     }
 
+
+    // Draws gizmos for collision checks
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
