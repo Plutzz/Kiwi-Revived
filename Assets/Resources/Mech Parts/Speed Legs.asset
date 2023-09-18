@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Speed Legs
   m_EditorClassIdentifier: 
   stats:
-    Vision: 0
-    Speed: 0
+    Vision: 10
+    Speed: 60
     Armor: 0
   Descriptions: 
   MenuSprite: {fileID: 0}

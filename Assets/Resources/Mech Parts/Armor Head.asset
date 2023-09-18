@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Armor Head
   m_EditorClassIdentifier: 
   stats:
-    Vision: 0
+    Vision: 20
     Speed: 0
-    Armor: 0
+    Armor: 30
   Descriptions: 
   MenuSprite: {fileID: 0}
   Equipped: 0

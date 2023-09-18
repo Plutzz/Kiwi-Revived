@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Standard Chasis
   m_EditorClassIdentifier: 
   stats:
-    Vision: 0
-    Speed: 0
-    Armor: 0
+    Vision: 10
+    Speed: 10
+    Armor: 20
   Descriptions: 
   MenuSprite: {fileID: 0}
   Equipped: 0
