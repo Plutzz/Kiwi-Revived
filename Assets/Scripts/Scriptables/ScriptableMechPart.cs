@@ -10,8 +10,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Scriptable Mech Part")]
 public class ScriptableMechPart : ScriptableObject
 {
-    [SerializeField] private Stats stats;
-    public Stats BaseStats => stats;
+    [SerializeField] private MechStats stats;
+    public MechStats BaseStats => stats;
 
     // Used in game
     // public MechPart prefab
@@ -27,7 +27,7 @@ public class ScriptableMechPart : ScriptableObject
 /// We can pass this struct to the spawned prefab unity and alter them depending on conditions (Upgrades ect.)
 /// </summary>
 [Serializable]
-public struct Stats
+public struct MechStats
 {
     public int Vision;
     public int Speed;
