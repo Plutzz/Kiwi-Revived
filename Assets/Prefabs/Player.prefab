@@ -319,7 +319,6 @@ GameObject:
   - component: {fileID: 9076245509761721070}
   - component: {fileID: 4500707116528110899}
   - component: {fileID: 8750567686362724067}
-  - component: {fileID: 1849807643789747957}
   m_Layer: 0
   m_Name: Graphics
   m_TagString: Untagged
@@ -473,16 +472,3 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
---- !u!114 &1849807643789747957
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4880060615713259954}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7058b371290aa5c44a9ae9cab1ebb9cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerLight: {fileID: 8750567686362724067}
