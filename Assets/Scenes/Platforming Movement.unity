@@ -17637,7 +17637,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1016086037}
   m_Layer: 0
-  m_Name: ---Environment and Entities---
+  m_Name: --------------Environment and Entities
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17832,7 +17832,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1327406626}
   m_Layer: 0
-  m_Name: --------Setup--------
+  m_Name: --------------Setup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18758,7 +18758,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1972929845}
   m_Layer: 0
-  m_Name: --------UI---------
+  m_Name: --------------UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19023,7 +19023,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2084245320}
   m_Layer: 0
-  m_Name: --------Systems--------
+  m_Name: --------------Systems
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19054,7 +19054,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2106629937}
   m_Layer: 0
-  m_Name: ------Managers------
+  m_Name: --------------Managers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19356,8 +19356,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1849807643789747957, guid: 9d3c9f1f891e8fd459852011d7d8c8d9, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d3c9f1f891e8fd459852011d7d8c8d9, type: 3}
 --- !u!1001 &8803366039458753522
 PrefabInstance:
