@@ -42,6 +42,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1322968427}
   - component: {fileID: 1322968428}
+  - component: {fileID: 1011345335}
   m_Layer: 0
   m_Name: BulletSpawnPoint
   m_TagString: Untagged
@@ -116,6 +117,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1011345335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1322968426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e2249e5e652bad44b7310589fe2f84b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WaterPrefab: {fileID: 238782239006985805, guid: 012ea056b13cac6479912b8baea3c566, type: 3}
 --- !u!1 &1849807642799417771
 GameObject:
   m_ObjectHideFlags: 0
@@ -277,6 +291,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCam: {fileID: 0}
   rotationPoint: {fileID: 1120681252}
+  FireRate: 0.1
 --- !u!1 &1849807643918316019
 GameObject:
   m_ObjectHideFlags: 0

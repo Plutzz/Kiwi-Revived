@@ -24,6 +24,9 @@ public class PlayerController : Singleton<PlayerController>
     {
         followMouse();
 
+
+
+        // If the mouse button is held down, shoot 1 water particle every FireRate seconds
         shootTimer -= Time.deltaTime;
         if (Input.GetMouseButton(0) && shootTimer <= 0)
         {
@@ -33,6 +36,7 @@ public class PlayerController : Singleton<PlayerController>
 
     }
 
+    // Rotates the rotation point to follow the mouse
     private void followMouse()
     {
         mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
