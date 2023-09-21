@@ -8,10 +8,13 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] private GameObject graphics;
+
+
     [Header("WALKING")]
-    [SerializeField] public float maxSpeed = 5f;                    // Base movement speed
+    [SerializeField] private float maxSpeed = 5f;                    // Base movement speed
     [SerializeField] private float acceleration = 10f;              // Acceleration factor
-    [SerializeField] public float deceleration = 10f;               // Deceleration factor
+    [SerializeField] private float deceleration = 10f;               // Deceleration factor
     [SerializeField] private Transform groundCheck;                 // Transform of an object at the character's feet
     [SerializeField] private Transform headCheck;                   // Transform of an object at the character's head
     [SerializeField] private Vector2 groundCheckSize = new Vector2(0.5f, 0.1f); // Size of the ground check
@@ -74,17 +77,16 @@ public class PlayerMovement : MonoBehaviour
 
         // Update the Rigidbody2D velocity
         Move();
-
-
+        
         // Flip character sprite if moving left
         if (XAxis < 0)
         {
-            transform.localScale = new Vector3(-1f, 1f, 1f);
+            graphics.transform.localScale = new Vector3(-1f, 1f, 1f);
         }
         // Flip character sprite if moving right
         else if (XAxis > 0)
         {
-            transform.localScale = new Vector3(1f, 1f, 1f);
+            graphics.transform.localScale = new Vector3(1f, 1f, 1f);
         }
     }
 
