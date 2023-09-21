@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 238782239006985811}
   - component: {fileID: 238782239006985810}
   - component: {fileID: 238782239006985809}
+  - component: {fileID: 5773883442960863249}
   m_Layer: 7
   m_Name: Liquid
   m_TagString: Untagged
@@ -72,8 +73,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 158189301
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b53c224115e48e74b8f694e66f361749, type: 3}
   m_Color: {r: 0.2783019, g: 0.88069546, b: 1, a: 1}
@@ -123,3 +124,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &5773883442960863249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 238782239006985805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1200293dba364745a18f4886d461249, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifetime: 4
