@@ -8,6 +8,9 @@ public class MechPartButton : MonoBehaviour
 
     public void EquipPart()
     {
+        MechSystem.Instance.UnequipBodies();
         part.Equipped = true;
+        
     }
+
 }
