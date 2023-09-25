@@ -18,4 +18,4 @@ MonoBehaviour:
     Armor: 10
   Descriptions: 
   MenuSprite: {fileID: 0}
-  Equipped: 0
+  Equipped: 1

@@ -7,12 +7,15 @@ using UnityEngine.SceneManagement;
 
 public class MechSystem : SingletonPersistent<MechSystem>
 {
+    //General Stats
     public int Vision;
     public int Speed;
     public int Armor;
     public int Velocity;
     public int Damage;
 
+
+    //Keeps Track of scriptableMechPart objects
     private ScriptableMechPart[] mechHeads;
     private ScriptableMechPart[] mechBodies;
     private ScriptableMechPart equippedHead;
@@ -24,12 +27,14 @@ public class MechSystem : SingletonPersistent<MechSystem>
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
+    //Loads all head and body parts into arrays
     private void LoadResources()
     {
         mechHeads = Resources.LoadAll<ScriptableMechPart>("MechParts/Head");
         mechBodies = Resources.LoadAll<ScriptableMechPart>("MechParts/Chasis");
     }
 
+    // Unequips all head parts
     public void UnequipHeads()
     {
         foreach(var part in mechHeads)
@@ -38,6 +43,7 @@ public class MechSystem : SingletonPersistent<MechSystem>
         }
     }
 
+    // Unequips all body parts
     public void UnequipBodies()
     {
         foreach (var part in mechBodies)
@@ -46,8 +52,10 @@ public class MechSystem : SingletonPersistent<MechSystem>
         }
     }
 
+    // This is called whenever a new scene is loaded
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        Debug.Log("Scene Loaded: " +  scene.name);
         if (!scene.name.Equals("PlatformingMovement"))
         {
             return;
@@ -56,6 +64,7 @@ public class MechSystem : SingletonPersistent<MechSystem>
         getEquippedParts();
     }
 
+    // Finds which parts are currently equipped and sets them to equipped varibles
     private void getEquippedParts()
     {
         foreach(var part in mechHeads)
@@ -75,8 +84,16 @@ public class MechSystem : SingletonPersistent<MechSystem>
                 break;
             }
         }
+    }
 
-        Debug.Log("Equipped Parts: " +  equippedHead + equippedBody);
+    private void AddStats()
+    {
+        //Adds up all stats from currently equipped parts
+    }
+
+    private void ClearStats()
+    {
+        //Sets all stats to 0
     }
 
     
