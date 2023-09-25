@@ -9,13 +9,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 238782239006985804}
-  - component: {fileID: -5735699939968851580}
+  - component: {fileID: 9040275835035985004}
   - component: {fileID: 238782239006985811}
   - component: {fileID: 238782239006985810}
   - component: {fileID: 238782239006985809}
   - component: {fileID: 5773883442960863249}
   m_Layer: 7
-  m_Name: Liquid
+  m_Name: Fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36,7 +36,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-5735699939968851580
+--- !u!114 &9040275835035985004
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -45,10 +45,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 238782239006985805}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7218a671af1b0554c81d83f6378a0793, type: 3}
+  m_Script: {fileID: 11500000, guid: 47979a32c8f432243a00fa64130f0003, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 0}
+  velocity: 30
+  maxRange: 30
+  minRange: -15
 --- !u!212 &238782239006985811
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -91,7 +93,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b53c224115e48e74b8f694e66f361749, type: 3}
-  m_Color: {r: 0.2783019, g: 0.88069546, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.34869388, b: 0.27843142, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -129,10 +131,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.05
-  m_LinearDrag: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 4
   m_AngularDrag: 0
-  m_GravityScale: 1
+  m_GravityScale: -3
   m_Material: {fileID: 6200000, guid: 5a9e9fc77f37ca246a6bda97ea43f36f, type: 2}
   m_Interpolate: 1
   m_SleepingMode: 1
@@ -150,4 +152,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1200293dba364745a18f4886d461249, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 1
+  lifetime: 0.5

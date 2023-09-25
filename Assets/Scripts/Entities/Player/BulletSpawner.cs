@@ -4,9 +4,46 @@ using UnityEngine;
 
 public class BulletSpawner : Singleton<BulletSpawner>
 {
-    public GameObject WaterPrefab;
+    public BulletType bulletType;
+
+    public GameObject FirePrefab, WaterPrefab, PoisonPrefab;
+
+    public PlayerController playerController;
+
     public void Shoot()
     {
-        Instantiate(WaterPrefab, transform.position, transform.rotation);
+        switch ((int)bulletType)
+        {
+            //Fire
+            case(0):
+            {
+                playerController.FireRate = 0.1f;
+                Instantiate(FirePrefab, transform.position, transform.rotation);
+                break;
+            }
+
+            //Water
+            case(1):
+            {
+                playerController.FireRate = 0.1f;
+                Instantiate(WaterPrefab, transform.position, transform.rotation);
+                break;
+            }
+
+            //Poison
+            case(2):
+            {
+                playerController.FireRate = 2f;
+                Instantiate(PoisonPrefab, transform.position, transform.rotation);
+                break;
+            }
+        }
+    }
+
+    public enum BulletType
+    {
+        Fire,
+        Water,
+        Poison
     }
 }

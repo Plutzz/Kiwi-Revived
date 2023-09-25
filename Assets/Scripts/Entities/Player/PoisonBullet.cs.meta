@@ -1,12 +1,9 @@
 fileFormatVersion: 2
-guid: 0e2249e5e652bad44b7310589fe2f84b
+guid: 302d2d2de2bc7cd4fbb46feef70aa987
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - FirePrefab: {instanceID: 0}
-  - WaterPrefab: {instanceID: 0}
-  - PoisonPrefab: {instanceID: 0}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

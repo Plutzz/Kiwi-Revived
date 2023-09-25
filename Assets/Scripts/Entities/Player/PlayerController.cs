@@ -20,6 +20,7 @@ public class PlayerController : Singleton<PlayerController>
         BulletSpawnPoint = BulletSpawner.Instance;
         shootTimer = FireRate;
     }
+    
     void Update()
     {
         followMouse();
@@ -31,6 +32,7 @@ public class PlayerController : Singleton<PlayerController>
         if (Input.GetMouseButton(0) && shootTimer <= 0)
         {
             BulletSpawnPoint.Shoot();
+
             shootTimer = FireRate;
         }
 
@@ -44,7 +46,6 @@ public class PlayerController : Singleton<PlayerController>
         float rotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
         rotationPoint.transform.rotation = Quaternion.Euler(0, 0, rotZ);
     }
-
     
 }
     
