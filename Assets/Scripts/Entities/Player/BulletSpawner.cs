@@ -17,7 +17,7 @@ public class BulletSpawner : Singleton<BulletSpawner>
             //Fire
             case(0):
             {
-                playerController.FireRate = 0.1f;
+                //playerController.FireRate = 0.1f;
                 Instantiate(FirePrefab, transform.position, transform.rotation);
                 break;
             }
@@ -25,7 +25,7 @@ public class BulletSpawner : Singleton<BulletSpawner>
             //Water
             case(1):
             {
-                playerController.FireRate = 0.1f;
+                //playerController.FireRate = 0.1f;
                 Instantiate(WaterPrefab, transform.position, transform.rotation);
                 break;
             }
@@ -33,7 +33,7 @@ public class BulletSpawner : Singleton<BulletSpawner>
             //Poison
             case(2):
             {
-                playerController.FireRate = 2f;
+                //playerController.FireRate = 2f;
                 Instantiate(PoisonPrefab, transform.position, transform.rotation);
                 break;
             }

@@ -133,6 +133,7 @@ MonoBehaviour:
   FirePrefab: {fileID: 238782239006985805, guid: 24c067264e163144491fc216c22ef5bf, type: 3}
   WaterPrefab: {fileID: 238782239006985805, guid: 012ea056b13cac6479912b8baea3c566, type: 3}
   PoisonPrefab: {fileID: 238782239006985805, guid: 36bbf96423e91484c949ba0eac1f8b1d, type: 3}
+  playerController: {fileID: 1613898207}
 --- !u!1 &1849807642799417771
 GameObject:
   m_ObjectHideFlags: 0
@@ -294,7 +295,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCam: {fileID: 0}
   rotationPoint: {fileID: 1120681252}
-  FireRate: 0.1
+  FireRate: 0
 --- !u!1 &1849807643918316019
 GameObject:
   m_ObjectHideFlags: 0
