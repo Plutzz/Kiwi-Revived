@@ -32,7 +32,7 @@ public class FireBullet : MonoBehaviour
         {
             case(0):
             {
-                //changes rotation, scattering shots
+                //changes rotation at constant rate making a wave
                 transform.rotation = Quaternion.Euler(0, 0, transform.eulerAngles.z + waveAngle);
 
                 waveAngle += rateOfWave;
@@ -46,7 +46,7 @@ public class FireBullet : MonoBehaviour
 
             case(1):
             {
-                //changes rotation, scattering shots
+                //changes rotation randomly, scattering shots
                 transform.rotation = Quaternion.Euler(0, 0, transform.eulerAngles.z + Random.Range(minRange, maxRange));
             }
             break;

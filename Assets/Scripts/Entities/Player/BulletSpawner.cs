@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.Intrinsics;
 using UnityEngine;
 
 public class BulletSpawner : Singleton<BulletSpawner>
@@ -33,6 +34,7 @@ public class BulletSpawner : Singleton<BulletSpawner>
             {
                 playerController.FireRate = waterFireRate;
 
+                Instantiate(WaterPrefab, transform.position, transform.rotation);
                 Instantiate(WaterPrefab, transform.position, transform.rotation);
                 break;
             }

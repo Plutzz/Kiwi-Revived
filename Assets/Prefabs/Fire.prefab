@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47979a32c8f432243a00fa64130f0003, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firingType: 1
+  firingType: 0
   velocity: 20
   waveWidth: 45
   damage: 10
