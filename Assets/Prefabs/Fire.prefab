@@ -48,9 +48,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47979a32c8f432243a00fa64130f0003, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: 30
+  firingType: 1
+  velocity: 20
+  waveWidth: 45
+  damage: 10
   maxRange: 30
-  minRange: -15
+  minRange: -30
 --- !u!212 &238782239006985811
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -131,7 +134,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.0001
+  m_Mass: 1
   m_LinearDrag: 4
   m_AngularDrag: 0
   m_GravityScale: -3
@@ -152,4 +155,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1200293dba364745a18f4886d461249, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 0.5
+  lifetime: 1

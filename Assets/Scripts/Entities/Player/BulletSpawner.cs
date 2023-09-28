@@ -23,6 +23,7 @@ public class BulletSpawner : Singleton<BulletSpawner>
             case(0):
             {
                 playerController.FireRate = fireFireRate;
+
                 Instantiate(FirePrefab, transform.position, transform.rotation);
                 break;
             }
@@ -31,6 +32,7 @@ public class BulletSpawner : Singleton<BulletSpawner>
             case(1):
             {
                 playerController.FireRate = waterFireRate;
+
                 Instantiate(WaterPrefab, transform.position, transform.rotation);
                 break;
             }
@@ -39,6 +41,7 @@ public class BulletSpawner : Singleton<BulletSpawner>
             case(2):
             {
                 playerController.FireRate = poisonFireRate;
+
                 Instantiate(PoisonPrefab, transform.position, transform.rotation);
                 break;
             }
