@@ -11,6 +11,7 @@ public class MechPartButton : MonoBehaviour
         MechSystem.Instance.UnequipBodies();
         part.Equipped = true;
         
+
     }
 
 }
