@@ -36,6 +36,19 @@ public class PlayerController : Singleton<PlayerController>
             shootTimer = FireRate;
         }
 
+        if(Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            BulletSpawnPoint.changeBulletType(0);
+        }
+        
+        if(Input.GetKeyDown(KeyCode.Alpha2)) {
+            BulletSpawnPoint.changeBulletType(1);
+        }
+        
+        if(Input.GetKeyDown(KeyCode.Alpha3)) {
+            BulletSpawnPoint.changeBulletType(2);
+        }
+
     }
 
     // Rotates the rotation point to follow the mouse

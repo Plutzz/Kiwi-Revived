@@ -16,6 +16,8 @@ public class BulletSpawner : Singleton<BulletSpawner>
 
     public PlayerController playerController;
 
+    BulletType[] bulletTypes = (BulletType[])System.Enum.GetValues (typeof(BulletType));
+
     public void Shoot()
     {
         switch ((int)bulletType)
@@ -48,6 +50,11 @@ public class BulletSpawner : Singleton<BulletSpawner>
                 break;
             }
         }
+    }
+
+    public void changeBulletType(int type)
+    {
+        bulletType = bulletTypes[type];
     }
 
     public enum BulletType
