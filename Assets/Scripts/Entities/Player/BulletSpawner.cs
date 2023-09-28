@@ -8,6 +8,11 @@ public class BulletSpawner : Singleton<BulletSpawner>
 
     public GameObject FirePrefab, WaterPrefab, PoisonPrefab;
 
+    [Header("Fire Rate")]
+    public float fireFireRate = 0.1f;
+    public float waterFireRate = 0.1f;
+    public float poisonFireRate = 2.0f;
+
     public PlayerController playerController;
 
     public void Shoot()
@@ -17,7 +22,7 @@ public class BulletSpawner : Singleton<BulletSpawner>
             //Fire
             case(0):
             {
-                //playerController.FireRate = 0.1f;
+                playerController.FireRate = fireFireRate;
                 Instantiate(FirePrefab, transform.position, transform.rotation);
                 break;
             }
@@ -25,7 +30,7 @@ public class BulletSpawner : Singleton<BulletSpawner>
             //Water
             case(1):
             {
-                //playerController.FireRate = 0.1f;
+                playerController.FireRate = waterFireRate;
                 Instantiate(WaterPrefab, transform.position, transform.rotation);
                 break;
             }
@@ -33,7 +38,7 @@ public class BulletSpawner : Singleton<BulletSpawner>
             //Poison
             case(2):
             {
-                //playerController.FireRate = 2f;
+                playerController.FireRate = poisonFireRate;
                 Instantiate(PoisonPrefab, transform.position, transform.rotation);
                 break;
             }
