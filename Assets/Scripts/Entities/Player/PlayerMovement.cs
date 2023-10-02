@@ -230,4 +230,9 @@ public class PlayerMovement : MonoBehaviour
         Gizmos.DrawWireCube(headCheck.position, new Vector3(groundCheckSize.x, groundCheckSize.y, 0.1f));
     }
 
+    public float getCurrentVelocityX ()
+    {
+        return currentVelocityX;
+    }
+
 }

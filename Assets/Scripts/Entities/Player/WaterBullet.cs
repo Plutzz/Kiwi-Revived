@@ -8,7 +8,7 @@ public class WaterBullet : MonoBehaviour
     public int damage = 10;
     public static float distanceBetweenBullets = 0.5f;
 
-     //lowest and highest direction flame can spawn
+    //lowest and highest direction water can spawn
     [Header ("Spread of bullets")]
     public int maxRange, minRange = 0;
     
@@ -17,14 +17,37 @@ public class WaterBullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameObject player = GameObject.Find("Player");
+
+        PlayerMovement playerMovement = player.GetComponent<PlayerMovement>();
+
+        Transform rotatePointTransform = playerMovement.transform.GetChild(3).transform;
+
         waterParticle = GetComponent<Rigidbody2D>();
+
+        float playerHorizontalMovementSpeed = playerMovement.getCurrentVelocityX();
+
+        float rotatePointAngle = rotatePointTransform.rotation.eulerAngles.z;
+
+        //if facing right
+        if((rotatePointAngle > 270) || (rotatePointAngle < 90))
+        {
+            playerHorizontalMovementSpeed = Mathf.Cos(Mathf.Deg2Rad * rotatePointAngle) * playerHorizontalMovementSpeed;
+
+        //if facing left
+        } else if ((rotatePointAngle > 90) && (rotatePointAngle < 270))
+        {
+            playerHorizontalMovementSpeed = Mathf.Cos(Mathf.Deg2Rad * rotatePointAngle) * playerHorizontalMovementSpeed;
+        }
 
         transform.rotation = Quaternion.Euler(0, 0, transform.eulerAngles.z + Random.Range(maxRange, minRange));
         transform.Translate(0, distanceBetweenBullets, 0);
         distanceBetweenBullets *= -1;
+        
 
         //speed of projectile
-        waterParticle.velocity = transform.right * velocity;
+        waterParticle.velocity = transform.right * (velocity + playerHorizontalMovementSpeed);
+        Debug.Log(waterParticle.velocity);
     }
 
 }
