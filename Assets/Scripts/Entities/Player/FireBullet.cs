@@ -26,11 +26,11 @@ public class FireBullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject player = GameObject.Find("Player");
+        GameObject player = PlayerMovement.Instance.gameObject;
 
-        PlayerMovement playerMovement = player.GetComponent<PlayerMovement>();
+        PlayerMovement playerMovement = PlayerMovement.Instance;
 
-        Transform rotatePointTransform = playerMovement.transform.GetChild(3).transform;
+        Transform rotatePointTransform = RotationPoint.Instance.transform;
         
         fireParticle = GetComponent<Rigidbody2D>();
 
