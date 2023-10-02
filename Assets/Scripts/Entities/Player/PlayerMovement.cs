@@ -6,7 +6,7 @@ using UnityEngine;
 /// Features: acceleration/deceleration, Ground Check and Head Check, Coyote time, Jump Buffering, End Jump early
 /// </summary>
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : Singleton<PlayerMovement>
 {
     [SerializeField] private GameObject graphics;
 
@@ -228,6 +228,11 @@ public class PlayerMovement : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(groundCheck.position, new Vector3(groundCheckSize.x, groundCheckSize.y, 0.1f));
         Gizmos.DrawWireCube(headCheck.position, new Vector3(groundCheckSize.x, groundCheckSize.y, 0.1f));
+    }
+
+    public float getCurrentVelocityX ()
+    {
+        return currentVelocityX;
     }
 
 }
