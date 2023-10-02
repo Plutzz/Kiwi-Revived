@@ -18785,7 +18785,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1786101443}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5126916, z: -10}
+  m_LocalPosition: {x: -0.08, y: 0.5126916, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -19606,6 +19606,10 @@ PrefabInstance:
       propertyPath: mainCam
       value: 
       objectReference: {fileID: 1786101445}
+    - target: {fileID: 2044251526, guid: 9d3c9f1f891e8fd459852011d7d8c8d9, type: 3}
+      propertyPath: mainCam
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1849807643251689252, guid: 9d3c9f1f891e8fd459852011d7d8c8d9, type: 3}
       propertyPath: m_Name
       value: Player
@@ -19620,7 +19624,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1849807643251689256, guid: 9d3c9f1f891e8fd459852011d7d8c8d9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.08
       objectReference: {fileID: 0}
     - target: {fileID: 1849807643251689256, guid: 9d3c9f1f891e8fd459852011d7d8c8d9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -19667,6 +19671,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1605176852, guid: 28d52a0c08eec2c4cb72bdfc0015aa68, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1978452687989836291, guid: 28d52a0c08eec2c4cb72bdfc0015aa68, type: 3}
       propertyPath: m_Name
       value: Trapper
@@ -19714,6 +19722,14 @@ PrefabInstance:
     - target: {fileID: 1978452687989836303, guid: 28d52a0c08eec2c4cb72bdfc0015aa68, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3001957700144258607, guid: 28d52a0c08eec2c4cb72bdfc0015aa68, type: 3}
+      propertyPath: visionAngle
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 3001957700144258607, guid: 28d52a0c08eec2c4cb72bdfc0015aa68, type: 3}
+      propertyPath: visionRange
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3001957700144258607, guid: 28d52a0c08eec2c4cb72bdfc0015aa68, type: 3}
       propertyPath: playerTransform

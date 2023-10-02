@@ -26,16 +26,16 @@ public class EnemyAI : MonoBehaviour
     public EnemyAIState state = EnemyAIState.Patrol;
     public Transform groundCheck;
     private Rigidbody2D rb;
-    [SerializeField] private Transform playerTransform;
+    private Transform playerTransform;
     [SerializeField] private LayerMask groundLayer;                 // Layer mask for the ground
     [SerializeField] private EdgeCollider2D leftGroundCheck;
     [SerializeField] private EdgeCollider2D rightGroundCheck;
 
     // Private Variables
     Vector2[] directions = { Vector2.left, Vector2.right };
-    [SerializeField] private bool isLeftGrounded = false;
-    [SerializeField] private bool isRightGrounded = false;
-    [SerializeField] private float timer = 0f;
+    private bool isLeftGrounded = false;
+    private bool isRightGrounded = false;
+    private float timer = 0f;
     [SerializeField] private Vector2 currentDirection;
     [SerializeField] private Vector2 lastKnownPosition;
 
