@@ -8,20 +8,6 @@ public class Enemy3ProjectileSpawner : MonoBehaviour
     public GameObject WaterPrefab;
     public GameObject Enemy3;
     int num = 0;
-
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void shoot()
     {
         num += 1;

@@ -10,12 +10,7 @@ public class Enemy3AI : MonoBehaviour
     public float velocityDecrease = 1.0f;
     public GameObject rangeCheck;
     public GameObject projectileSpawner;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject parent;
 
     // Update is called once per frame
     void Update()
@@ -42,7 +37,7 @@ public class Enemy3AI : MonoBehaviour
             // enemy dies when scale reaches a certain amount
             if (this.transform.localScale.x >= 3)
             {
-                gameObject.SetActive(false);
+                Destroy(parent);
 
             }
             else if (this.transform.localScale.x >= 2)
