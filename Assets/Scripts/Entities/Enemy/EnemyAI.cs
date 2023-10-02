@@ -18,6 +18,8 @@ public class EnemyAI : MonoBehaviour
     public float waitTime = 3f;
     public float moveTime = 5f;
     public bool isCoroutineRunning = false;
+    public float visionRange = 40f;
+    public float visionAngle = 45f;
 
     // GameObjects
     public Trap _trap;
@@ -36,8 +38,6 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private float timer = 0f;
     [SerializeField] private Vector2 currentDirection;
     [SerializeField] private Vector2 lastKnownPosition;
-    [SerializeField] private float visionRange = 40f;
-    [SerializeField] private float visionAngle = 45f;
 
 
 
