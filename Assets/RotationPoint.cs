@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RotationPoint : MonoBehaviour
+public class RotationPoint : Singleton<RotationPoint>
 {
     [SerializeField] private Camera mainCam;
     [SerializeField] private GameObject Graphics;

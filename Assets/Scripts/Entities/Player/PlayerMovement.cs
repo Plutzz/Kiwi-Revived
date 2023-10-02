@@ -6,7 +6,7 @@ using UnityEngine;
 /// Features: acceleration/deceleration, Ground Check and Head Check, Coyote time, Jump Buffering, End Jump early
 /// </summary>
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : Singleton<PlayerMovement>
 {
     [SerializeField] private GameObject graphics;
 
