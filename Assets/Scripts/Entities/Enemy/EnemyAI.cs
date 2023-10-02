@@ -24,7 +24,7 @@ public class EnemyAI : MonoBehaviour
     public EnemyAIState state = EnemyAIState.Patrol;
     public Transform groundCheck;
     private Rigidbody2D rb;
-    private Transform playerTransform;
+    [SerializeField] private Transform playerTransform;
     [SerializeField] private LayerMask groundLayer;                 // Layer mask for the ground
     [SerializeField] private EdgeCollider2D leftGroundCheck;
     [SerializeField] private EdgeCollider2D rightGroundCheck;
@@ -36,7 +36,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private float timer = 0f;
     [SerializeField] private Vector2 currentDirection;
     [SerializeField] private Vector2 lastKnownPosition;
-    [SerializeField] private float visionRange = 10f;
+    [SerializeField] private float visionRange = 40f;
     [SerializeField] private float visionAngle = 45f;
 
 
@@ -59,7 +59,6 @@ public class EnemyAI : MonoBehaviour
                 }
                 CheckCollision();
                 Move();
-                Flip(currentDirection);
                 CheckVision();
                 
                 break;
@@ -67,7 +66,8 @@ public class EnemyAI : MonoBehaviour
             case EnemyAIState.Chase:
                 StopCoroutine(Idle());
                 Debug.Log("Chase");
-                CheckVision()
+                CheckVision();
+                CheckCollision();
                 break;
             // Shoot at the player, once it is within attack range, in sight, not behind a wall, and not in minimum range (melee)
             case EnemyAIState.Attack:
@@ -120,10 +120,20 @@ public class EnemyAI : MonoBehaviour
         Vector2 directionToPlayer = playerTransform.position - transform.position;
         float distanceToPlayer = directionToPlayer.magnitude;
         float angleToPlayer = Vector2.Angle(directionToPlayer, transform.right);
+
+        // Flip the angle if the enemy is facing left
+        if (currentDirection.x < 0)
+        {
+            visionAngle = 180 - visionAngle;
+            angleToPlayer = 180 - angleToPlayer;
+        }
+
         if (distanceToPlayer > visionRange || angleToPlayer > visionAngle)
             state = EnemyAIState.Patrol;
         else if (distanceToPlayer <= visionRange && angleToPlayer <= visionAngle)
             state = EnemyAIState.Chase;
+        
+        Debug.DrawRay(transform.position, directionToPlayer.normalized * visionRange, Color.green);
     }
 
     void CheckCollision()
@@ -143,12 +153,6 @@ public class EnemyAI : MonoBehaviour
         return isOverlapping;
     }
 
-    void Flip(Vector2 direction)
-    {
-        Vector3 scale = transform.localScale;
-        scale.x = direction.x;
-        transform.localScale = scale;
-    }
 
     // Moves the enemy in the specified direction
     IEnumerator MoveCoroutine(Vector2 direction)
@@ -166,33 +170,24 @@ public class EnemyAI : MonoBehaviour
 
     }
 
-    // Shoots traps every waitTime seconds
     IEnumerator Idle()
     {
         isCoroutineRunning = true;
-        _trap.ShootTraps(rb.velocity.x);
+        //_trap.ShootTraps(rb.velocity.x);
         yield return new WaitForSeconds(waitTime);
         isCoroutineRunning = false;
     }
 
-    void OnDrawGizmos()
+
+    void OnDrawGizmosSelected()
     {
-        // Draw the vision range and angle in the Scene view
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, visionRange);
 
         Gizmos.color = Color.red;
-        Vector3 facingDirection = transform.right;
-
-        if (facingDirection.x < 0)
-        {
-            Gizmos.DrawLine(transform.position, transform.position + Quaternion.AngleAxis(-visionAngle, Vector3.forward) * transform.right * visionRange);
-            Gizmos.DrawLine(transform.position, transform.position + Quaternion.AngleAxis(visionAngle, Vector3.forward) * transform.right * visionRange);
-        }
-        else
-        {
-            Gizmos.DrawLine(transform.position, transform.position + Quaternion.AngleAxis(visionAngle, Vector3.forward) * transform.right * visionRange);
-            Gizmos.DrawLine(transform.position, transform.position + Quaternion.AngleAxis(-visionAngle, Vector3.forward) * transform.right * visionRange);
-        }
+        Vector3 visionAngleA = Quaternion.AngleAxis(visionAngle, transform.forward) * currentDirection * visionRange;
+        Vector3 visionAngleB = Quaternion.AngleAxis(-visionAngle, transform.forward) * currentDirection * visionRange;
+        Gizmos.DrawLine(transform.position, transform.position + visionAngleA);
+        Gizmos.DrawLine(transform.position, transform.position + visionAngleB);
     }
 }
