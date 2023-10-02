@@ -48,6 +48,37 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 5
+--- !u!1 &818221350160850773
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3247322422672506111}
+  m_Layer: 0
+  m_Name: SpearShooter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3247322422672506111
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 818221350160850773}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.6, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1978452687989836303}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1168554212718820953
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,7 +121,7 @@ EdgeCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -115,6 +146,7 @@ GameObject:
   - component: {fileID: 3264870441941011414}
   - component: {fileID: 1978452687989836290}
   - component: {fileID: 3001957700144258607}
+  - component: {fileID: 1605176852}
   m_Layer: 0
   m_Name: Trapper
   m_TagString: Untagged
@@ -138,6 +170,8 @@ Transform:
   - {fileID: 8721680062695802762}
   - {fileID: 2213993685777112910}
   - {fileID: 2638268963603964771}
+  - {fileID: 6796016834335726363}
+  - {fileID: 3247322422672506111}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -254,22 +288,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 4
   waitTime: 3
-  moveTime: 2
+  moveTime: 5
   isCoroutineRunning: 0
   playerDetector: {fileID: 8535110332777968611}
   state: 0
-  trapPrefab: {fileID: 6149180492314810455, guid: aae52d0425ea9a24dbec00438f0d060e, type: 3}
   groundCheck: {fileID: 8721680062695802762}
   playerTransform: {fileID: 0}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  IsGrounded: 0
-  groundCheckLeft: {fileID: 1273129623578047264}
-  groundCheckRight: {fileID: 3514094573314639936}
+  isLeftGrounded: 0
+  isRightGrounded: 0
+  leftGroundCheck: {fileID: 1273129623578047264}
+  rightGroundCheck: {fileID: 3514094573314639936}
   isMoving: 0
   timer: 0
   currentDirection: {x: 0, y: 0}
+  _trap: {fileID: 1605176852}
+--- !u!114 &1605176852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1978452687989836291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd326c6e3d7fcb04aa40a6d633b63e16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trapPrefab: {fileID: 6149180492314810455, guid: aae52d0425ea9a24dbec00438f0d060e, type: 3}
+  rb: {fileID: 6149180492314810459, guid: aae52d0425ea9a24dbec00438f0d060e, type: 3}
+  spawnPoint: {fileID: 6796016834335726363}
 --- !u!1 &2368061374460400016
 GameObject:
   m_ObjectHideFlags: 0
@@ -295,7 +345,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2368061374460400016}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -318,8 +368,8 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: 0.5, y: 1}
-  - {x: 0.5, y: -0.5}
+  - {x: 0.5, y: -1.5}
+  - {x: 0.5, y: 0}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -372,3 +422,34 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 11
+--- !u!1 &6920474719958368012
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6796016834335726363}
+  m_Layer: 0
+  m_Name: TrapShooter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6796016834335726363
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6920474719958368012}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.6, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1978452687989836303}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

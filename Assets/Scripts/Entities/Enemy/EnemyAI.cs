@@ -16,32 +16,33 @@ public class EnemyAI : MonoBehaviour
     // Variables
     public float speed = 10f;
     public float waitTime = 3f;
-    public float moveTime = 2f;
+    public float moveTime = 5f;
     public bool isCoroutineRunning = false;
 
     // GameObjects
-    Vector2[] directions = { Vector2.left, Vector2.right };
-    public Collider2D playerDetector;
+    public Trap _trap;
     public EnemyAIState state = EnemyAIState.Patrol;
-    public GameObject trapPrefab;
     public Transform groundCheck;
     private Rigidbody2D rb;
-    [SerializeField] private Transform playerTransform;
+    private Transform playerTransform;
     [SerializeField] private LayerMask groundLayer;                 // Layer mask for the ground
+    [SerializeField] private EdgeCollider2D leftGroundCheck;
+    [SerializeField] private EdgeCollider2D rightGroundCheck;
 
     // Private Variables
-    [SerializeField] private bool IsGrounded = false;
-    [SerializeField] private EdgeCollider2D groundCheckLeft;
-    [SerializeField] private EdgeCollider2D groundCheckRight;
+    Vector2[] directions = { Vector2.left, Vector2.right };
+    [SerializeField] private bool isLeftGrounded = false;
+    [SerializeField] private bool isRightGrounded = false;
     [SerializeField] private bool isMoving = false;
     [SerializeField] private float timer = 0f;
-    [SerializeField] private Vector2 currentDirection = Vector2.zero;
+    [SerializeField] private Vector2 currentDirection;
 
     void Start()
     {
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        playerTransform = GameObject.Find("Player").transform;
         rb = GetComponent<Rigidbody2D>();
     }
+
     void Update()
     {
         switch (state)
@@ -50,17 +51,12 @@ public class EnemyAI : MonoBehaviour
                 if (!isCoroutineRunning) {
                     StartCoroutine(Idle());
                 }
-
                 CheckCollision();
-                if (timer >= moveTime) {
-                    currentDirection = directions[Random.Range(0, directions.Length)];
-                    timer = 0f;
-                }
-                Move(currentDirection);
-                timer += Time.deltaTime;
+                Move();
+                Flip(currentDirection);
 
                 break;
-            // Move towards the last known position of the player
+            // Move towards the last known position of the player when a ray cast (vision) hits the player
             case EnemyAIState.Chase:
                 StopCoroutine(Idle());
                 if (!isMoving) {
@@ -91,30 +87,51 @@ public class EnemyAI : MonoBehaviour
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
-    void Move(Vector2 direction)
+    void Move()
     {
-        if (IsGrounded) {
-            direction.Normalize();
-            rb.position += direction * speed * Time.deltaTime;
-        } 
+        if (timer >= moveTime || !isLeftGrounded || !isRightGrounded) {
+            currentDirection = directions[Random.Range(0, directions.Length)];
+            timer = 0f;
+        }
+
+        if (isLeftGrounded && isRightGrounded) {
+            currentDirection.Normalize();
+            rb.position += currentDirection * speed * Time.deltaTime;
+        } else if (!isLeftGrounded) {
+            currentDirection = Vector2.right; // Right = (1, 0)
+            currentDirection.Normalize();
+            rb.position += currentDirection * speed * Time.deltaTime;
+        } else if (!isRightGrounded) {
+            currentDirection = Vector2.left; // Left = (-1, 0)
+            currentDirection.Normalize();
+            rb.position += currentDirection * speed * Time.deltaTime;
+        }
+
+        timer += Time.deltaTime;
     }
 
     void CheckCollision()
     {
-        // RaycastHit2D hit = Physics2D.Raycast(bottomCenter, Vector2.down, groundLayer);
-        // IsGrounded = hit.collider != null;
+        isLeftGrounded = IsColliderOverlappingFloor(leftGroundCheck);
+        isRightGrounded = IsColliderOverlappingFloor(rightGroundCheck);
+
+        Debug.DrawLine(leftGroundCheck.transform.position + (Vector3)leftGroundCheck.points[0], leftGroundCheck.transform.position + (Vector3)leftGroundCheck.points[1], Color.red);
+        Debug.DrawLine(rightGroundCheck.transform.position + (Vector3)rightGroundCheck.points[0], rightGroundCheck.transform.position + (Vector3)rightGroundCheck.points[1], Color.red);
+    }
+    bool IsColliderOverlappingFloor(EdgeCollider2D collider)
+    {
+        Vector2 startPoint = collider.points[0] + (Vector2)transform.position;
+        Vector2 endPoint = collider.points[1] + (Vector2)transform.position;
+        bool isOverlapping = Physics2D.OverlapArea(startPoint, endPoint, groundLayer);
+        // Debug.Log("Collider: " + collider.name + ", Start: " + startPoint + ", End: " + endPoint + ", Overlapping: " + isOverlapping);
+        return isOverlapping;
     }
 
-    // Optional: Shoot in the direction of the player
-    void ShootTraps()
+    void Flip(Vector2 direction)
     {
-        GameObject trap = Instantiate(trapPrefab, this.transform.position + new Vector3(0, 5, 0), transform.rotation);
-        trap.GetComponent<Rigidbody2D>().AddForce(transform.up * 100, ForceMode2D.Impulse);
-        // Random Direction (Left or Right) of the trap
-        Vector3 direction = new Vector3(Random.Range(-1f, 1f), 0, 0);
-        trap.GetComponent<Rigidbody2D>().AddForce(direction * 250, ForceMode2D.Impulse);
-        trap.GetComponent<Rigidbody2D>().AddTorque(30, ForceMode2D.Impulse);
-
+        Vector3 scale = transform.localScale;
+        scale.x = direction.x;
+        transform.localScale = scale;
     }
 
     // Moves the enemy in the specified direction
@@ -139,25 +156,8 @@ public class EnemyAI : MonoBehaviour
     IEnumerator Idle()
     {
         isCoroutineRunning = true;
-        Debug.Log("Idle");
-        // Shoot traps
-        // ShootTraps();
-
+        _trap.ShootTraps(rb.velocity.x);
         yield return new WaitForSeconds(waitTime);
         isCoroutineRunning = false;
     }
-
-
-
-    
-
-    // void OnTriggerEnter2D(Collider2D other)
-    // {
-    //     if (other.gameObject.tag == "Player")
-    //     {
-    //         Debug.Log("Player Detected");
-    //     }
-    // }
-
-    
 }
