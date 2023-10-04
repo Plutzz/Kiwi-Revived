@@ -6,35 +6,34 @@ public class EnemyMovement : MonoBehaviour
 {
 
     // Variables
+    [Header("MOVEMENT")]
     public float speed = 10f;
+    private float runSpeed = 1;
     public float moveTime = 5f;
     public float visionRange = 40f;
     public float visionAngle = 45f;
-    public float minimumDistance = 10f;
-    public float maximumDistance = 20f;
-    public bool isJumping = false;
-    public float jumpForce = 10f;
+    public bool isLeftGrounded = false;
+    public bool isRightGrounded = false;
+    public float patrolDelay = 3f;
 
-    private Rigidbody2D rb;
+    [Header("GAMEOBJECTS")]
     public Transform playerTransform;
+    private Rigidbody2D rb;
     [SerializeField] private LayerMask groundLayer;                 // Layer mask for the ground
     [SerializeField] private EdgeCollider2D leftGroundCheck;
     [SerializeField] private EdgeCollider2D rightGroundCheck;
 
-    [SerializeField] private CircleCollider2D attackCollider; // Attack collider is used to check if the player is within attack range
-    [SerializeField] private CircleCollider2D escapeCollider; // Escape collider is used to check if the player is within minimum range (melee)
+
 
     // Private Variables
     Vector2[] directions = { Vector2.left, Vector2.right };
-    public bool isLeftGrounded = false;
-    public bool isRightGrounded = false;
     private float timer = 0f;
     [SerializeField] private Vector2 currentDirection;
     [SerializeField] private Vector2 lastKnownPosition;
 
     // States
     private EnemyAI enemy;
-    
+
 
     void Start()
     {
@@ -44,82 +43,48 @@ public class EnemyMovement : MonoBehaviour
         enemy = GetComponent<EnemyAI>();
     }
 
-    public void Chase() {
-        rb.velocity = Vector2.zero; // Stop moving from patrol        // // If the player is above the enemy, jump towards the player
-        if (!isJumping) {
-            Jump(100f, playerTransform.position);
-            rb.position = Vector2.MoveTowards(rb.position, playerTransform.position, speed * Time.deltaTime);
-        }
-
-        if (isLeftGrounded && isRightGrounded) {
-            isJumping = false;
-        }
+    public void Chase()
+    {
+        rb.velocity = Vector2.zero; // Stop moving from patrol 
+        rb.position = new Vector2(Mathf.Lerp(rb.position.x, playerTransform.position.x, runSpeed * Time.deltaTime), rb.position.y);
     }
 
-    /*
-        Jumps in the specified direction with the specified force towards the player
-        @param direction: The direction to jump in
-        @param force: The force to jump with
-        @param playerPosition: The position of the player
-
-        It will check if the distance between the enemy and the player is greater than the minimum distance and if it is less than the maximum distance
-        because we don't want the enemy to jump over the player if it is too close (we can jump away from the player if it is too close)
-        nor do we want the enemy to jump towards the player if it is too far away
-    */ 
-    void Jump(float force, Vector2 playerPosition) {
-        Debug.Log("Jump");
-        
-        bool isBlocked = Physics2D.OverlapCircle(transform.position + Vector3.up * 1.5f, 0.1f, groundLayer);
-
-        Vector2 direction = Vector2.zero;
-
-        // Determine the direction to jump in based on the player's position
-        if (playerPosition.y < rb.position.y && playerPosition.x < rb.position.x) {
-            direction = new Vector2(-1, -2);
-        } else if (playerPosition.y < rb.position.y && playerPosition.x > rb.position.x) {
-            direction = new Vector2(1,-2);
-        } else if (playerPosition.y > rb.position.y && playerPosition.x < rb.position.x) {
-            direction = new Vector2(-1,2);
-        } else if (playerPosition.y > rb.position.y && playerPosition.x > rb.position.x) {
-            direction = new Vector2(1,2);
-        }
-
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, 10f, groundLayer);
-
-        float distanceToPlayer = Vector2.Distance(transform.position, playerPosition);
-        Debug.DrawRay(transform.position, direction * 10f, Color.magenta);
-    if (distanceToPlayer > minimumDistance &&
-        distanceToPlayer < maximumDistance &&
-        !isBlocked && hit.collider == null &&
-        hit.point.y < playerPosition.y) {
-        rb.AddForce(direction * force, ForceMode2D.Impulse);
-        isJumping = true;
-    }
-
-    if (isLeftGrounded && isRightGrounded) {
-        isJumping = false;
-    }
-    }
-    
     public void Move()
     {
-        if (timer >= moveTime || !isLeftGrounded || !isRightGrounded) {
+        if (timer >= moveTime || !isLeftGrounded || !isRightGrounded)
+        {
             currentDirection = directions[Random.Range(0, directions.Length)];
             timer = 0f;
         }
 
-        if (isLeftGrounded && isRightGrounded) {
+        if (isLeftGrounded && isRightGrounded)
+        {
             currentDirection.Normalize();
             rb.position += currentDirection * speed * Time.deltaTime;
-        } else if (!isLeftGrounded) {
+        }
+        else if (!isLeftGrounded)
+        {
             currentDirection = Vector2.right; // Right = (1, 0)
             currentDirection.Normalize();
             rb.position += currentDirection * speed * Time.deltaTime;
-        } else if (!isRightGrounded) {
+        }
+        else if (!isRightGrounded)
+        {
             currentDirection = Vector2.left; // Left = (-1, 0)
             currentDirection.Normalize();
             rb.position += currentDirection * speed * Time.deltaTime;
         }
+
+
+        // Check if the direction that the enemy is facing is not moving into a wall
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, currentDirection, 1f, groundLayer);
+        Debug.DrawRay(transform.position, currentDirection * 3f, Color.magenta);
+
+        if (hit.collider != null) {
+            currentDirection *= -1;
+            timer = 0f;
+        }
+
 
         timer += Time.deltaTime;
     }
@@ -136,15 +101,33 @@ public class EnemyMovement : MonoBehaviour
             visionAngle = 180 - visionAngle;
             angleToPlayer = 180 - angleToPlayer;
         }
-        
+
         // Suggestion: There should be a time delay before the enemy goes back to patrol.
         // This is to prevent the enemy from going back to patrol immediately after seeing the player.
         // When seeing the player it will be in the Chase state and the vision cone will be drawn towards the player.
         if (distanceToPlayer > visionRange || angleToPlayer > visionAngle)
-            enemy.state = EnemyAI.EnemyAIState.Patrol;
-        else if (distanceToPlayer <= visionRange && angleToPlayer <= visionAngle)
+        {
+            // After some time the enemy will go back to patrol
+            if (enemy.state == EnemyAI.EnemyAIState.Chase || enemy.state == EnemyAI.EnemyAIState.Attack)
+            {
+
+                Vector2 currentPosition = transform.position;
+                Vector2 newPosition = Vector2.MoveTowards(currentPosition, new Vector2(lastKnownPosition.x, currentPosition.y), speed * Time.deltaTime);
+                rb.MovePosition(newPosition);
+
+                if (newPosition == lastKnownPosition)
+                    enemy.state = EnemyAI.EnemyAIState.Patrol;
+                 else
+                    StartCoroutine(GoBackToPatrol());
+            } else
+                enemy.state = EnemyAI.EnemyAIState.Patrol;
+        }
+        else if (distanceToPlayer <= visionRange && angleToPlayer <= visionAngle && enemy.state != EnemyAI.EnemyAIState.Attack)
+        {
             enemy.state = EnemyAI.EnemyAIState.Chase;
-        
+            lastKnownPosition = playerTransform.position;
+        }
+
         Debug.DrawRay(transform.position, directionToPlayer.normalized * visionRange, Color.green);
     }
 
@@ -164,39 +147,79 @@ public class EnemyMovement : MonoBehaviour
         // Debug.Log("Collider: " + collider.name + ", Start: " + startPoint + ", End: " + endPoint + ", Overlapping: " + isOverlapping);
         return isOverlapping;
     }
-
-    void OnCollisionEnter2D(Collision2D collision)
+    IEnumerator GoBackToPatrol()
     {
-        if (collision.gameObject.tag == "Player")
-        {
-            if (collision.collider == attackCollider)
-            {
-                Debug.Log("Attack");
-                enemy.state = EnemyAI.EnemyAIState.Attack;
-            }
-            else if (collision.collider == escapeCollider)
-            {
-                Debug.Log("Retreat");
-                enemy.state = EnemyAI.EnemyAIState.Retreat;
-            }
-        }
+        yield return new WaitForSeconds(patrolDelay);
+        enemy.state = EnemyAI.EnemyAIState.Patrol;
     }
+
 
     // Debug Tool: To show the vision range and vision angle of the enemy.
     // Bug: The vision angle is not working properly, but its whatever
     void OnDrawGizmosSelected()
     {
-        // JUMP
-
-
 
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, visionRange);
-
-        Gizmos.color = Color.red;
-        Vector3 visionAngleA = Quaternion.AngleAxis(visionAngle, transform.forward) * currentDirection * visionRange;
-        Vector3 visionAngleB = Quaternion.AngleAxis(-visionAngle, transform.forward) * currentDirection * visionRange;
-        Gizmos.DrawLine(transform.position, transform.position + visionAngleA);
-        Gizmos.DrawLine(transform.position, transform.position + visionAngleB);
     }
+
+    /*
+       Jumps in the specified direction with the specified force towards the player
+       @param direction: The direction to jump in
+       @param force: The force to jump with
+       @param playerPosition: The position of the player
+
+       It will check if the distance between the enemy and the player is greater than the minimum distance and if it is less than the maximum distance
+       because we don't want the enemy to jump over the player if it is too close (we can jump away from the player if it is too close)
+       nor do we want the enemy to jump towards the player if it is too far away
+   */
+    // Scratched this idea because it was too buggy, and we are ging to use NavMesh later on
+    // IEnumerator Jump(float force, Vector2 playerPosition)
+    // {
+    //     bool isBlocked = Physics2D.OverlapCircle(transform.position + Vector3.up * 1.5f, 0.1f, groundLayer);
+
+    //     Vector2 direction = Vector2.zero;
+
+    //     // Determine the direction to jump in based on the player's position
+    //     if (playerPosition.y < rb.position.y && playerPosition.x < rb.position.x)
+    //         direction = new Vector2(-1, -1);
+    //     else if (playerPosition.y < rb.position.y && playerPosition.x > rb.position.x)
+    //         direction = new Vector2(1, -1);
+    //     else if (playerPosition.y > rb.position.y && playerPosition.x < rb.position.x)
+    //         direction = new Vector2(-1, 1);
+    //     else if (playerPosition.y > rb.position.y && playerPosition.x > rb.position.x)
+    //         direction = new Vector2(1, 1);
+
+    //     RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, 10f, groundLayer);
+    //     Debug.DrawRay(transform.position, direction * 10f, Color.magenta);
+
+    //     float distanceToPlayer = Vector2.Distance(transform.position, playerPosition);
+    //     Debug.Log("Distance to player: " + distanceToPlayer + ", Minimum distance: " + minimumDistance + ", Maximum distance: " + maximumDistance);
+    //     // Check if there's nothing blocking the jump and if the enemy will land below the player after jumping
+    //     // && distanceToPlayer > minimumDistance && distanceToPlayer <= maximumDistance
+    //     if (!isBlocked && hit.collider == null &&
+    //         hit.point.y < playerPosition.y )
+    //     {
+    //         float time = 0f;
+    //         float maxTime = 0.5f;
+    //         float maxForce = force;
+    //         float minForce = force / 2f;
+
+    //         while (isJumping)
+    //         {
+    //             yield return null;
+    //         }
+
+    //         isJumping = true;
+    //         while (time < maxTime)
+    //         {
+    //             float t = time / maxTime;
+    //             float currentForce = Mathf.Lerp(maxForce, minForce, t);
+    //             rb.AddForce(direction * currentForce * Time.fixedDeltaTime, ForceMode2D.Impulse);
+    //             time += Time.fixedDeltaTime;
+    //             yield return new WaitForFixedUpdate();
+    //         }
+
+    //     }
+    // }
 }

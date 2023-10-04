@@ -26,8 +26,10 @@ public class EnemyAI : MonoBehaviour
     public bool isCoroutineRunning = false;
     public float waitTime = 3f;
     private Rigidbody2D rb;
-
-
+    [SerializeField] private CircleCollider2D attackCollider; // Attack collider is used to check if the player is within attack range
+    [SerializeField] private CircleCollider2D escapeCollider; // Escape collider is used to check if the player is within minimum range (melee)
+    [SerializeField] private LayerMask playerLayer;           // Layer mask for the player
+    [SerializeField] private Transform playerTransform;       // Transform of the player
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -56,7 +58,7 @@ public class EnemyAI : MonoBehaviour
                 break;
             // Shoot at the player, once it is within attack range, in sight, not behind a wall, and not in minimum range (melee)
             case EnemyAIState.Attack:
-                Debug.Log("Attack");
+                DetectPlayer();
                 break;
             // Run away from the player, once it is within minimum range (melee)
             case EnemyAIState.Retreat:
@@ -81,6 +83,37 @@ public class EnemyAI : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         isCoroutineRunning = false;
     }
+    
+    void OnTriggerEnter2D (Collider2D col)
+    {
+        if (col.gameObject.CompareTag("Player"))
+        {
+            _state = EnemyAIState.Attack;
+        }
+    }
+
+    void OnTriggerExit2D (Collider2D col)
+    {
+        if (col.gameObject.CompareTag("Player"))
+        {
+           _enemyMovement.CheckVision(); // Go to last known position
+        }
+    }
+    void DetectPlayer()
+    {
+        Vector2 directionToPlayer = playerTransform.position - transform.position;
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, directionToPlayer, _enemyMovement.visionRange, playerLayer);
+        Debug.DrawRay(transform.position, directionToPlayer * _enemyMovement.visionRange, Color.green);
+
+        if (hit.collider != null)
+        {
+            if (hit.collider.gameObject.CompareTag("Player"))
+            {
+                Debug.Log("Player detected");
+            }
+        }
+    }
+
 
     
 
