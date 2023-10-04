@@ -32,10 +32,10 @@ public class PlayerController : Singleton<PlayerController>
         }
 
         if (Input.GetMouseButton(0)){
-            animator.SetBool("isFiring", true);
+            animator.SetBool("isTrigger", true);
         }
         else{
-            animator.SetBool("isFiring", false);
+            animator.SetBool("isTrigger", false);
         }
     
 
