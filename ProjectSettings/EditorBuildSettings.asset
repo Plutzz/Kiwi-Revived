@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Main_Menu.unity
     guid: 3f09eec1d7bbb684897d227a07705a2d
   - enabled: 1
-    path: Assets/Scenes/Temp Scenes/PlatformingMovementDavid.unity
+    path: Assets/Scenes/Temp Scenes/LobbyToShop.unity
     guid: 7cbcb6c6724dba44f863a97849c4936e
+  - enabled: 1
+    path: Assets/Scenes/ShopTest.unity
+    guid: 698b5a46e3a234f4cab409c933c5d581
   m_configObjects: {}
