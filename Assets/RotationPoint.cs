@@ -45,18 +45,18 @@ public class RotationPoint : Singleton<RotationPoint>
         }
         */
 
-        Debug.Log(mousePos);
+        // Debug.Log(mousePos);
         float _mouseDistance = mousePos.x - Graphics.transform.position.x;
 
         if( _mouseDistance > 0 + deadzone)
         {
-            Debug.Log("Flip forwards");
+            // Debug.Log("Flip forwards");
             Graphics.transform.rotation = Quaternion.Euler(0, 0, 0);
             neck.transform.rotation = Quaternion.Euler(0, 0, _rotZ + neckRotationOffset);
         }
         else if( _mouseDistance < 0 - deadzone)
         {
-            Debug.Log("Flip backwards");
+            // Debug.Log("Flip backwards");
             Graphics.transform.rotation = Quaternion.Euler(0, -180, 0);
             neck.transform.rotation = Quaternion.Euler(0, -180, (_rotZ * -1) + neckRotationOffset + 180);
         }

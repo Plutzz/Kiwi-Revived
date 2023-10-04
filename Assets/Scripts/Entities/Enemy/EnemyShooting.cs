@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Trap : MonoBehaviour
+public class EnemyShooting : MonoBehaviour
 {
 
     public GameObject trapPrefab;
+    public GameObject spearPrefab;
     public Rigidbody2D rb;
     public Transform spawnPoint;
     void Start()
@@ -17,6 +18,10 @@ public class Trap : MonoBehaviour
     void Update()
     {
 
+    }
+
+    public void ShootSpear(float enemyVelocity, Vector3 directionToPlayer, float visionRange) {
+        Debug.DrawRay(transform.position, directionToPlayer.normalized * visionRange, Color.green);
     }
 
     // Initial velocity from the enemy and addition to the velocity of the trap when it is thrown
