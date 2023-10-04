@@ -7,6 +7,7 @@ using UnityEngine.Rendering;
 public class PlayerController : Singleton<PlayerController>
 {
     private BulletSpawner BulletSpawnPoint;
+    public Animator animator;
 
     public float FireRate = 0.1f;      // Time between shots
     private float shootTimer;
@@ -20,6 +21,7 @@ public class PlayerController : Singleton<PlayerController>
     
     void Update()
     {
+
         // If the mouse button is held down, shoot 1 water particle every FireRate seconds
         shootTimer -= Time.deltaTime;
         if (Input.GetMouseButton(0) && shootTimer <= 0)
@@ -28,6 +30,14 @@ public class PlayerController : Singleton<PlayerController>
 
             shootTimer = FireRate;
         }
+
+        if (Input.GetMouseButton(0)){
+            animator.SetBool("isFiring", true);
+        }
+        else{
+            animator.SetBool("isFiring", false);
+        }
+    
 
         if(Input.GetKeyDown(KeyCode.Alpha1))
         {
