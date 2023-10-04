@@ -9,6 +9,7 @@ using UnityEngine;
 public class PlayerMovement : Singleton<PlayerMovement>
 {
     [SerializeField] private GameObject graphics;
+    public Animator animation; 
 
 
     [Header("WALKING")]
@@ -88,6 +89,9 @@ public class PlayerMovement : Singleton<PlayerMovement>
         {
             graphics.transform.localScale = new Vector3(1f, 1f, 1f);
         }
+
+        //sets animation for from idle to movement
+        animation.SetFloat("Speed", Mathf.Abs(XAxis));
     }
 
     // Gets player inputs needed to calculate movement
