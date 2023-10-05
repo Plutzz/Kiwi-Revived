@@ -274,7 +274,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &3001957700144258607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -290,6 +290,7 @@ MonoBehaviour:
   _state: 0
   _trap: {fileID: 1605176852}
   _enemyMovement: {fileID: 41963919}
+  timeBetweenShots: 10
   isCoroutineRunning: 0
   waitTime: 3
 --- !u!114 &1605176852
@@ -307,7 +308,12 @@ MonoBehaviour:
   trapPrefab: {fileID: 6149180492314810455, guid: aae52d0425ea9a24dbec00438f0d060e, type: 3}
   spearPrefab: {fileID: 8855607371865432115, guid: cd0817a0e9c442f4a8cd4ef18dd4332a, type: 3}
   rb: {fileID: 6149180492314810459, guid: aae52d0425ea9a24dbec00438f0d060e, type: 3}
-  spawnPoint: {fileID: 6796016834335726363}
+  trapSpawnPoint: {fileID: 6796016834335726363}
+  spearSpawnPoint: {fileID: 3247322422672506111}
+  spearSpawnPointPosition: {x: 0, y: 0, z: 0}
+  _directionToPlayer: {x: 0, y: 0, z: 0}
+  _visionRange: 0
+  attackRangeCollider: {fileID: 2936570176551356525}
 --- !u!114 &41963919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -320,13 +326,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19369ae8aeffc4f49afc8f8c09bab729, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 5
   moveTime: 5
-  visionRange: 10
+  visionRange: 15
   visionAngle: 45
-  minimumDistance: 10
-  maximumDistance: 20
-  isJumping: 0
+  isLeftGrounded: 0
+  isRightGrounded: 0
+  patrolDelay: 3
+  playerTransform: {fileID: 0}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
