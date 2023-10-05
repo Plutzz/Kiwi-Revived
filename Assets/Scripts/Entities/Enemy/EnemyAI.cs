@@ -86,7 +86,7 @@ public class EnemyAI : MonoBehaviour
     {
         if (nextShotTime >= timeBetweenShots)
         {
-            _trap.ShootSpear(rb.velocity.x, _enemyMovement.playerTransform.position, _enemyMovement.visionRange);
+            _trap.ShootSpear(rb.velocity.x);
             nextShotTime = 0;
         }
         nextShotTime += Time.deltaTime;
