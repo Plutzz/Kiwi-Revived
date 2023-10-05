@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 1605176852}
   - component: {fileID: 41963919}
   m_Layer: 0
-  m_Name: Trapper
+  m_Name: Rodents
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
