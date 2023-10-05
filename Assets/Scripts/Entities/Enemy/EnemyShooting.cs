@@ -30,7 +30,6 @@ public class EnemyShooting : MonoBehaviour
     // First Option: When you spawn the trap take the x velocity of the enemy and see whether it is pos or neg.
     // Pass that value to the trap function and make that trap's velocity the same as the enemy's
 
-    // Second Option: On the trap, grab enemy velocity from the start function and add it to the velocity of the trap
     public void ShootTraps(float enemyVelocity)
     {
         GameObject trap = Instantiate(trapPrefab, this.transform.position + new Vector3(0, 5, 0), transform.rotation);

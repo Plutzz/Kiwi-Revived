@@ -109,8 +109,11 @@ public class EnemyMovement : MonoBehaviour
         {
             if (enemy.state == EnemyAI.EnemyAIState.Chase || enemy.state == EnemyAI.EnemyAIState.Attack)
             {
-
-                Vector2 newPosition = Vector2.MoveTowards(transform.position, new Vector2(lastKnownPosition.x, transform.position.y), speed * Time.deltaTime);
+                Vector2 newPosition = Vector2.zero;
+                // Move towards the last known position of the player if and only if the enemy is grounded
+                if (isLeftGrounded && isRightGrounded)
+                    newPosition = Vector2.MoveTowards(transform.position, new Vector2(lastKnownPosition.x, transform.position.y), speed * Time.deltaTime);
+                
                 rb.MovePosition(newPosition);
 
                 if (newPosition == lastKnownPosition)
