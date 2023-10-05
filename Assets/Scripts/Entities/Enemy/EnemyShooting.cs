@@ -27,9 +27,8 @@ public class EnemyShooting : MonoBehaviour
         _visionRange = attackRangeCollider.radius * transform.localScale.x;
         
         Vector3 start = transform.position + new Vector3(0, 1f, 0);
-        Vector3 end = start + directionToPlayer.normalized * _visionRange;
 
-        hits = Physics2D.LinecastAll(start, end);
+        hits = Physics2D.CircleCastAll(transform.position, attackRangeCollider.radius, directionToPlayer.normalized, _visionRange);
 
         bool playerInSight = false;
         RaycastHit2D playerHit = new RaycastHit2D();
@@ -42,9 +41,9 @@ public class EnemyShooting : MonoBehaviour
         }
 
         if (playerInSight) {
-                Vector3 directionToHit = playerHit.point - ((Vector2) transform.position + new Vector2(0, 1f));
+                Vector3 directionToHit = playerHit.normal + ((Vector2) transform.position + new Vector2(0, 1f));
 
-                GameObject spear = Instantiate(spearPrefab, spearSpawnPointPosition, Quaternion.LookRotation(Vector3.forward, directionToPlayer));
+                GameObject spear = Instantiate(spearPrefab, directionToHit, Quaternion.LookRotation(Vector3.forward, directionToPlayer));
                 Rigidbody2D spearPrefab_rb = spear.GetComponent<Rigidbody2D>();
                 spearPrefab_rb.AddForce(directionToPlayer.normalized * 50, ForceMode2D.Impulse);
         }
@@ -53,8 +52,7 @@ public class EnemyShooting : MonoBehaviour
     void OnDrawGizmos() {
         Gizmos.color = Color.green;
         Vector3 start = transform.position + new Vector3(0, 1f, 0);
-        Vector3 end = start + _directionToPlayer.normalized * _visionRange;
-        Gizmos.DrawLine(start, end);
+        Gizmos.DrawWireSphere(transform.position, attackRangeCollider.radius);
         
         Gizmos.color = Color.red;
         if (hits != null)
