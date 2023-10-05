@@ -22,8 +22,8 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;                 // Layer mask for the ground
     [SerializeField] private EdgeCollider2D leftGroundCheck;
     [SerializeField] private EdgeCollider2D rightGroundCheck;
-
-
+    [SerializeField] private CircleCollider2D attackCollider; // Attack collider is used to check if the player is within attack range
+    [SerializeField] private CircleCollider2D escapeCollider; // Escape collider is used to check if the player is within minimum range (melee)
 
     // Private Variables
     Vector2[] directions = { Vector2.left, Vector2.right };
@@ -92,8 +92,10 @@ public class EnemyMovement : MonoBehaviour
     public void CheckVision()
     {
         Vector2 directionToPlayer = playerTransform.position - transform.position;
-        float distanceToPlayer = directionToPlayer.magnitude;
+        float distanceToPlayer = Vector2.Distance(transform.position, playerTransform.position);
         float angleToPlayer = Vector2.Angle(directionToPlayer, transform.right);
+        float minimumDistance = escapeCollider.radius;
+        float maximumDistance = attackCollider.radius;
 
         // Flip the angle if the enemy is facing left
         if (currentDirection.x < 0)
@@ -121,14 +123,19 @@ public class EnemyMovement : MonoBehaviour
                     StartCoroutine(GoBackToPatrol());
             } else
                 enemy.state = EnemyAI.EnemyAIState.Patrol;
-        }
-        else if (distanceToPlayer <= visionRange && angleToPlayer <= visionAngle && enemy.state != EnemyAI.EnemyAIState.Attack)
+        } else if (distanceToPlayer <= visionRange && angleToPlayer <= visionAngle && enemy.state != EnemyAI.EnemyAIState.Attack)
         {
             enemy.state = EnemyAI.EnemyAIState.Chase;
             lastKnownPosition = playerTransform.position;
+        } 
+
+        if (distanceToPlayer < minimumDistance) {
+            transform.position = Vector2.MoveTowards(transform.position, playerTransform.position, -speed * Time.deltaTime);
+            enemy.state = EnemyAI.EnemyAIState.Retreat;
+        } else if (distanceToPlayer <= maximumDistance && distanceToPlayer > minimumDistance) {
+            enemy.state = EnemyAI.EnemyAIState.Attack;
         }
 
-        Debug.DrawRay(transform.position, directionToPlayer.normalized * visionRange, Color.green);
     }
 
     public void CheckCollision()
@@ -147,6 +154,8 @@ public class EnemyMovement : MonoBehaviour
         // Debug.Log("Collider: " + collider.name + ", Start: " + startPoint + ", End: " + endPoint + ", Overlapping: " + isOverlapping);
         return isOverlapping;
     }
+
+
     IEnumerator GoBackToPatrol()
     {
         yield return new WaitForSeconds(patrolDelay);
@@ -159,8 +168,16 @@ public class EnemyMovement : MonoBehaviour
     void OnDrawGizmosSelected()
     {
 
-        Gizmos.color = Color.yellow;
+        float minimumDistance = escapeCollider.radius;
+        float maximumDistance = attackCollider.radius;
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, minimumDistance);
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, maximumDistance);
+        Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, visionRange);
+        
     }
 
     /*
