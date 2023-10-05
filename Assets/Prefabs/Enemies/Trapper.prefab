@@ -290,7 +290,7 @@ MonoBehaviour:
   _state: 0
   _trap: {fileID: 1605176852}
   _enemyMovement: {fileID: 41963919}
-  timeBetweenShots: 10
+  timeBetweenShots: 1
   isCoroutineRunning: 0
   waitTime: 3
 --- !u!114 &1605176852
@@ -307,13 +307,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trapPrefab: {fileID: 6149180492314810455, guid: aae52d0425ea9a24dbec00438f0d060e, type: 3}
   spearPrefab: {fileID: 8855607371865432115, guid: cd0817a0e9c442f4a8cd4ef18dd4332a, type: 3}
-  rb: {fileID: 6149180492314810459, guid: aae52d0425ea9a24dbec00438f0d060e, type: 3}
-  trapSpawnPoint: {fileID: 6796016834335726363}
-  spearSpawnPoint: {fileID: 3247322422672506111}
-  spearSpawnPointPosition: {x: 0, y: 0, z: 0}
-  _directionToPlayer: {x: 0, y: 0, z: 0}
-  _visionRange: 0
-  attackRangeCollider: {fileID: 2936570176551356525}
 --- !u!114 &41963919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -328,7 +321,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   moveTime: 5
-  visionRange: 15
+  visionRange: 13
   visionAngle: 45
   isLeftGrounded: 0
   isRightGrounded: 0
