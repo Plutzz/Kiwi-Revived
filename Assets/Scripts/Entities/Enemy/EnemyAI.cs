@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
+    [Header("Enemy AI States")]
     [SerializeField] private EnemyAIState _state = EnemyAIState.Patrol;
 
     public EnemyAIState state
@@ -11,6 +12,8 @@ public class EnemyAI : MonoBehaviour
         get { return _state; }
         set { _state = value; }
     }
+
+
     public enum EnemyAIState
     {
         Patrol,
@@ -19,14 +22,14 @@ public class EnemyAI : MonoBehaviour
         Retreat
     }
 
-    // GameObjects
+    [Header("Enemy AI Components")]
     public EnemyShooting _trap;
     public EnemyMovement _enemyMovement;
     public float timeBetweenShots = 0.5f;
-    private float nextShotTime;
-
-    public bool isCoroutineRunning = false;
     public float waitTime = 3f;
+
+    private float nextShotTime;
+    private bool isCoroutineRunning = false;
     private Rigidbody2D rb;
     
     void Start()
@@ -55,7 +58,6 @@ public class EnemyAI : MonoBehaviour
                 _enemyMovement.CheckCollision();
                 _enemyMovement.Chase();
                 break;
-            // Shoot at the player, once it is within attack range, in sight, not behind a wall, and not in minimum range (melee)
             case EnemyAIState.Attack:
                 if (!isCoroutineRunning) {
                     StartCoroutine(ShootTrap());

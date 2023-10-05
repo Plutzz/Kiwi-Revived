@@ -12,13 +12,12 @@ public class EnemyMovement : MonoBehaviour
     public float moveTime = 5f;
     public float visionRange = 40f;
     public float visionAngle = 45f;
-
     public float patrolDelay = 3f;
 
     [Header("GAMEOBJECTS")]
+    public LayerMask groundLayer;                 // Layer mask for the ground
     private Transform playerTransform;
     private Rigidbody2D rb;
-    [SerializeField] private LayerMask groundLayer;                 // Layer mask for the ground
     [SerializeField] private EdgeCollider2D leftGroundCheck;
     [SerializeField] private EdgeCollider2D rightGroundCheck;
     [SerializeField] private CircleCollider2D attackCollider; // Attack collider is used to check if the player is within attack range
@@ -43,6 +42,7 @@ public class EnemyMovement : MonoBehaviour
         enemy = GetComponent<EnemyAI>();
     }
 
+    // Change to delta time
     public void Chase()
     {
         rb.velocity = Vector2.zero; // Stop moving from patrol 
@@ -64,14 +64,12 @@ public class EnemyMovement : MonoBehaviour
         }
         else if (!isLeftGrounded)
         {
-            currentDirection = Vector2.right; // Right = (1, 0)
-            currentDirection.Normalize();
+            currentDirection = Vector2.right;
             rb.position += currentDirection * speed * Time.deltaTime;
         }
         else if (!isRightGrounded)
         {
-            currentDirection = Vector2.left; // Left = (-1, 0)
-            currentDirection.Normalize();
+            currentDirection = Vector2.left;
             rb.position += currentDirection * speed * Time.deltaTime;
         }
 
@@ -109,12 +107,10 @@ public class EnemyMovement : MonoBehaviour
         // When seeing the player it will be in the Chase state and the vision cone will be drawn towards the player.
         if (distanceToPlayer > visionRange || angleToPlayer > visionAngle)
         {
-            // After some time the enemy will go back to patrol
             if (enemy.state == EnemyAI.EnemyAIState.Chase || enemy.state == EnemyAI.EnemyAIState.Attack)
             {
 
-                Vector2 currentPosition = transform.position;
-                Vector2 newPosition = Vector2.MoveTowards(currentPosition, new Vector2(lastKnownPosition.x, currentPosition.y), speed * Time.deltaTime);
+                Vector2 newPosition = Vector2.MoveTowards(transform.position, new Vector2(lastKnownPosition.x, transform.position.y), speed * Time.deltaTime);
                 rb.MovePosition(newPosition);
 
                 if (newPosition == lastKnownPosition)
@@ -130,13 +126,15 @@ public class EnemyMovement : MonoBehaviour
         } 
 
         if (distanceToPlayer < minimumDistance) {
-            transform.position = Vector2.MoveTowards(transform.position, playerTransform.position, -speed * Time.deltaTime);
+            // Add panic shooting if it is on the edge and cant go anywhere?
+            if (isLeftGrounded && isRightGrounded)
+                transform.position = Vector2.MoveTowards(transform.position, playerTransform.position, -speed * Time.deltaTime);
             enemy.state = EnemyAI.EnemyAIState.Retreat;
         } else if (distanceToPlayer <= maximumDistance && distanceToPlayer > minimumDistance) {
             enemy.state = EnemyAI.EnemyAIState.Attack;
         }
 
-    }
+    }   
 
     public void CheckCollision()
     {
@@ -150,9 +148,7 @@ public class EnemyMovement : MonoBehaviour
     {
         Vector2 startPoint = collider.points[0] + (Vector2)transform.position;
         Vector2 endPoint = collider.points[1] + (Vector2)transform.position;
-        bool isOverlapping = Physics2D.OverlapArea(startPoint, endPoint, groundLayer);
-        // Debug.Log("Collider: " + collider.name + ", Start: " + startPoint + ", End: " + endPoint + ", Overlapping: " + isOverlapping);
-        return isOverlapping;
+        return Physics2D.OverlapArea(startPoint, endPoint, groundLayer);
     }
 
 
