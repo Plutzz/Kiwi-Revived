@@ -4,63 +4,24 @@ using UnityEngine;
 
 public class EnemyShooting : MonoBehaviour
 {
-
     public GameObject trapPrefab;
     public GameObject spearPrefab;
-    public Rigidbody2D rb;
-    public Transform trapSpawnPoint;
-    public Transform spearSpawnPoint;
-    public Vector3 spearSpawnPointPosition;
-    public Vector3 _directionToPlayer;
-    public float _visionRange;
-    public CircleCollider2D attackRangeCollider;
-    public RaycastHit2D[] hits;
+    private Transform player;
 
-
-    void Update()
+    void Start()
     {
-
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-    public void ShootSpear(float enemyVelocity, Vector3 directionToPlayer, float visionRange) {
-        _directionToPlayer = directionToPlayer;
-        _visionRange = attackRangeCollider.radius * transform.localScale.x;
-        
-        Vector3 start = transform.position + new Vector3(0, 1f, 0);
-
-        hits = Physics2D.CircleCastAll(transform.position, attackRangeCollider.radius, directionToPlayer.normalized, _visionRange);
-
-        bool playerInSight = false;
-        RaycastHit2D playerHit = new RaycastHit2D();
-        foreach (RaycastHit2D hit in hits) {
-            if (hit.collider.CompareTag("Player")) {
-                playerInSight = true;
-                playerHit = hit;
-                break;
-            }
-        }
-
-        if (playerInSight) {
-                Vector3 directionToHit = playerHit.normal + ((Vector2) transform.position + new Vector2(0, 1f));
-
-                GameObject spear = Instantiate(spearPrefab, directionToHit, Quaternion.LookRotation(Vector3.forward, directionToPlayer));
-                Rigidbody2D spearPrefab_rb = spear.GetComponent<Rigidbody2D>();
-                spearPrefab_rb.AddForce(directionToPlayer.normalized * 50, ForceMode2D.Impulse);
-        }
+    public void ShootSpear(float enemyVelocity) {
+        GameObject spear = Instantiate(spearPrefab, transform.position, Quaternion.LookRotation(Vector3.forward, player.position - transform.position));
+        Rigidbody2D spearPrefab_rb = spear.GetComponent<Rigidbody2D>();
+        Vector2 modifiedVelocity = spearPrefab_rb.velocity;
+        modifiedVelocity.x += enemyVelocity + 10f;
+        spearPrefab_rb.velocity = modifiedVelocity;
+        spearPrefab_rb.AddForce((player.position - transform.position).normalized * 100, ForceMode2D.Impulse);
     }
 
-    void OnDrawGizmos() {
-        Gizmos.color = Color.green;
-        Vector3 start = transform.position + new Vector3(0, 1f, 0);
-        Gizmos.DrawWireSphere(transform.position, attackRangeCollider.radius);
-        
-        Gizmos.color = Color.red;
-        if (hits != null)
-            foreach (RaycastHit2D hit in hits) {
-                Gizmos.DrawRay(transform.position + new Vector3(0, 1f, 0), hit.centroid);
-            }
-        
-    }
 
     // Initial velocity from the enemy and addition to the velocity of the trap when it is thrown
     // This is to make the trap move faster than the enemy
