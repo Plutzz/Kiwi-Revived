@@ -46,7 +46,8 @@ public class EnemyMovement : MonoBehaviour
     public void Chase()
     {
         rb.velocity = Vector2.zero; // Stop moving from patrol 
-        rb.position = new Vector2(Mathf.Lerp(rb.position.x, playerTransform.position.x, runSpeed * Time.deltaTime), rb.position.y);
+        if (isLeftGrounded && isRightGrounded)
+            rb.position = new Vector2(Mathf.Lerp(rb.position.x, playerTransform.position.x, runSpeed * Time.deltaTime), rb.position.y);
     }
 
     public void Move()

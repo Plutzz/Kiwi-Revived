@@ -291,7 +291,6 @@ MonoBehaviour:
   _trap: {fileID: 1605176852}
   _enemyMovement: {fileID: 41963919}
   timeBetweenShots: 1
-  isCoroutineRunning: 0
   waitTime: 3
 --- !u!114 &1605176852
 MonoBehaviour:
@@ -321,7 +320,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   moveTime: 5
-  visionRange: 13
+  visionRange: 15
   visionAngle: 45
   patrolDelay: 3
   groundLayer:
