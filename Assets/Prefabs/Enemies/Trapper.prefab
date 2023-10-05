@@ -323,10 +323,7 @@ MonoBehaviour:
   moveTime: 5
   visionRange: 13
   visionAngle: 45
-  isLeftGrounded: 0
-  isRightGrounded: 0
   patrolDelay: 3
-  playerTransform: {fileID: 0}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -334,8 +331,6 @@ MonoBehaviour:
   rightGroundCheck: {fileID: 3514094573314639936}
   attackCollider: {fileID: 2936570176551356525}
   escapeCollider: {fileID: 8535110332777968611}
-  currentDirection: {x: 0, y: 0}
-  lastKnownPosition: {x: 0, y: 0}
 --- !u!1 &2368061374460400016
 GameObject:
   m_ObjectHideFlags: 0

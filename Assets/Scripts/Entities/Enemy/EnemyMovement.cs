@@ -12,12 +12,11 @@ public class EnemyMovement : MonoBehaviour
     public float moveTime = 5f;
     public float visionRange = 40f;
     public float visionAngle = 45f;
-    public bool isLeftGrounded = false;
-    public bool isRightGrounded = false;
+
     public float patrolDelay = 3f;
 
     [Header("GAMEOBJECTS")]
-    public Transform playerTransform;
+    private Transform playerTransform;
     private Rigidbody2D rb;
     [SerializeField] private LayerMask groundLayer;                 // Layer mask for the ground
     [SerializeField] private EdgeCollider2D leftGroundCheck;
@@ -28,9 +27,10 @@ public class EnemyMovement : MonoBehaviour
     // Private Variables
     Vector2[] directions = { Vector2.left, Vector2.right };
     private float timer = 0f;
-    [SerializeField] private Vector2 currentDirection;
-    [SerializeField] private Vector2 lastKnownPosition;
-
+    private Vector2 currentDirection;
+    private Vector2 lastKnownPosition;
+    private bool isLeftGrounded = false;
+    private bool isRightGrounded = false;
     // States
     private EnemyAI enemy;
 
