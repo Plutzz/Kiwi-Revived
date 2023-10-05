@@ -43,6 +43,7 @@ public class Enemy3AI : MonoBehaviour
             else if (this.transform.localScale.x >= 2)
             {
                 velocityDecrease = 0.5f;
+                attackCooldown = 1f;
             }
            
         }
