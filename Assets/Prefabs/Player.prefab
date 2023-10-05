@@ -593,6 +593,7 @@ GameObject:
   - component: {fileID: 1849807643251689259}
   - component: {fileID: 1849807643251689263}
   - component: {fileID: 1613898207}
+  - component: {fileID: 4024097094008638623}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -633,6 +634,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   graphics: {fileID: 4880060615713259954}
+  animation: {fileID: 1377541681}
   maxSpeed: 10
   acceleration: 200
   deceleration: 200
@@ -709,7 +711,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f777d011dbd5a44869117b6538778d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 6968200938910394068}
   FireRate: 0
+--- !u!114 &4024097094008638623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1849807643251689252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d077ef9fb93abc14584622cad564ed38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1849807643918316019
 GameObject:
   m_ObjectHideFlags: 0
@@ -2897,7 +2912,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: a970cc14bfaf3334b8564068bc9e877d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.22479928
+      value: -0.2247993
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: a970cc14bfaf3334b8564068bc9e877d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2966,6 +2981,26 @@ PrefabInstance:
     - target: {fileID: -5976503147672002685, guid: a970cc14bfaf3334b8564068bc9e877d, type: 3}
       propertyPath: m_Bounds.m_Extent.y
       value: 0.16149002
+      objectReference: {fileID: 0}
+    - target: {fileID: -4684781215992024254, guid: a970cc14bfaf3334b8564068bc9e877d, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -4684781215992024254, guid: a970cc14bfaf3334b8564068bc9e877d, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 158189301
+      objectReference: {fileID: 0}
+    - target: {fileID: -1980036541391198705, guid: a970cc14bfaf3334b8564068bc9e877d, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -1980036541391198705, guid: a970cc14bfaf3334b8564068bc9e877d, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 158189301
+      objectReference: {fileID: 0}
+    - target: {fileID: 2382957521230454823, guid: a970cc14bfaf3334b8564068bc9e877d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.1949999
       objectReference: {fileID: 0}
     - target: {fileID: 4257508509235537429, guid: a970cc14bfaf3334b8564068bc9e877d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3052,7 +3087,7 @@ Animator:
   m_GameObject: {fileID: 7798003364072487183}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 292e0ca611ac3124a90253fef2a54700, type: 2}
+  m_Controller: {fileID: 9100000, guid: d5a36c2b12c550743a14dd0fcacb2a97, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
