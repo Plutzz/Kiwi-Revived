@@ -17,13 +17,12 @@ public class Trap : MonoBehaviour
     }
     void Update()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.5f, LayerMask.GetMask("Ground"));
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.12f, LayerMask.GetMask("Ground"));
         
-        Debug.DrawRay(transform.position, Vector2.down * 0.5f, Color.red);
-        Debug.Log(hit);
+        Debug.DrawRay(transform.position, Vector2.down * 0.12f, Color.red);
 
         if (hit == true) {
-            rb.constraints = RigidbodyConstraints2D.FreezePosition;
+            rb.constraints = RigidbodyConstraints2D.FreezeAll;
         }
         
     }
@@ -32,8 +31,9 @@ public class Trap : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             Instantiate(boom);
-            // DAMAGE THE PLAYER
-            Destroy(this.gameObject);
+            // DAMAGE THE PLAYER 
+            Destroy(gameObject);
+
         }
     }
 }
