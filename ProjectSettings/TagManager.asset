@@ -7,6 +7,8 @@ TagManager:
   - Enemy
   - WaterBullet
   - Door
+  - PoisonBullet
+  - FireBullet
   layers:
   - Default
   - TransparentFX
