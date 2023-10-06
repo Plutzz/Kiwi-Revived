@@ -93,14 +93,4 @@ public class EnemyAI : MonoBehaviour
         }
         nextShotTime += Time.deltaTime;
     }
-    
-    
-
-    // Death once health system is implemented
-    void Death()
-    {
-        Destroy(gameObject);
-    }
-
-
 }

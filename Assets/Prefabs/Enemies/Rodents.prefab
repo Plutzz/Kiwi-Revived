@@ -148,6 +148,7 @@ GameObject:
   - component: {fileID: 3001957700144258607}
   - component: {fileID: 1605176852}
   - component: {fileID: 41963919}
+  - component: {fileID: 9205784123346453071}
   m_Layer: 0
   m_Name: Rodents
   m_TagString: Untagged
@@ -331,6 +332,20 @@ MonoBehaviour:
   rightGroundCheck: {fileID: 3514094573314639936}
   attackCollider: {fileID: 2936570176551356525}
   escapeCollider: {fileID: 8535110332777968611}
+--- !u!114 &9205784123346453071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1978452687989836291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ed6f6857a5298c4385c4a2ccf697cf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHp: 100
+  currentHp: 0
 --- !u!1 &2368061374460400016
 GameObject:
   m_ObjectHideFlags: 0
