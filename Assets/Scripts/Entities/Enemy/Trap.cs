@@ -5,6 +5,7 @@ using UnityEngine;
 public class Trap : MonoBehaviour
 {
     public AudioSource boom;
+    public int damage = 10;
     private Rigidbody2D rb;
 
     // Idea: When the trap hits the player, it will explode and deal damage to the player
@@ -31,7 +32,8 @@ public class Trap : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             Instantiate(boom);
-            // DAMAGE THE PLAYER 
+            // Will work once the player has a health script
+            collision.gameObject.GetComponent<PlayerHealth>().takeDamage(damage);
             Destroy(gameObject);
 
         }

@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class DamageableEntity : MonoBehaviour
 {
-    int currentHp;
-    public void takeDamage(int damage)
+    protected int currentHp;
+    public virtual void takeDamage(int damage)
     {
         currentHp -= damage;
     }
+    
+    public int GetCurrentHp()
+    {
+        return currentHp;
+    }
+
 }
