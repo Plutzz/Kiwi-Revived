@@ -27,7 +27,7 @@ public class Spear : MonoBehaviour
     {
         if (collider.gameObject.CompareTag("Player"))
         {
-            collider.gameObject.GetComponent<PlayerHealth>().takeDamage(damage);
+            //collider.gameObject.GetComponent<PlayerHealth>().takeDamage(damage);
             spear_rb.constraints = RigidbodyConstraints2D.FreezeAll;
             transform.parent = collider.transform;
             spear_rb.isKinematic = true;

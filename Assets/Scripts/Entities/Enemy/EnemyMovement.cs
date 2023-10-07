@@ -8,7 +8,7 @@ public class EnemyMovement : MonoBehaviour
     // Variables
     [Header("MOVEMENT")]
     public float speed = 10f;
-    private float runSpeed = 1;
+    private float runSpeed = 20;
     public float moveTime = 5f;
     public float visionRange = 40f;
     public float visionAngle = 45f;
@@ -47,7 +47,10 @@ public class EnemyMovement : MonoBehaviour
     {
         rb.velocity = Vector2.zero; // Stop moving from patrol 
         if (isLeftGrounded && isRightGrounded)
-            rb.position = new Vector2(Mathf.Lerp(rb.position.x, playerTransform.position.x, runSpeed * Time.deltaTime), rb.position.y);
+        {
+            Vector2 newPosition = Vector2.MoveTowards(transform.position, new Vector2(playerTransform.position.x, rb.position.y), runSpeed * Time.deltaTime);
+            rb.MovePosition(newPosition);
+        }
     }
 
     public void Move()
@@ -108,9 +111,9 @@ public class EnemyMovement : MonoBehaviour
         // When seeing the player it will be in the Chase state and the vision cone will be drawn towards the player.
         if (distanceToPlayer > visionRange || angleToPlayer > visionAngle)
         {
-            if (enemy.state == EnemyAI.EnemyAIState.Chase || enemy.state == EnemyAI.EnemyAIState.Attack)
+            if (enemy.state == EnemyAI.EnemyAIState.Attack || enemy.state == EnemyAI.EnemyAIState.Chase)
             {
-                Vector2 newPosition = Vector2.zero;
+                Vector2 newPosition = transform.position;
                 // Move towards the last known position of the player if and only if the enemy is grounded
                 if (isLeftGrounded && isRightGrounded)
                     newPosition = Vector2.MoveTowards(transform.position, new Vector2(lastKnownPosition.x, transform.position.y), speed * Time.deltaTime);
@@ -154,8 +157,6 @@ public class EnemyMovement : MonoBehaviour
         Vector2 endPoint = collider.points[1] + (Vector2)transform.position;
         return Physics2D.OverlapArea(startPoint, endPoint, groundLayer);
     }
-
-
     IEnumerator GoBackToPatrol()
     {
         yield return new WaitForSeconds(patrolDelay);

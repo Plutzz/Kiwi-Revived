@@ -33,7 +33,7 @@ public class Trap : MonoBehaviour
         {
             Instantiate(boom);
             // Will work once the player has a health script
-            collision.gameObject.GetComponent<PlayerHealth>().takeDamage(damage);
+            // collision.gameObject.GetComponent<PlayerHealth>().takeDamage(damage);
             Destroy(gameObject);
 
         }

@@ -918,6 +918,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 6968200938910394068}
+  weaponDisplay: {fileID: 0}
   FireRate: 0
 --- !u!114 &4024097094008638623
 MonoBehaviour:
