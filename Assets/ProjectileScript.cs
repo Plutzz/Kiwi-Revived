@@ -32,7 +32,7 @@ public class ProjectileScript : MonoBehaviour
         waterParticle = GetComponent<Rigidbody2D>();
 
         transform.rotation = Quaternion.Euler(0, 0, transform.eulerAngles.z + Random.Range(maxRange, minRange));
-        Debug.Log(velocityDecrease);
+        //Debug.Log(velocityDecrease);
         //speed of projectile
         waterParticle.velocity = transform.right * velocityDecrease * velocity * direction;
     }

@@ -15,7 +15,7 @@ public class EnemyHealth : DamageableEntity
     public override void takeDamage (int damage)
     {
         base.takeDamage(damage);
-        Debug.Log("Current HP: " + currentHp);
+        //Debug.Log("Current HP: " + currentHp);
         if(currentHp <= 0)
             gameObject.SendMessage("OnEnemyDeath", SendMessageOptions.DontRequireReceiver);
     }    
