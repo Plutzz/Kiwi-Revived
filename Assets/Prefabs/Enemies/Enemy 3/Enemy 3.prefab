@@ -152,6 +152,7 @@ MonoBehaviour:
   rangeCheck: {fileID: 3877820676051271909}
   projectileSpawner: {fileID: 5976967802538950640}
   parent: {fileID: 6857246909252084628}
+  explosion: {fileID: 5911096276961778903, guid: 45374f6d8364375489347976c9beeaaf, type: 3}
 --- !u!1 &3877820676051271909
 GameObject:
   m_ObjectHideFlags: 0

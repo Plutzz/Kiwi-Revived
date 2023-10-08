@@ -20,7 +20,6 @@ public class Enemy3CheckRange : MonoBehaviour
             }
             if (collision.transform.position.x > this.transform.position.x && !facingRight)
             {
-                Debug.Log("need to flip");
                 parent.transform.localScale = new Vector3(parent.transform.localScale.x * -1, 1, 1);
                 facingRight = true;
             }
