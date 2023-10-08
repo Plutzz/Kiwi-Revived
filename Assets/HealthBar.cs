@@ -19,12 +19,17 @@ public class HealthBar : MonoBehaviour
         slider.value = health;
     }
 
+    private void Start()
+    {
+        SetMaxHealth(100);
+    }
+
     // Update is called once per frame
     void Update()
     {
-        SetMaxHealth(100);
+        
 
-        while (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space))
         {
             DamageHealth(1);
         }

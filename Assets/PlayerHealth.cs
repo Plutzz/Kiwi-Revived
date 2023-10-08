@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class PlayerHealth : DamageableEntity
 {
     public int maxHp = 100;
-    public int currentHp;
     public Image hpSliderFill;
     public Slider hpBar;
 
@@ -16,7 +15,7 @@ public class PlayerHealth : DamageableEntity
         currentHp = maxHp;
     }
 
-    public void takeDamage (int damage)
+    public override void takeDamage (int damage)
     {
         if(currentHp > 0)
         {
