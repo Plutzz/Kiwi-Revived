@@ -27,7 +27,6 @@ public class EnemyAI : MonoBehaviour
     public EnemyMovement _enemyMovement;
     public float timeBetweenShots = 0.5f;
     public float waitTime = 3f;
-
     private float nextShotTime;
     private bool isCoroutineRunning = false;
     private Rigidbody2D rb;
@@ -68,8 +67,8 @@ public class EnemyAI : MonoBehaviour
                 break;
             // Run away from the player, once it is within minimum range (melee)
             case EnemyAIState.Retreat:
-                _enemyMovement.CheckVision();
                 _enemyMovement.CheckCollision();
+                _enemyMovement.CheckVision();
                 break;
 
         }
@@ -92,5 +91,10 @@ public class EnemyAI : MonoBehaviour
             nextShotTime = 0;
         }
         nextShotTime += Time.deltaTime;
+    }
+
+    void OnEnemyDeath()
+    {
+        Destroy(gameObject);
     }
 }

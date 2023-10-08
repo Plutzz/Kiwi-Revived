@@ -42,7 +42,6 @@ public class EnemyMovement : MonoBehaviour
         enemy = GetComponent<EnemyAI>();
     }
 
-    // Change to delta time
     public void Chase()
     {
         rb.velocity = Vector2.zero; // Stop moving from patrol 
@@ -134,9 +133,9 @@ public class EnemyMovement : MonoBehaviour
 
         if (distanceToPlayer < minimumDistance) {
             // Add panic shooting if it is on the edge and cant go anywhere?
+            enemy.state = EnemyAI.EnemyAIState.Retreat;
             if (isLeftGrounded && isRightGrounded)
                 transform.position = Vector2.MoveTowards(transform.position, playerTransform.position, -speed * Time.deltaTime);
-            enemy.state = EnemyAI.EnemyAIState.Retreat;
         } else if (distanceToPlayer <= maximumDistance && distanceToPlayer > minimumDistance) {
             enemy.state = EnemyAI.EnemyAIState.Attack;
         }

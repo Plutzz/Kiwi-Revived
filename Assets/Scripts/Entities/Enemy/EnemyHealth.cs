@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[Tooltip("This script can be attached to any enemy that can take damage")]
+[Tooltip("This script can be attached to any enemy that can take damage, make sure you have a function called OnEnemyDeath in a different script that will handle the death of the enemy")]
 public class EnemyHealth : DamageableEntity
 {
     public int maxHp = 100;
@@ -11,13 +11,13 @@ public class EnemyHealth : DamageableEntity
         currentHp = maxHp;
     }
 
-    // Maybe when it is at a certain health, it will change its behavior
+    
     public override void takeDamage (int damage)
     {
         base.takeDamage(damage);
         Debug.Log("Current HP: " + currentHp);
         if(currentHp <= 0)
-            Destroy(gameObject);
+            gameObject.SendMessage("OnEnemyDeath", SendMessageOptions.DontRequireReceiver);
     }    
 
     void OnCollisionEnter2D(Collision2D other)
