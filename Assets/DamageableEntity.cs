@@ -8,11 +8,19 @@ public class DamageableEntity : MonoBehaviour
     public virtual void takeDamage(int damage)
     {
         currentHp -= damage;
+
+        if (currentHp <= 0)
+            OnDeath();
     }
     
     public int GetCurrentHp()
     {
         return currentHp;
+    }
+
+    public virtual void OnDeath()
+    {
+        Destroy(gameObject);
     }
 
 }

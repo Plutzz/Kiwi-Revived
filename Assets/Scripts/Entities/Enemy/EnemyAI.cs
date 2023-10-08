@@ -92,9 +92,4 @@ public class EnemyAI : MonoBehaviour
         }
         nextShotTime += Time.deltaTime;
     }
-
-    void OnEnemyDeath()
-    {
-        Destroy(gameObject);
-    }
 }
