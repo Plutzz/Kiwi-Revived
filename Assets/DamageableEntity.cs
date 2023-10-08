@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DamageableEntity : MonoBehaviour
 {
-    protected int currentHp;
+    public int currentHp;
     public virtual void takeDamage(int damage)
     {
         currentHp -= damage;

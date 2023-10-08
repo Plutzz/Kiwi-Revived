@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.SceneManagement;
-
+using Unity.VisualScripting;
 
 public class MechSystem : SingletonPersistent<MechSystem>
 {
@@ -60,8 +60,8 @@ public class MechSystem : SingletonPersistent<MechSystem>
         {
             return;
         }
-
-        getEquippedParts();
+        AddStats();
+        UpdatePlayerVariables();
     }
 
     // Finds which parts are currently equipped and sets them to equipped varibles
@@ -86,14 +86,40 @@ public class MechSystem : SingletonPersistent<MechSystem>
         }
     }
 
-    private void AddStats()
+    public void AddStats()
     {
-        //Adds up all stats from currently equipped parts
+        ClearStats();
+        getEquippedParts();
+
+
+        Vision += equippedBody.BaseStats.Vision;
+        Speed += equippedBody.BaseStats.Speed;
+        Armor += equippedBody.BaseStats.Armor;
+
+        Vision += equippedBody.BaseStats.Vision;
+        Speed += equippedBody.BaseStats.Speed;
+        Armor += equippedBody.BaseStats.Armor;
+
+        Debug.Log(Vision);
+        Debug.Log(Speed);
+        Debug.Log(Armor);
+
+
     }
 
     private void ClearStats()
     {
-        //Sets all stats to 0
+        Vision = 0;
+        Armor = 0;
+        Speed = 0;
+        Velocity = 0;
+        Damage = 0;
+    }
+
+    private void UpdatePlayerVariables()
+    {
+        PlayerHealth.Instance.maxHp += Armor;
+        PlayerMovement.Instance.SetMaxSpeed(PlayerMovement.Instance.GetMaxSpeed() + Speed);
     }
 
     

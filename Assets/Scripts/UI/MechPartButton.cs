@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class MechPartButton : MonoBehaviour
 {
@@ -10,8 +12,11 @@ public class MechPartButton : MonoBehaviour
     {
         MechSystem.Instance.UnequipBodies();
         part.Equipped = true;
-        
+    }
 
+    public void ChangeScene()
+    {
+        SceneManager.LoadScene("PlatformingMovement");
     }
 
 }

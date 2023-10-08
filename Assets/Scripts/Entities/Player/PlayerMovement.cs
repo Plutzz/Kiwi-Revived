@@ -239,4 +239,14 @@ public class PlayerMovement : Singleton<PlayerMovement>
         return currentVelocityX;
     }
 
+    public void SetMaxSpeed(float _speed)
+    {
+        maxSpeed = _speed;
+    }
+
+    public float GetMaxSpeed()
+    {
+        return maxSpeed;
+    }
+
 }

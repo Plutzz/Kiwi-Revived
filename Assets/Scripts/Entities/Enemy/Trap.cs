@@ -32,8 +32,7 @@ public class Trap : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             Instantiate(boom);
-            // Will work once the player has a health script
-            // collision.gameObject.GetComponent<PlayerHealth>().takeDamage(damage);
+            collision.gameObject.GetComponent<PlayerHealth>().takeDamage(damage);
             Destroy(gameObject);
 
         }

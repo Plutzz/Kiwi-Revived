@@ -840,7 +840,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   graphics: {fileID: 4880060615713259954}
-  animation: {fileID: 1377541681}
+  anim: {fileID: 1377541681}
   maxSpeed: 10
   acceleration: 200
   deceleration: 200

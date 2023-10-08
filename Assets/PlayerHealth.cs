@@ -9,7 +9,14 @@ public class PlayerHealth : DamageableEntity
     public Image hpSliderFill;
     public Slider hpBar;
 
+    public static PlayerHealth Instance;
+
     void Awake ()
+    {
+        Instance = this;
+    }
+
+    private void Start()
     {
         GetComponent<Slider>();
         currentHp = maxHp;
