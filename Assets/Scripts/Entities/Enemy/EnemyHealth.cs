@@ -11,15 +11,6 @@ public class EnemyHealth : DamageableEntity
         currentHp = maxHp;
     }
 
-    
-    public override void takeDamage (int damage)
-    {
-        base.takeDamage(damage);
-        //Debug.Log("Current HP: " + currentHp);
-        if(currentHp <= 0)
-            gameObject.SendMessage("OnEnemyDeath", SendMessageOptions.DontRequireReceiver);
-    }    
-
     void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("WaterBullet")) 
@@ -29,5 +20,7 @@ public class EnemyHealth : DamageableEntity
         else if (other.gameObject.CompareTag("FireBullet"))
             takeDamage(other.gameObject.GetComponent<FireBullet>().damage);
     }
+
+
 }
 
