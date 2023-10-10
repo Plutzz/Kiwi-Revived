@@ -31,7 +31,7 @@ public class PlayerHealth : DamageableEntity
         
         float fillvalue = (float)currentHp/(float)maxHp;
 
-        Debug.Log(fillvalue);
+        // Debug.Log(fillvalue);
 
         hpBar.value = fillvalue;
     }

@@ -32,7 +32,7 @@ public class Trap : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             Instantiate(boom);
-            collision.gameObject.GetComponent<PlayerHealth>().takeDamage(damage);
+            PlayerHealth.Instance.takeDamage(damage);
             Destroy(gameObject);
 
         }
