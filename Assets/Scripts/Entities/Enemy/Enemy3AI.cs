@@ -39,6 +39,7 @@ public class Enemy3AI : MonoBehaviour
             if (this.transform.localScale.x >= 3)
             {
                 Instantiate(explosion, this.transform.position, this.transform.rotation);
+                GetComponent<LootManager>().InstantiateLoot(transform.position);
                 Destroy(parent);
 
             }

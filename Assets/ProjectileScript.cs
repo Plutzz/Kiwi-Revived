@@ -15,6 +15,7 @@ public class ProjectileScript : MonoBehaviour
     public int maxRange, minRange = 0;
 
     private Rigidbody2D waterParticle;
+    private CircleCollider2D waterCollider;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +31,7 @@ public class ProjectileScript : MonoBehaviour
         }
 
         waterParticle = GetComponent<Rigidbody2D>();
+        waterCollider = GetComponent<CircleCollider2D>();
 
         transform.rotation = Quaternion.Euler(0, 0, transform.eulerAngles.z + Random.Range(maxRange, minRange));
         //Debug.Log(velocityDecrease);
@@ -45,6 +47,15 @@ public class ProjectileScript : MonoBehaviour
     public void setDirection(bool facingRight)
     {
         isFacingRight = facingRight;
+    }
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.gameObject.CompareTag("Player"))
+        {
+            PlayerHealth.Instance.takeDamage(damage);
+            Destroy(gameObject);
+        }
     }
 
 }

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8368264374908150038}
   - component: {fileID: 1105474639}
   - component: {fileID: 1105474644}
+  - component: {fileID: 8446941044880035015}
   m_Layer: 0
   m_Name: Body
   m_TagString: Enemy
@@ -153,6 +154,21 @@ MonoBehaviour:
   projectileSpawner: {fileID: 5976967802538950640}
   parent: {fileID: 6857246909252084628}
   explosion: {fileID: 5911096276961778903, guid: 45374f6d8364375489347976c9beeaaf, type: 3}
+--- !u!114 &8446941044880035015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3585109664665116707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d56313c7864e3c48b4631c19b12bd83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lootPrefab: {fileID: 2605321971612539940, guid: 2916d04157a089247a4f9f93a7246d16, type: 3}
+  lootList:
+  - {fileID: 11400000, guid: b5a9fdf8ff232b84ca5e0e4bc95c3187, type: 2}
 --- !u!1 &3877820676051271909
 GameObject:
   m_ObjectHideFlags: 0
