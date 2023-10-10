@@ -7,7 +7,6 @@ public class Loot : MonoBehaviour
     public float magnetSpeed = 5f;
     public float magnetDistance = 2f;
     private Transform player;
-
     void Start() {
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
@@ -21,8 +20,8 @@ public class Loot : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.CompareTag("Player")) {
+    void OnTriggerEnter2D(Collider2D collider) {
+        if (collider.gameObject.CompareTag("Player")) {
             PlayerInventory.Instance.AddItem(gameObject.name);
             Destroy(gameObject);
         }
