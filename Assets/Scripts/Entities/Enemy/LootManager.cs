@@ -2,15 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LootDrop : MonoBehaviour
+public class LootManager : MonoBehaviour
 {
     public GameObject lootPrefab;
+    [Header("Loot Manager")]
     public List<ScriptableLoot> lootList = new List<ScriptableLoot>();
-
-    void Start()
-    {
-
-    }
 
     public List<ScriptableLoot> GetDroppedItems() {
         int randomNum = Random.Range(0, 101);
@@ -38,9 +34,6 @@ public class LootDrop : MonoBehaviour
 
     public void InstantiateLoot(Vector3 spawn) {
         List<ScriptableLoot> droppedItems = GetDroppedItems();
-        foreach (ScriptableLoot loot in droppedItems) {
-            Debug.Log("Loot Dropped: " + loot.lootName);
-        }
 
         if (droppedItems != null) {
             foreach (ScriptableLoot loot in droppedItems) {

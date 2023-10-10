@@ -184,7 +184,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9205784123346453071, guid: 28d52a0c08eec2c4cb72bdfc0015aa68, type: 3}
       propertyPath: maxHp
-      value: 200
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28d52a0c08eec2c4cb72bdfc0015aa68, type: 3}
@@ -317,6 +317,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6695534587375965295, guid: 28d52a0c08eec2c4cb72bdfc0015aa68, type: 3}
+      propertyPath: magnetDistance
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1978452687989836291, guid: 28d52a0c08eec2c4cb72bdfc0015aa68, type: 3}
       propertyPath: m_Name
       value: Rodents

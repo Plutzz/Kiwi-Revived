@@ -14,7 +14,7 @@ public class EnemyHealth : DamageableEntity
 
     public override void OnDeath()
     {
-        GetComponent<LootDrop>().InstantiateLoot(transform.position);
+        GetComponent<LootManager>().InstantiateLoot(transform.position);
         Destroy(gameObject);
     }
     void OnCollisionEnter2D(Collision2D other)

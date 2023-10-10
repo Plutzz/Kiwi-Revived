@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2332763423214093994}
   - component: {fileID: 4992055236007456642}
   - component: {fileID: 2073727565516427039}
+  - component: {fileID: -7482682443550557690}
   m_Layer: 0
   m_Name: Loot
   m_TagString: Untagged
@@ -97,7 +98,7 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 1
+  m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
@@ -123,3 +124,17 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &-7482682443550557690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2605321971612539940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84f9f59c3ee45ad44a4edb392a41b0c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  magnetSpeed: 10
+  magnetDistance: 20

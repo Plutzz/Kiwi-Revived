@@ -172,6 +172,7 @@ MonoBehaviour:
   velocity: 20
   damage: 10
   velocityDecrease: 1
+  isFacingRight: 0
   maxRange: 0
   minRange: 0
 --- !u!114 &7476081036958967724
