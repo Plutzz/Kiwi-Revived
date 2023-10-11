@@ -43,9 +43,13 @@ public class LootManager : MonoBehaviour
 
                 float randomX = Random.Range(-1f, 1f);
                 float randomY = Random.Range(-1f, 1f);
-                float force = Random.Range(0.5f, 1f);
+                float force = Random.Range(0.5f, 2f);
                 Vector2 dropDirection = new Vector2(randomX, randomY);
                 lootObj.GetComponent<Rigidbody2D>().AddForce(dropDirection * force, ForceMode2D.Impulse);
+
+                // Ignore Collision with Other Loot
+                Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Items"), LayerMask.NameToLayer("Fluids"));
+                Physics2D.IgnoreCollision(lootObj.GetComponent<BoxCollider2D>(), lootObj.GetComponent<BoxCollider2D>());
             }
         }
     }
