@@ -9,6 +9,7 @@ TagManager:
   - Door
   - PoisonBullet
   - FireBullet
+  - Enemy3Projectile
   layers:
   - Default
   - TransparentFX
