@@ -24,7 +24,7 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private CircleCollider2D escapeCollider; // Escape collider is used to check if the player is within minimum range (melee)
 
     // Private Variables
-    Vector2[] directions = { Vector2.left, Vector2.right };
+    Vector2[] directions = { Vector2.left, Vector2.right, Vector2.zero};
     private float timer = 0f;
     private Vector2 currentDirection;
     private Vector2 lastKnownPosition;

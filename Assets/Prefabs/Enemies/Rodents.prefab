@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2213993685777112910}
   - component: {fileID: 8535110332777968611}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PlayerDetect (Min)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3247322422672506111}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SpearShooter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1682622695142016168}
   - component: {fileID: 1273129623578047264}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GroundCheckLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,7 +150,7 @@ GameObject:
   - component: {fileID: 41963919}
   - component: {fileID: 9205784123346453071}
   - component: {fileID: -6695534587375965295}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Rodents
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -372,7 +372,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8721680062695802762}
   - component: {fileID: 3514094573314639936}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GroundCheckRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -426,7 +426,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2638268963603964771}
   - component: {fileID: 2936570176551356525}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: AttackRange (Max)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -473,7 +473,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6796016834335726363}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TrapShooter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
