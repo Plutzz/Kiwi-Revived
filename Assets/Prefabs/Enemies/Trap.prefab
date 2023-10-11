@@ -161,3 +161,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boom: {fileID: 8957447646710564158, guid: a3609da065a11374a94cb57ea763b0d9, type: 3}
+  damage: 10
