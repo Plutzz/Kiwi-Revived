@@ -13,9 +13,7 @@ public class WeaponDisplay : MonoBehaviour
 
     private void Start()
     {
-        currentWeaponImage.sprite = weaponImage2;
-        currentWeaponImage.color = Color.blue;
-        tm.text = "Water";
+        SetWeaponImage(weaponImage2, Color.blue, "Water");
     }
 
     public void ChangeWeaponImage(int weaponNumber)
@@ -23,21 +21,23 @@ public class WeaponDisplay : MonoBehaviour
         switch (weaponNumber)
         {
             case 0:
-                currentWeaponImage.sprite = weaponImage1;
-                currentWeaponImage.color =  Color.red;
-                tm.text = "Fire";
+                SetWeaponImage(weaponImage1, Color.red, "Fire");
                 break;
             case 1:
-                currentWeaponImage.sprite = weaponImage2;
-                currentWeaponImage.color =  Color.blue;
-                tm.text = "Water";
+                SetWeaponImage(weaponImage2, Color.blue, "Water");
                 break;
             case 2:
-                currentWeaponImage.sprite = weaponImage3;
-                currentWeaponImage.color =  Color.green;
-                tm.text = "Poison";
+                SetWeaponImage(weaponImage3, Color.green, "Poison");
                 break;
         }
+    }
+
+    private void SetWeaponImage(Sprite weaponImage, Color color, string weaponName = "", bool preserveAspect = true)
+    {
+        currentWeaponImage.sprite = weaponImage;
+        currentWeaponImage.color = color;
+        currentWeaponImage.preserveAspect = true;
+        tm.text = weaponName;
     }
 
 

@@ -149,6 +149,7 @@ GameObject:
   - component: {fileID: 1605176852}
   - component: {fileID: 41963919}
   - component: {fileID: 9205784123346453071}
+  - component: {fileID: -6695534587375965295}
   m_Layer: 0
   m_Name: Rodents
   m_TagString: Untagged
@@ -344,8 +345,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ed6f6857a5298c4385c4a2ccf697cf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 100
   currentHp: 0
+  maxHp: 100
+--- !u!114 &-6695534587375965295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1978452687989836291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d56313c7864e3c48b4631c19b12bd83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lootPrefab: {fileID: 2605321971612539940, guid: 2916d04157a089247a4f9f93a7246d16, type: 3}
+  lootList:
+  - {fileID: 11400000, guid: b5a9fdf8ff232b84ca5e0e4bc95c3187, type: 2}
 --- !u!1 &2368061374460400016
 GameObject:
   m_ObjectHideFlags: 0
