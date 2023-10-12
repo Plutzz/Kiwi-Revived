@@ -162,10 +162,12 @@ public class PlayerMovement : Singleton<PlayerMovement>
             // Gets stronger the closer to the top of the jump
             apexPoint = Mathf.InverseLerp(jumpApexThreshold, 0, Mathf.Abs(rb.velocity.y));
             fallSpeed = Mathf.Lerp(minFallSpeed, maxFallSpeed, apexPoint);
+            anim.SetBool("isJumping", true);
         }
         else
         {
             apexPoint = 0;
+            anim.SetBool("isJumping", false);
         }
     }
 
