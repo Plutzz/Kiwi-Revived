@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAI : MonoBehaviour
+public class Enemy2AI : MonoBehaviour
 {
     [Header("Enemy AI States")]
     [SerializeField] private EnemyAIState _state = EnemyAIState.Patrol;

@@ -31,7 +31,7 @@ public class EnemyMovement : MonoBehaviour
     private bool isLeftGrounded = false;
     private bool isRightGrounded = false;
     // States
-    private EnemyAI enemy;
+    private Enemy2AI enemy;
 
 
     void Start()
@@ -39,7 +39,7 @@ public class EnemyMovement : MonoBehaviour
         playerTransform = GameObject.Find("Player").transform;
         rb = GetComponent<Rigidbody2D>();
         currentDirection = directions[Random.Range(0, directions.Length)];
-        enemy = GetComponent<EnemyAI>();
+        enemy = GetComponent<Enemy2AI>();
     }
 
     public void Chase()
@@ -110,7 +110,7 @@ public class EnemyMovement : MonoBehaviour
         // When seeing the player it will be in the Chase state and the vision cone will be drawn towards the player.
         if (distanceToPlayer > visionRange || angleToPlayer > visionAngle)
         {
-            if (enemy.state == EnemyAI.EnemyAIState.Attack || enemy.state == EnemyAI.EnemyAIState.Chase)
+            if (enemy.state == Enemy2AI.EnemyAIState.Attack || enemy.state == Enemy2AI.EnemyAIState.Chase)
             {
                 Vector2 newPosition = transform.position;
                 // Move towards the last known position of the player if and only if the enemy is grounded
@@ -120,24 +120,24 @@ public class EnemyMovement : MonoBehaviour
                 rb.MovePosition(newPosition);
 
                 if (newPosition == lastKnownPosition)
-                    enemy.state = EnemyAI.EnemyAIState.Patrol;
+                    enemy.state = Enemy2AI.EnemyAIState.Patrol;
                  else
                     StartCoroutine(GoBackToPatrol());
             } else
-                enemy.state = EnemyAI.EnemyAIState.Patrol;
-        } else if (distanceToPlayer <= visionRange && angleToPlayer <= visionAngle && enemy.state != EnemyAI.EnemyAIState.Attack)
+                enemy.state = Enemy2AI.EnemyAIState.Patrol;
+        } else if (distanceToPlayer <= visionRange && angleToPlayer <= visionAngle && enemy.state != Enemy2AI.EnemyAIState.Attack)
         {
-            enemy.state = EnemyAI.EnemyAIState.Chase;
+            enemy.state = Enemy2AI.EnemyAIState.Chase;
             lastKnownPosition = playerTransform.position;
         } 
 
         if (distanceToPlayer < minimumDistance) {
             // Add panic shooting if it is on the edge and cant go anywhere?
-            enemy.state = EnemyAI.EnemyAIState.Retreat;
+            enemy.state = Enemy2AI.EnemyAIState.Retreat;
             if (isLeftGrounded && isRightGrounded)
                 transform.position = Vector2.MoveTowards(transform.position, playerTransform.position, -speed * Time.deltaTime);
         } else if (distanceToPlayer <= maximumDistance && distanceToPlayer > minimumDistance) {
-            enemy.state = EnemyAI.EnemyAIState.Attack;
+            enemy.state = Enemy2AI.EnemyAIState.Attack;
         }
 
     }   
@@ -159,7 +159,7 @@ public class EnemyMovement : MonoBehaviour
     IEnumerator GoBackToPatrol()
     {
         yield return new WaitForSeconds(patrolDelay);
-        enemy.state = EnemyAI.EnemyAIState.Patrol;
+        enemy.state = Enemy2AI.EnemyAIState.Patrol;
     }
 
 
