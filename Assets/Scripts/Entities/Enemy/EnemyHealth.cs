@@ -6,6 +6,8 @@ using UnityEngine;
 public class EnemyHealth : DamageableEntity
 {
     public int maxHp = 100;
+    public int collisionDamage = 10;
+
     void Awake ()
     {
         currentHp = maxHp;
@@ -25,6 +27,9 @@ public class EnemyHealth : DamageableEntity
             takeDamage(other.gameObject.GetComponent<PoisonBullet>().damage);
         else if (other.gameObject.CompareTag("FireBullet"))
             takeDamage(other.gameObject.GetComponent<FireBullet>().damage);
+        else if (other.gameObject.CompareTag("Player"))
+            PlayerHealth.Instance.takeDamage(collisionDamage); Debug.Log("take collision damage");
+
     }
 
 
