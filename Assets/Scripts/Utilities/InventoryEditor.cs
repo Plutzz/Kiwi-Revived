@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
+/*
 [CustomEditor(typeof(PlayerInventory))]
 public class InventoryEditor : Editor {
     public override void OnInspectorGUI() {
@@ -18,3 +19,4 @@ public class InventoryEditor : Editor {
         base.OnInspectorGUI();
     }
 }
+*/

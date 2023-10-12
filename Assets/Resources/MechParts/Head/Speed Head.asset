@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 27f3063c1a57ced418559d59d3e6d20e, type: 3}
-  m_Name: Speed Chasis
+  m_Name: Speed Head
   m_EditorClassIdentifier: 
   stats:
-    Vision: 10
+    Vision: 20
     Speed: 30
-    Armor: 10
+    Armor: 0
   Descriptions: 
   MenuSprite: {fileID: 0}
-  Equipped: 1
+  Equipped: 0

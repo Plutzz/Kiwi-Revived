@@ -91,6 +91,11 @@ public class MechSystem : SingletonPersistent<MechSystem>
         ClearStats();
         getEquippedParts();
 
+        if (equippedBody == null && equippedHead == null)
+        {
+            return;
+        }
+
 
         Vision += equippedBody.BaseStats.Vision;
         Speed += equippedBody.BaseStats.Speed;

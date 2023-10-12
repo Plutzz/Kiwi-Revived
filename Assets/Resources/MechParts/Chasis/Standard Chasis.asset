@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats:
     Vision: 10
-    Speed: 10
+    Speed: 0
     Armor: 20
   Descriptions: 
   MenuSprite: {fileID: 0}
