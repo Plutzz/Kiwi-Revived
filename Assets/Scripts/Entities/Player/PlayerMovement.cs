@@ -61,7 +61,7 @@ public class PlayerMovement : Singleton<PlayerMovement>
     private void Update()
     {
         if (rb == null) return;
-        
+
         //IF GAME IS PAUSED SKIP THIS FRAME
         //if (PauseMenu.getGameIsPaused()) return;
 
@@ -78,20 +78,26 @@ public class PlayerMovement : Singleton<PlayerMovement>
 
         // Update the Rigidbody2D velocity
         Move();
-        
-        // Flip character sprite if moving left
-        if (XAxis < 0)
-        {
-            graphics.transform.localScale = new Vector3(-1f, 1f, 1f);
-        }
-        // Flip character sprite if moving right
-        else if (XAxis > 0)
-        {
-            graphics.transform.localScale = new Vector3(1f, 1f, 1f);
-        }
 
         //sets animation for from idle to movement
         anim.SetFloat("Speed", Mathf.Abs(XAxis));
+        if (RotationPoint.Instance.FacingForward && XAxis > 0 || !RotationPoint.Instance.FacingForward && XAxis < 0)
+        {
+            anim.SetFloat("Speed", Mathf.Abs(XAxis));
+        }
+        else
+        {
+            anim.SetFloat("Speed", Mathf.Abs(XAxis) * -1);
+        }
+
+        if(currentVelocityY > 0)
+        {
+            anim.SetBool("IsJumping", true);
+        }
+        else
+        {
+            anim.SetBool("IsJumping", false);
+        }
     }
 
     // Gets player inputs needed to calculate movement
@@ -162,12 +168,10 @@ public class PlayerMovement : Singleton<PlayerMovement>
             // Gets stronger the closer to the top of the jump
             apexPoint = Mathf.InverseLerp(jumpApexThreshold, 0, Mathf.Abs(rb.velocity.y));
             fallSpeed = Mathf.Lerp(minFallSpeed, maxFallSpeed, apexPoint);
-            anim.SetBool("isJumping", true);
         }
         else
         {
             apexPoint = 0;
-            anim.SetBool("isJumping", false);
         }
     }
 

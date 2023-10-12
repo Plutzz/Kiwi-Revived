@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,8 @@ public class RotationPoint : Singleton<RotationPoint>
     [SerializeField] private GameObject neck;
     [SerializeField] private float neckRotationOffset;
     private Vector3 mousePos;
+
+    public bool FacingForward { get; private set; }
 
     // Start is called before the first frame update
     void Start()
@@ -31,35 +34,24 @@ public class RotationPoint : Singleton<RotationPoint>
         float _rotZ = Mathf.Atan2(_rotation.y, _rotation.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, _rotZ);
         
-
-        /*
-        if (transform.rotation.eulerAngles.z < 90 - deadzone || transform.rotation.eulerAngles.z > 270 - deadzone)
-        {
-            Debug.Log("Flip forwards");
-            Graphics.transform.rotation = Quaternion.Euler(0, 0, 0);
-        }
-        else if(transform.rotation.eulerAngles.z > 90 - deadzone && transform.rotation.eulerAngles.z < 270 - deadzone)
-        {
-            Debug.Log("Flip backwards");
-            Graphics.transform.rotation = Quaternion.Euler(0, -180, 0);
-        }
-        */
-
-        // Debug.Log(mousePos);
         float _mouseDistance = mousePos.x - Graphics.transform.position.x;
 
-        if( _mouseDistance > 0 + deadzone)
+
+        // Flips player based on mouse direction from player
+        if( _mouseDistance > 0 + deadzone) //Flip Forward
         {
-            // Debug.Log("Flip forwards");
+            FacingForward = true;
             Graphics.transform.rotation = Quaternion.Euler(0, 0, 0);
             neck.transform.rotation = Quaternion.Euler(0, 0, _rotZ + neckRotationOffset);
         }
-        else if( _mouseDistance < 0 - deadzone)
+        else if( _mouseDistance < 0 - deadzone) // Flip backwards
         {
-            // Debug.Log("Flip backwards");
+            FacingForward = false;
             Graphics.transform.rotation = Quaternion.Euler(0, -180, 0);
             neck.transform.rotation = Quaternion.Euler(0, -180, (_rotZ * -1) + neckRotationOffset + 180);
         }
 
     }
+
+
 }
