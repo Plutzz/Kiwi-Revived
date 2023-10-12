@@ -32,6 +32,9 @@ public class LootManager : MonoBehaviour
         return null;
     }
 
+    public static ScriptableLoot GetItem(string itemName) {
+        return Resources.Load<ScriptableLoot>("Items/" + itemName);
+    }
     public void InstantiateLoot(Vector3 spawn) {
         List<ScriptableLoot> droppedItems = GetDroppedItems();
 
@@ -46,9 +49,6 @@ public class LootManager : MonoBehaviour
                 float force = Random.Range(0.5f, 2f);
                 Vector2 dropDirection = new Vector2(randomX, randomY);
                 lootObj.GetComponent<Rigidbody2D>().AddForce(dropDirection * force, ForceMode2D.Impulse);
-
-                // Ignore Collision with Other Loot
-                Physics2D.IgnoreCollision(lootObj.GetComponent<BoxCollider2D>(), lootObj.GetComponent<BoxCollider2D>());
             }
         }
     }

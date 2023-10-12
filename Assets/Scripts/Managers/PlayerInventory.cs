@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
+    public Dictionary<ScriptableLoot, int> inventory = new Dictionary<ScriptableLoot, int>();
 
     public static PlayerInventory Instance;
     void Awake()
@@ -18,6 +19,12 @@ public class PlayerInventory : MonoBehaviour
         
     }
     public void AddItem(string itemName) {
-        Debug.Log("Added " + itemName + " to inventory");
+        ScriptableLoot item = Resources.Load<ScriptableLoot>("Items/" + itemName);
+        if (inventory.ContainsKey(item))
+            inventory[item]++;
+        else
+            inventory.Add(item, 1);
     }
 }
+
+
