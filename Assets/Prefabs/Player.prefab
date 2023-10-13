@@ -316,6 +316,37 @@ SortingGroup:
   m_SortingLayerID: 158189301
   m_SortingLayer: 3
   m_SortingOrder: 0
+--- !u!1 &1007143383
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1007143384}
+  m_Layer: 0
+  m_Name: FluidPrefabManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1007143384
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1007143383}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.5126916, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1849807643251689256}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1120681252
 GameObject:
   m_ObjectHideFlags: 0
@@ -467,9 +498,15 @@ MonoBehaviour:
   FirePrefab: {fileID: 238782239006985805, guid: 24c067264e163144491fc216c22ef5bf, type: 3}
   WaterPrefab: {fileID: 238782239006985805, guid: 012ea056b13cac6479912b8baea3c566, type: 3}
   PoisonPrefab: {fileID: 238782239006985805, guid: 36bbf96423e91484c949ba0eac1f8b1d, type: 3}
+  PrefabManager: {fileID: 1007143384}
+  FluidMaterial: {fileID: 2100000, guid: aeb126df43306d244acf728bfc545ab4, type: 2}
   fireFireRate: 0.1
-  waterFireRate: 0.1
+  waterFireRate: 0.01
   poisonFireRate: 2
+  WaterOffset: 0.5
+  WaterColor: {r: 0.253115, g: 0.48957843, b: 0.6792453, a: 0}
+  FireColor: {r: 1, g: 0.41218477, b: 0, a: 0}
+  PoisonColor: {r: 0.34784043, g: 0.8396226, b: 0.23366857, a: 0}
   playerController: {fileID: 1613898207}
 --- !u!1 &116152418074097581
 GameObject:
@@ -826,6 +863,7 @@ Transform:
   - {fileID: 7283753576853987007}
   - {fileID: 514166848}
   - {fileID: 35248040}
+  - {fileID: 1007143384}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

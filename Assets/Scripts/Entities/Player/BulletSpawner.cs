@@ -9,6 +9,10 @@ public class BulletSpawner : Singleton<BulletSpawner>
 
     public GameObject FirePrefab, WaterPrefab, PoisonPrefab;
 
+    public Transform PrefabManager;
+
+    public Material FluidMaterial;
+
     [Header("Fire Rate")]
     public float fireFireRate = 0.1f;
     public float waterFireRate = 0.1f;
@@ -16,6 +20,9 @@ public class BulletSpawner : Singleton<BulletSpawner>
 
     [Header("Water Settings")]
     public float WaterOffset = 0.5f;
+    public Color WaterColor;
+    public Color FireColor;
+    public Color PoisonColor;
 
     public PlayerController playerController;
 
@@ -28,28 +35,34 @@ public class BulletSpawner : Singleton<BulletSpawner>
             //Fire
             case(0):
             {
-                playerController.FireRate = fireFireRate;
                 
-                Instantiate(FirePrefab, transform.position, transform.rotation);
+                playerController.FireRate = fireFireRate;
+                FluidMaterial.color = FireColor;
+
+                Instantiate(FirePrefab, transform.position, transform.rotation, PrefabManager);
                 break;
             }
 
             //Water
             case(1):
             {
+                
                 playerController.FireRate = waterFireRate;
                 Vector3 _pos = transform.position;
                 _pos.y += Random.Range(-.25f, .25f);
-                Instantiate(WaterPrefab, _pos, transform.rotation);
+                Instantiate(WaterPrefab, _pos, transform.rotation, PrefabManager);
+                FluidMaterial.color = WaterColor;
                 break;
             }
 
             //Poison
             case(2):
             {
+                
                 playerController.FireRate = poisonFireRate;
+                FluidMaterial.color = PoisonColor;
 
-                Instantiate(PoisonPrefab, transform.position, transform.rotation);
+                Instantiate(PoisonPrefab, transform.position, transform.rotation, PrefabManager);
                 break;
             }
         }
@@ -58,6 +71,7 @@ public class BulletSpawner : Singleton<BulletSpawner>
     public void changeBulletType(int type)
     {
         bulletType = bulletTypes[type];
+        PrefabManager.DestroyChildren();
     }
 
     public enum BulletType
