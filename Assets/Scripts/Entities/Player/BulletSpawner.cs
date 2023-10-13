@@ -14,6 +14,9 @@ public class BulletSpawner : Singleton<BulletSpawner>
     public float waterFireRate = 0.1f;
     public float poisonFireRate = 2.0f;
 
+    [Header("Water Settings")]
+    public float WaterOffset = 0.5f;
+
     public PlayerController playerController;
 
     BulletType[] bulletTypes = (BulletType[])System.Enum.GetValues (typeof(BulletType));
@@ -26,7 +29,7 @@ public class BulletSpawner : Singleton<BulletSpawner>
             case(0):
             {
                 playerController.FireRate = fireFireRate;
-
+                
                 Instantiate(FirePrefab, transform.position, transform.rotation);
                 break;
             }
@@ -35,9 +38,9 @@ public class BulletSpawner : Singleton<BulletSpawner>
             case(1):
             {
                 playerController.FireRate = waterFireRate;
-
-                Instantiate(WaterPrefab, transform.position, transform.rotation);
-                Instantiate(WaterPrefab, transform.position, transform.rotation);
+                Vector3 _pos = transform.position;
+                _pos.y += Random.Range(-.25f, .25f);
+                Instantiate(WaterPrefab, _pos, transform.rotation);
                 break;
             }
 
