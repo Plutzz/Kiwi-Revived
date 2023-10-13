@@ -10,23 +10,28 @@ public class PrefabTimer : MonoBehaviour
 {
 
     public float lifetime = 2f;                 // How long before the game object is destroyed
-    private float lifeTimeTimer = 0f;           // Tracks how long the game object has been alive for
+    protected float lifeTimeTimer = 0f;           // Tracks how long the game object has been alive for
 
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
 
         lifeTimeTimer = lifetime;
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         lifeTimeTimer -= Time.deltaTime;
         if (lifeTimeTimer <= 0)
         {
-            Destroy(this.gameObject);
+            DestroyPrefab();
         }
+    }
+
+    protected virtual void DestroyPrefab()
+    {
+        Destroy(this.gameObject);
     }
 }

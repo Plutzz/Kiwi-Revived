@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 238782239006985811}
   - component: {fileID: 238782239006985810}
   - component: {fileID: 238782239006985809}
-  - component: {fileID: 5773883442960863249}
+  - component: {fileID: 788709453490242369}
   m_Layer: 7
   m_Name: Liquid
   m_TagString: WaterBullet
@@ -141,7 +141,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &5773883442960863249
+--- !u!114 &788709453490242369
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -150,7 +150,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 238782239006985805}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1200293dba364745a18f4886d461249, type: 3}
+  m_Script: {fileID: 11500000, guid: db379daa9273dea4abbea89e316f0933, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   lifetime: 1
