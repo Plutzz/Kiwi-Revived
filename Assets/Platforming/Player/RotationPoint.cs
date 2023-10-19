@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class RotationPoint : Singleton<RotationPoint>
 {
-    [SerializeField] private Camera mainCam;
     [SerializeField] private GameObject Graphics;
     [SerializeField] private int deadzone = 20;
     [SerializeField] private GameObject neck;
@@ -29,7 +28,7 @@ public class RotationPoint : Singleton<RotationPoint>
     // Rotates the rotation point to follow the mouse
     private void followMouse()
     {
-        mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
+        Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector3 _rotation = mousePos - transform.position;
         float _rotZ = Mathf.Atan2(_rotation.y, _rotation.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, _rotZ);
