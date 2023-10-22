@@ -70,6 +70,7 @@ public class Enemy1AI : MonoBehaviour
     {
         if(moveRight)
         {
+
             currentVelocity = rb.velocity;
             currentVelocity.x = speed;
             rb.velocity = currentVelocity;
@@ -82,16 +83,18 @@ public class Enemy1AI : MonoBehaviour
 
     void FollowPlayer ()
     {
-        if(distance > 0 && canJump && moveRight)
+        if(distance > 0 && canJump)
         {
             currentVelocity = rb.velocity;
             currentVelocity.x = runSpeed;
             rb.velocity = currentVelocity;
-        } else if(distance < 0 && canJump && !moveRight)
+            moveRight = true;
+        } else if(distance < 0 && canJump)
         {
             currentVelocity = rb.velocity;
             currentVelocity.x = -runSpeed;
             rb.velocity = currentVelocity;
+            moveRight = false;
         } else {
             currentVelocity = rb.velocity;
             currentVelocity.x = 0;

@@ -10,6 +10,7 @@ public class EdgeDetection : MonoBehaviour
         if(other.CompareTag("Untagged"))
         {
             enemy1Movement.moveRight = !enemy1Movement.moveRight;
+            enemy1Movement.currentState = Enemy1AI.State.Idle;
         }
         
         enemy1Movement.grounded = false;
