@@ -17,7 +17,7 @@ public class Enemy1AI : MonoBehaviour
     public bool grounded = true;
     public bool moveRight = false;
 
-    private float distance;
+    private float distance = 999f;
     private bool canJump = true;
     private Vector3 currentVelocity;
     
@@ -95,10 +95,6 @@ public class Enemy1AI : MonoBehaviour
             currentVelocity.x = -runSpeed;
             rb.velocity = currentVelocity;
             moveRight = false;
-        } else {
-            currentVelocity = rb.velocity;
-            currentVelocity.x = 0;
-            rb.velocity = currentVelocity;
         }
 
         if(Mathf.Abs(distance) <= distanceToPounce)
