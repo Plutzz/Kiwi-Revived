@@ -415,6 +415,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 101882566}
+  - component: {fileID: 101882567}
   m_Layer: 0
   m_Name: Tui
   m_TagString: Untagged
@@ -438,6 +439,23 @@ Transform:
   m_Father: {fileID: 1955339268}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &101882567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 101882565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e32e2947bf7e3747a245cf433d00d73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  cropRange: 0
+  graphics: {fileID: 101882566}
+  frontSprite: {fileID: 301912697}
+  backSprite: {fileID: 1233693026}
 --- !u!1 &206493690
 GameObject:
   m_ObjectHideFlags: 0
@@ -482,6 +500,11 @@ SortingGroup:
   m_SortingLayerID: 1710612771
   m_SortingLayer: 4
   m_SortingOrder: 0
+--- !u!1 &301912697 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -8653719598885068355, guid: a9960eea2fca67842800af1bce4a8386, type: 3}
+  m_PrefabInstance: {fileID: 1254085811}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &341202321
 GameObject:
   m_ObjectHideFlags: 0
@@ -7947,6 +7970,11 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
+--- !u!1 &1233693026 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -8653719598885068355, guid: 728648d519b41b440be425a2a12c0b2c, type: 3}
+  m_PrefabInstance: {fileID: 520451261}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1254085811
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17205,7 +17233,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1914054541}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -20.81, y: 18.54, z: -10}
+  m_LocalPosition: {x: -0.9, y: 2.8, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

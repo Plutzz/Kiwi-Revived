@@ -9,6 +9,7 @@ public class RotationPoint : Singleton<RotationPoint>
     [SerializeField] private int deadzone = 20;
     [SerializeField] private GameObject neck;
     [SerializeField] private float neckRotationOffset;
+    [SerializeField] private Camera playerCamera;
     private Vector3 mousePos;
 
     public bool FacingForward { get; private set; }
@@ -28,7 +29,8 @@ public class RotationPoint : Singleton<RotationPoint>
     // Rotates the rotation point to follow the mouse
     private void followMouse()
     {
-        Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Debug.Log(playerCamera.ScreenToWorldPoint(Input.mousePosition));
+        playerCamera.ScreenToWorldPoint(Input.mousePosition);
         Vector3 _rotation = mousePos - transform.position;
         float _rotZ = Mathf.Atan2(_rotation.y, _rotation.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, _rotZ);
