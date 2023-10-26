@@ -46,11 +46,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   Enemy1: {fileID: 5248694694386953751, guid: 3d96fb94b4fc5c14eac25ef23c949256, type: 3}
-  Enemy2: {fileID: 5248694694386953751, guid: 3d96fb94b4fc5c14eac25ef23c949256, type: 3}
-  Enemy3: {fileID: 5248694694386953751, guid: 3d96fb94b4fc5c14eac25ef23c949256, type: 3}
+  Enemy2: {fileID: 1978452687989836291, guid: 28d52a0c08eec2c4cb72bdfc0015aa68, type: 3}
+  Enemy3: {fileID: 6857246909252084628, guid: 9a91d7d76f283b44aac18ae879b32c26, type: 3}
   Enemy4: {fileID: 5248694694386953751, guid: 3d96fb94b4fc5c14eac25ef23c949256, type: 3}
-  Enemy1Interval: 1
-  Enemy2Interval: 1
-  Enemy3Interval: 1
-  Enemy4Interval: 1
-  playerSafeRadius: 5
+  Enemy1Interval: 10
+  Enemy2Interval: 10
+  Enemy3Interval: 10
+  Enemy4Interval: 10
+  playerSafeRadius: 20

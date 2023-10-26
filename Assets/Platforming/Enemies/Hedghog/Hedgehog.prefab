@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3899389805241901607}
   - component: {fileID: 2046883377698574833}
   - component: {fileID: 2894725315749115421}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: leftEdge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80,10 +80,11 @@ GameObject:
   - component: {fileID: 5248694694386953748}
   - component: {fileID: 5248694694386953749}
   - component: {fileID: 5248694694386953750}
-  - component: {fileID: 6199270902925870563}
   - component: {fileID: 6953870028051915368}
-  m_Layer: 0
-  m_Name: Enemy
+  - component: {fileID: 1108986520}
+  - component: {fileID: 1108986521}
+  m_Layer: 9
+  m_Name: Hedgehog
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -97,9 +98,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5248694694386953751}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.33, y: 7.27, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5584858065279757740}
   - {fileID: 1535000005638509318}
@@ -146,10 +147,10 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1710612771
-  m_SortingLayer: 4
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6320754, g: 0.43231574, b: 0.43231574, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -206,7 +207,27 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &6199270902925870563
+--- !u!114 &6953870028051915368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5248694694386953751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b7448a2fce0b8f41b77bb9f47bff953, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  runSpeed: 10
+  jumpForce: 400
+  jumpCooldown: 2
+  distanceToPounce: 5
+  currentState: 0
+  grounded: 1
+  moveRight: 0
+--- !u!114 &1108986520
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -221,7 +242,7 @@ MonoBehaviour:
   currentHp: 0
   maxHp: 100
   collisionDamage: 10
---- !u!114 &6953870028051915368
+--- !u!114 &1108986521
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -230,18 +251,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5248694694386953751}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b7448a2fce0b8f41b77bb9f47bff953, type: 3}
+  m_Script: {fileID: 11500000, guid: 6d56313c7864e3c48b4631c19b12bd83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialSpeed: 5
-  runSpeed: 10
-  moveRight: 0
-  jumpForce: 400
-  currentState: 0
-  distance: 0
-  jumpCooldown: 2
-  grounded: 1
-  canJump: 1
+  lootPrefab: {fileID: 2605321971612539940, guid: 2916d04157a089247a4f9f93a7246d16, type: 3}
+  lootList:
+  - {fileID: 11400000, guid: b5a9fdf8ff232b84ca5e0e4bc95c3187, type: 2}
 --- !u!1 &7375754641514443639
 GameObject:
   m_ObjectHideFlags: 0
@@ -253,7 +268,7 @@ GameObject:
   - component: {fileID: 5584858065279757740}
   - component: {fileID: 2067113347696469634}
   - component: {fileID: 4927498331028398522}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: horizontalView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -325,7 +340,7 @@ GameObject:
   - component: {fileID: 1535000005638509318}
   - component: {fileID: 4547875673344649272}
   - component: {fileID: 4893679596602272031}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: rightEdge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
