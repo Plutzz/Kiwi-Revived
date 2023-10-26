@@ -305,8 +305,8 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1476593857
-  m_SortingLayer: 2
+  m_SortingLayerID: 265184161
+  m_SortingLayer: 1
   m_SortingOrder: -1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -119188,22 +119188,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1 &1403200739 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8492960541228631772, guid: 9d3c9f1f891e8fd459852011d7d8c8d9, type: 3}
-  m_PrefabInstance: {fileID: 2123590487}
-  m_PrefabAsset: {fileID: 0}
---- !u!210 &1403200743
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1403200739}
-  m_Enabled: 1
-  m_SortingLayerID: 1710612771
-  m_SortingLayer: 4
-  m_SortingOrder: 0
 --- !u!1001 &1449664323
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -135850,6 +135834,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 564793050, guid: 9d3c9f1f891e8fd459852011d7d8c8d9, type: 3}
+      propertyPath: m_SortingLayer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 564793050, guid: 9d3c9f1f891e8fd459852011d7d8c8d9, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1710612771
+      objectReference: {fileID: 0}
     - target: {fileID: 2044251526, guid: 9d3c9f1f891e8fd459852011d7d8c8d9, type: 3}
       propertyPath: playerCamera
       value: 
@@ -135901,6 +135893,14 @@ PrefabInstance:
     - target: {fileID: 1849807643251689256, guid: 9d3c9f1f891e8fd459852011d7d8c8d9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4500707116528110899, guid: 9d3c9f1f891e8fd459852011d7d8c8d9, type: 3}
+      propertyPath: m_SortingLayer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4500707116528110899, guid: 9d3c9f1f891e8fd459852011d7d8c8d9, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1710612771
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d3c9f1f891e8fd459852011d7d8c8d9, type: 3}
