@@ -29,9 +29,9 @@ public class RotationPoint : Singleton<RotationPoint>
     // Rotates the rotation point to follow the mouse
     private void followMouse()
     {
-        Debug.Log(playerCamera.ScreenToWorldPoint(Input.mousePosition));
-        playerCamera.ScreenToWorldPoint(Input.mousePosition);
+        mousePos = playerCamera.ScreenToWorldPoint(Input.mousePosition);
         Vector3 _rotation = mousePos - transform.position;
+        Debug.Log(_rotation);
         float _rotZ = Mathf.Atan2(_rotation.y, _rotation.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, _rotZ);
         
