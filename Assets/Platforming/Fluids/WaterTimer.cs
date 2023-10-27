@@ -19,6 +19,6 @@ public class WaterTimer : PrefabTimer
     }
     protected override void DestroyPrefab()
     {
-        transform.DOScale(3f, 1f).SetEase(Ease.OutSine).OnComplete(() => { Destroy(gameObject); });
+        transform.DOScale(.25f, 1f).SetEase(Ease.OutSine).OnComplete(() => { Destroy(gameObject); });
     }
 }

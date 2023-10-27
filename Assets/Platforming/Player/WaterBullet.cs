@@ -6,7 +6,7 @@ public class WaterBullet : MonoBehaviour
 {
     public float velocity = 20.0f;
     public int damage = 10;
-    public static float distanceBetweenBullets = 0.5f;
+    public static float distanceBetweenBullets = 0.1f;
 
     //lowest and highest direction water can spawn
     [Header ("Spread of bullets")]
