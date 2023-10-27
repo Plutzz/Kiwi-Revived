@@ -8,6 +8,7 @@ public class ProjectileScript : MonoBehaviour
     public int damage = 10;
     public float velocityDecrease = 1.0f;
     public bool isFacingRight;
+    public ParticleSystem ps;
  
 
     //lowest and highest direction flame can spawn
@@ -54,9 +55,14 @@ public class ProjectileScript : MonoBehaviour
         if (collider.gameObject.CompareTag("Player"))
         {
             PlayerHealth.Instance.takeDamage(damage);
-            ParticleSystem ps = GameObject.Find("HitParticles").GetComponent<ParticleSystem>();
+
+
+
+            waterCollider.enabled = false;
+            waterParticle.bodyType = RigidbodyType2D.Static;
             ps.Play();
-            Destroy(gameObject);
+
+            //Destroy(gameObject, 1f);
         }
     }
 

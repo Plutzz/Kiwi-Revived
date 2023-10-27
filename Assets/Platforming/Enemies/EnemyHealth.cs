@@ -19,7 +19,7 @@ public class EnemyHealth : DamageableEntity
         GetComponent<LootManager>().InstantiateLoot(transform.position);
         Destroy(gameObject);
     }
-    void OnCollisionEnter2D(Collision2D other)
+    public virtual void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("WaterBullet")) 
             takeDamage(other.gameObject.GetComponent<WaterBullet>().damage);
