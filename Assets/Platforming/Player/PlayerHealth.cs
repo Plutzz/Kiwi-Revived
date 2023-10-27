@@ -8,6 +8,7 @@ public class PlayerHealth : DamageableEntity
     public int maxHp = 100;
     public Image hpSliderFill;
     public Slider hpBar;
+    public AudioSource hitsfx;
 
     public static PlayerHealth Instance;
 
@@ -27,6 +28,9 @@ public class PlayerHealth : DamageableEntity
         if(currentHp > 0)
         {
             currentHp -= damage;
+            ParticleSystem ps = GameObject.Find("HitParticles").GetComponent<ParticleSystem>();
+            ps.Play(true);
+            Instantiate(hitsfx);
         }
         
         float fillvalue = (float)currentHp/(float)maxHp;
