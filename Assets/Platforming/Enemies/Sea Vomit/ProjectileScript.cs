@@ -54,6 +54,8 @@ public class ProjectileScript : MonoBehaviour
         if (collider.gameObject.CompareTag("Player"))
         {
             PlayerHealth.Instance.takeDamage(damage);
+            ParticleSystem ps = GameObject.Find("HitParticles").GetComponent<ParticleSystem>();
+            ps.Play();
             Destroy(gameObject);
         }
     }
