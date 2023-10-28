@@ -1,3 +1,5 @@
+using DG.Tweening;
+using DG.Tweening.Core;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,21 +7,29 @@ using UnityEngine;
 public class Enemy4AI : MonoBehaviour
 {
     public float heightWhenOnTail = 4f;
-    public Enemy3AIState currentState = Enemy3AIState.Idle;
+    public KainState currentState = KainState.Idle;
     public GameObject tail;
     public GameObject tailEnd;
     public GameObject projectile;
+    public GameObject Graphics;
     public float shootCooldown = 0.8f;
     public float meleeCooldown = 1f;
     public bool canShoot = true;
     public bool canMelee = true;
+    public Vector3 shadowOffset;
 
 
-    private Transform player;
+    [SerializeField] private Transform player;
+    [SerializeField] private Transform kain;
+    [SerializeField] private float shadowSpeed;
+    [SerializeField] private float shadowFollowRadius;
+    [SerializeField] private float shadowRetreatRadius;
+    [SerializeField] private Tweener tweener;
     private float distance = 999f;
     private bool onTail = false;
+    private bool stanceChanged = false;
 
-    public enum Enemy3AIState {
+    public enum KainState {
         Idle,
         Chase,
         Melee,
@@ -27,7 +37,8 @@ public class Enemy4AI : MonoBehaviour
     }
 
     private void Start() {
-        player = PlayerMovement.Instance.transform;
+        //player = PlayerMovement.Instance.transform;
+        ChangeState(KainState.Melee);
     }
 
     void Update()
@@ -35,46 +46,74 @@ public class Enemy4AI : MonoBehaviour
 
         distance = player.position.x - transform.position.x;
 
-        switch((int)currentState)
+        if(distance > 0)
         {
-            case(0):
-            {
-                // Patrol();
-                break;
-            }
+            Graphics.transform.localScale = new Vector3(-1, 1, 1);
+        }
+        else if(distance < 0)
+        {
+            Graphics.transform.localScale = new Vector3(1, 1, 1);
+        }
 
-            case(1):
-            {
-                // FollowPlayer();
-                break;
-            }
 
-            case(2):
-            {
-                MeleeStance();
-                break;
-            }
+        switch ((int)currentState)
+        {
+            case (0):
+                {
+                    // Idle
+                    break;
+                }
 
-            case(3):
-            {
-                ShootStance();
-                break;
-            }
+            case (1):
+                {
+                    // Chase
+                    break;
+                }
+
+            case (2):
+                {
+                    if(stanceChanged == false)
+                    {
+                        MeleeStance();
+                        stanceChanged = true;
+                    }
+                    break;
+                }
+
+            case (3):
+                {
+                    if (stanceChanged == false)
+                    {
+                        ShootStance();
+                        stanceChanged = true;
+                    }
+                    break;
+                }
         }
     }
 
-    void MeleeStance ()
+    private void ChangeState(KainState _state)
+    {
+        currentState = _state;
+        stanceChanged = false;
+    }
+
+    void MeleeStance()
     {
         if(onTail)
         {
             transform.position -= new Vector3(0, heightWhenOnTail, 0);
             onTail = false;
         }
-
-        StartCoroutine(Melee());
+        else
+        {
+            ShadowPlayer();
+        }
+        // if (Cooldown is ready attack)
+        //StartCoroutine(Melee());
     }
 
-    void ShootStance ()
+    void ShootStance()
     {
         
 
@@ -108,5 +147,38 @@ public class Enemy4AI : MonoBehaviour
             canMelee = true;
         }
     }
+
+    private void ShadowPlayer()
+    {
+        //transform.position = player.transform.position + shadowOffset;
+        tweener = kain.DOMoveX(player.position.x, shadowSpeed).SetSpeedBased(true);
+        tweener.OnUpdate(delegate () {
+
+            if (currentState != KainState.Melee) tweener.Kill();
+
+            float _distance = Vector3.Distance(player.position, transform.position);
+
+            if (_distance > shadowFollowRadius)
+            {
+                tweener.ChangeEndValue(player.transform.position, shadowSpeed, true);
+            }
+            else if(_distance < shadowRetreatRadius)
+            {
+                tweener.ChangeEndValue(player.position + new Vector3(shadowFollowRadius * 2 * transform.localScale.x, 0, 0), shadowSpeed, true);
+            }
+            else
+            {
+                Debug.Log("Stop distance");
+                tweener.ChangeEndValue(player.position, 0.00000001f, true);
+            }
+        });
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(this.transform.position, shadowFollowRadius);
+        Gizmos.DrawWireSphere(this.transform.position, shadowRetreatRadius);
+    }
+
 
 }
