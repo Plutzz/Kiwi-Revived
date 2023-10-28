@@ -5,9 +5,9 @@ using Cinemachine;
 
 public class CameraShakeManager : Singleton<CameraShakeManager>
 {
-    [Serialized]
+    //[Serialized]
     public void CameraShake(CinemachineImpulseSource impulseSource)
     {
-        impulseSource.GenerateImpulseWithForce();
+        //impulseSource.GenerateImpulseWithForce();
     }
 }

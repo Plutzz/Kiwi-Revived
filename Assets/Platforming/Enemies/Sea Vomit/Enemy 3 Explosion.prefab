@@ -119,7 +119,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 550d45e15001dcf41b18ff50c3d1d636, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitsfx: {fileID: 1410371571640863089, guid: 7495d3f059a799b458cd062f614bc4ec, type: 3}
   delay: 0
 --- !u!1 &3536824191601967907
 GameObject:
@@ -4063,7 +4062,7 @@ ParticleSystem:
       properties: 0
       emitProbability: 1
   LightsModule:
-    enabled: 0
+    enabled: 1
     ratio: 0
     light: {fileID: 0}
     randomDistribution: 1
@@ -5000,6 +4999,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1264362262977678605}
+  - component: {fileID: 7280916163452262478}
   m_Layer: 0
   m_Name: Enemy 3 Explosion
   m_TagString: Untagged
@@ -5024,3 +5024,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7280916163452262478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5911096276961778903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1200293dba364745a18f4886d461249, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifetime: 0.5

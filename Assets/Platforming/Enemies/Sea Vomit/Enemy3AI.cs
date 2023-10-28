@@ -13,6 +13,8 @@ public class Enemy3AI : MonoBehaviour
     public GameObject parent;
     public GameObject explosion;
 
+    private bool instantiatedExplosion = false;
+
     // Update is called once per frame
     void Update()
     {
@@ -38,8 +40,12 @@ public class Enemy3AI : MonoBehaviour
             // enemy dies when scale reaches a certain amount
             if (this.transform.localScale.x >= 3)
             {
-                Instantiate(explosion, parent.transform.localPosition, Quaternion.identity);
-                GetComponent<LootManager>().InstantiateLoot(transform.position);
+                if (!instantiatedExplosion)
+                {
+                    Instantiate(explosion, parent.transform.localPosition, Quaternion.identity);
+                    GetComponent<LootManager>().InstantiateLoot(transform.position);
+                    instantiatedExplosion = true;
+                }
                 Destroy(parent);
 
             }

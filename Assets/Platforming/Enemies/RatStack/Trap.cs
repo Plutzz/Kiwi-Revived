@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Trap : MonoBehaviour
 {
-    public AudioSource boom;
     public int damage = 10;
     private Rigidbody2D rb;
 
@@ -31,7 +30,7 @@ public class Trap : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Instantiate(boom);
+            AudioManager.Instance.PlaySound(AudioManager.Sounds.Trap);
             PlayerHealth.Instance.takeDamage(damage);
             Destroy(gameObject);
 
