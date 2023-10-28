@@ -8,9 +8,9 @@ public class ItemPickUps : MonoBehaviour
 {
     public float PickUpRadius = 0.1f;
     public InventoryItemData ItemData;
-    private float magnetStrength = 0.1f;
-    private float magnetAcceleration = 0.5f;
-    private float maxMagnetStrength = 10f;
+    [SerializeField] private float magnetStrength = 0.1f;
+    [SerializeField] private float magnetAcceleration = 0.5f;
+    [SerializeField] private float maxMagnetStrength = 10f;
     //private float magnetRadius = 1.5f;
     private float startingMagnetStrength;
     public AudioSource pickupSound;
@@ -106,7 +106,7 @@ public class ItemPickUps : MonoBehaviour
     public void SetTarget(Transform target)
     {
         targetInventory = target.GetComponent<InventoryHolder>();
-        targetPosition = target.GetComponent<BoxCollider2D>().bounds.center;
+        targetPosition = target.GetComponent<Collider2D>().bounds.center;
 
         hasTarget = true;
     }
