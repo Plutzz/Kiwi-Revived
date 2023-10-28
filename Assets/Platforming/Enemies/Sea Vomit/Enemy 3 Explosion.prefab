@@ -119,6 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 550d45e15001dcf41b18ff50c3d1d636, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitsfx: {fileID: 1410371571640863089, guid: 7495d3f059a799b458cd062f614bc4ec, type: 3}
   delay: 0
 --- !u!1 &3536824191601967907
 GameObject:
