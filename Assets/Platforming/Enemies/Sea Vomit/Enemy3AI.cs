@@ -38,7 +38,7 @@ public class Enemy3AI : MonoBehaviour
             // enemy dies when scale reaches a certain amount
             if (this.transform.localScale.x >= 3)
             {
-                Instantiate(explosion, this.transform, true);
+                Instantiate(explosion, parent.transform.localPosition, Quaternion.identity);
                 GetComponent<LootManager>().InstantiateLoot(transform.position);
                 Destroy(parent);
 

@@ -62,7 +62,7 @@ public class ProjectileScript : MonoBehaviour
             waterParticle.bodyType = RigidbodyType2D.Static;
             ps.Play();
 
-            //Destroy(gameObject, 1f);
+            Destroy(gameObject, 5f);
         }
     }
 

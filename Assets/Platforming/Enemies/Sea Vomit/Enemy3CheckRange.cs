@@ -24,7 +24,6 @@ public class Enemy3CheckRange : MonoBehaviour
                 facingRight = true;
             }
         }
-   
     }
 
 
