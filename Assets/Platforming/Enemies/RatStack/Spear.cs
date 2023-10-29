@@ -28,10 +28,11 @@ public class Spear : MonoBehaviour
         if (collider.gameObject.CompareTag("Player"))
         {
             PlayerHealth.Instance.takeDamage(damage);
-            spear_rb.constraints = RigidbodyConstraints2D.FreezeAll;
-            transform.parent = collider.transform;
-            spear_rb.isKinematic = true;
-            spearCollider.enabled = false;
         }
+        spear_rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        transform.parent = collider.transform;
+        spear_rb.isKinematic = true;
+        Destroy(spearCollider);
+        Destroy(this);
     }
 }

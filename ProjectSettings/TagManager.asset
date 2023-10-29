@@ -10,6 +10,7 @@ TagManager:
   - PoisonBullet
   - FireBullet
   - Enemy3Projectile
+  - Ground
   layers:
   - Default
   - TransparentFX
