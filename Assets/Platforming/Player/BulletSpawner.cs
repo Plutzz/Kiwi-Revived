@@ -49,7 +49,7 @@ public class BulletSpawner : Singleton<BulletSpawner>
                 
                 playerController.FireRate = waterFireRate;
                 Vector3 _pos = transform.position;
-                _pos.y += Random.Range(-.25f, .25f);
+                //_pos.y += Random.Range(-.25f, .25f);
                 Instantiate(WaterPrefab, _pos, transform.rotation, PrefabManager);
                 FluidMaterial.color = WaterColor;
                 break;

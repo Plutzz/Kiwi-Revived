@@ -35222,6 +35222,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1011345335, guid: 9d3c9f1f891e8fd459852011d7d8c8d9, type: 3}
+      propertyPath: waterFireRate
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 1613898204, guid: 9d3c9f1f891e8fd459852011d7d8c8d9, type: 3}
       propertyPath: hpBar
       value: 
@@ -35230,6 +35234,10 @@ PrefabInstance:
       propertyPath: hpSliderFill
       value: 
       objectReference: {fileID: 703393690}
+    - target: {fileID: 1613898207, guid: 9d3c9f1f891e8fd459852011d7d8c8d9, type: 3}
+      propertyPath: FireRate
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2044251526, guid: 9d3c9f1f891e8fd459852011d7d8c8d9, type: 3}
       propertyPath: playerCamera
       value: 
