@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1105474639}
   - component: {fileID: 1105474644}
   - component: {fileID: 8446941044880035015}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Body
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 3956396092701408217}
   - component: {fileID: 6676475518569816008}
   - component: {fileID: 1281258644}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Range
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -306,7 +306,7 @@ GameObject:
   - component: {fileID: 4489622363859889716}
   - component: {fileID: 8940765786478490385}
   - component: {fileID: 715090442}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BulletSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -404,7 +404,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8102099719161226757}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SeaVomit
   m_TagString: Enemy
   m_Icon: {fileID: 0}
