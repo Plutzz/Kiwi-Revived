@@ -8,7 +8,7 @@ public class Enemy4AI : MonoBehaviour
 {
     public float heightWhenOnTail = 4f;
     public KainState currentState = KainState.Idle;
-    public GameObject tail;
+    public GameObject tailWhip;
     public GameObject tailEnd;
     public GameObject projectile;
     public GameObject Graphics;
@@ -110,7 +110,7 @@ public class Enemy4AI : MonoBehaviour
             ShadowPlayer();
         }
         // if (Cooldown is ready attack)
-        //StartCoroutine(Melee());
+        StartCoroutine(Melee());
     }
 
     void ShootStance()
@@ -141,7 +141,7 @@ public class Enemy4AI : MonoBehaviour
     {
         if(canMelee)
         {
-            Instantiate(tail, transform.position, transform.rotation);
+            Instantiate(tailWhip, transform.position, transform.rotation);
             canMelee = false;
             yield return new WaitForSeconds(meleeCooldown);
             canMelee = true;
