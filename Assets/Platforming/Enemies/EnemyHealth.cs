@@ -28,7 +28,7 @@ public class EnemyHealth : DamageableEntity
         else if (other.gameObject.CompareTag("FireBullet"))
             takeDamage(other.gameObject.GetComponent<FireBullet>().damage);
         else if (other.gameObject.CompareTag("Player"))
-            PlayerHealth.Instance.takeDamage(collisionDamage); Debug.Log("take collision damage");
+            PlayerHealth.Instance.takeDamage(collisionDamage);
 
     }
 

@@ -7,6 +7,8 @@ using UnityEngine;
 
 public class WaterTimer : PrefabTimer
 {
+    [SerializeField] private Ease ease;
+
     private bool destroyCalled = false;
     protected override void Update()
     {
@@ -19,6 +21,6 @@ public class WaterTimer : PrefabTimer
     }
     protected override void DestroyPrefab()
     {
-        transform.DOScale(.25f, 1f).SetEase(Ease.OutSine).OnComplete(() => { Destroy(gameObject); });
+       transform.DOScale(.5f, 1f).SetEase(ease).OnComplete(() => { Destroy(gameObject); });
     }
 }
