@@ -132,7 +132,7 @@ public class Enemy4AI : MonoBehaviour
         {
             canShoot = false;
             yield return new WaitForSeconds(shootCooldown);
-            Instantiate(projectile, tailEnd.transform.position, transform.rotation);
+            Instantiate(projectile, tailEnd.transform.position, tailEnd.transform.rotation);
             canShoot = true;
         }
     }
