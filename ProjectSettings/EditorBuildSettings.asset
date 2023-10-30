@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Main_Menu.unity
     guid: 3f09eec1d7bbb684897d227a07705a2d
   - enabled: 1
+    path: Assets/Scenes/Farm.unity
+    guid: 9d20cb6856352194591fb942510f00bc
+  - enabled: 1
     path: Assets/Scenes/PlatformingMovement.unity
     guid: 8986994d1a43c714cb441ff7f7c361f4
   - enabled: 1
