@@ -12,7 +12,7 @@ public class Enemy4AI : MonoBehaviour
     public GameObject tailEnd;
     public GameObject projectile;
     public GameObject Graphics;
-    public float shootCooldown = 0.8f;
+    public float shootCooldown = 2f;
     public float meleeCooldown = 1f;
     public bool canShoot = true;
     public bool canMelee = true;
@@ -27,7 +27,7 @@ public class Enemy4AI : MonoBehaviour
     [SerializeField] private Tweener tweener;
     private float distance = 999f;
     private bool onTail = false;
-    private bool stanceChanged = false;
+    //private bool stanceChanged = false;
 
     public enum KainState {
         Idle,
@@ -72,20 +72,20 @@ public class Enemy4AI : MonoBehaviour
 
             case (2):
                 {
-                    if(stanceChanged == false)
+                    //if(stanceChanged == false)
                     {
                         MeleeStance();
-                        stanceChanged = true;
+                        //stanceChanged = true;
                     }
                     break;
                 }
 
             case (3):
                 {
-                    if (stanceChanged == false)
+                    //if (stanceChanged == false)
                     {
                         ShootStance();
-                        stanceChanged = true;
+                        //stanceChanged = true;
                     }
                     break;
                 }
@@ -95,7 +95,7 @@ public class Enemy4AI : MonoBehaviour
     private void ChangeState(KainState _state)
     {
         currentState = _state;
-        stanceChanged = false;
+        //stanceChanged = false;
     }
 
     void MeleeStance()
@@ -178,6 +178,11 @@ public class Enemy4AI : MonoBehaviour
     {
         Gizmos.DrawWireSphere(this.transform.position, shadowFollowRadius);
         Gizmos.DrawWireSphere(this.transform.position, shadowRetreatRadius);
+    }
+
+    private void Idle ()
+    {
+
     }
 
 
