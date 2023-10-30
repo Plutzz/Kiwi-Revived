@@ -12,9 +12,22 @@ public class PlayerHealth : DamageableEntity
     private CinemachineImpulseSource impulseSource;
     public static PlayerHealth Instance;
 
+    [SerializeField] private float invincibilityTime = 1f;
+    [SerializeField] private int invincibilityBlinks = 3;
+    [SerializeField] private GameObject graphics;
+
+    private bool canTakeDamage;
+
+    [SerializeField] private float hitStopTimeScale = 0.05f;    // How slow the game slows down to when hit
+    [SerializeField] private int hitStopRestoreSpeed = 10; // Speed at which time scale is restored
+    [SerializeField] private float hitStopDelay = 0.1f;        // How much time before time begins to restore to normal
+
+    private float speed;
+    private bool restoreTime;
     void Awake ()
     {
         Instance = this;
+        canTakeDamage = true;
     }
 
     private void Start()
@@ -24,8 +37,29 @@ public class PlayerHealth : DamageableEntity
         currentHp = maxHp;
     }
 
+    private void Update()
+    {
+        if(restoreTime)
+        {
+            if (Time.timeScale < 1f)
+            {
+                Time.timeScale += Time.deltaTime * speed;
+            }
+            else
+            {
+                Time.timeScale = 1f;
+                restoreTime = false;
+            }
+        }
+    }
+
     public override void takeDamage (int damage)
     {
+        if (!canTakeDamage) return;
+
+        canTakeDamage = false;
+        StartCoroutine(Invincibility());
+
         if(currentHp > 0)
         {
             currentHp -= damage;
@@ -33,6 +67,7 @@ public class PlayerHealth : DamageableEntity
             ps.Play(true);
             CameraShakeManager.Instance.CameraShake(impulseSource);
             AudioManager.Instance.PlaySound(AudioManager.Sounds.PlayerDamaged);
+            StopTime(hitStopTimeScale, hitStopRestoreSpeed, hitStopDelay);
         }
         
         float fillvalue = (float)currentHp/(float)maxHp;
@@ -40,6 +75,42 @@ public class PlayerHealth : DamageableEntity
         // Debug.Log(fillvalue);
 
         hpBar.value = fillvalue;
+    }
+
+    private IEnumerator Invincibility()
+    {
+        for (int i = 0; i < invincibilityBlinks; i++)
+        {
+            yield return new WaitForSeconds(invincibilityTime / (invincibilityBlinks * 2));
+            graphics.SetActive(false);
+            yield return new WaitForSeconds(invincibilityTime / (invincibilityBlinks * 2));
+            graphics.SetActive(true);
+        }
+
+        canTakeDamage = true;
+    }
+
+    private void StopTime(float changeTimeScale, int restoreSpeed, float delay)
+    {
+        speed = restoreSpeed;
+
+        if(delay > 0)
+        {
+            StopCoroutine(StartTimeAgain(delay));
+            StartCoroutine(StartTimeAgain(delay));
+        }
+        else
+        {
+            restoreTime = true;
+        }
+
+        Time.timeScale = changeTimeScale;
+    }
+
+    private IEnumerator StartTimeAgain(float amt)
+    {
+        yield return new WaitForSecondsRealtime(amt);
+        restoreTime = true;
     }
 
 }

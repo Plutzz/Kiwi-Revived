@@ -11246,6 +11246,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &627479209 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8492960541228631772, guid: 9d3c9f1f891e8fd459852011d7d8c8d9, type: 3}
+  m_PrefabInstance: {fileID: 2123590487}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &684605730
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35426,14 +35431,34 @@ PrefabInstance:
       propertyPath: waterFireRate
       value: 0.05
       objectReference: {fileID: 0}
+    - target: {fileID: 1377541681, guid: 9d3c9f1f891e8fd459852011d7d8c8d9, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1613898204, guid: 9d3c9f1f891e8fd459852011d7d8c8d9, type: 3}
       propertyPath: hpBar
       value: 
       objectReference: {fileID: 2056864056}
     - target: {fileID: 1613898204, guid: 9d3c9f1f891e8fd459852011d7d8c8d9, type: 3}
+      propertyPath: graphics
+      value: 
+      objectReference: {fileID: 627479209}
+    - target: {fileID: 1613898204, guid: 9d3c9f1f891e8fd459852011d7d8c8d9, type: 3}
+      propertyPath: hitStopDelay
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1613898204, guid: 9d3c9f1f891e8fd459852011d7d8c8d9, type: 3}
       propertyPath: hpSliderFill
       value: 
       objectReference: {fileID: 703393690}
+    - target: {fileID: 1613898204, guid: 9d3c9f1f891e8fd459852011d7d8c8d9, type: 3}
+      propertyPath: hitStopTimeScale
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1613898204, guid: 9d3c9f1f891e8fd459852011d7d8c8d9, type: 3}
+      propertyPath: hitStopRestoreSpeed
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 1613898207, guid: 9d3c9f1f891e8fd459852011d7d8c8d9, type: 3}
       propertyPath: FireRate
       value: 0
@@ -35497,6 +35522,14 @@ PrefabInstance:
     - target: {fileID: 1849807643251689256, guid: 9d3c9f1f891e8fd459852011d7d8c8d9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6034790368984252965, guid: 9d3c9f1f891e8fd459852011d7d8c8d9, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8492960541228631772, guid: 9d3c9f1f891e8fd459852011d7d8c8d9, type: 3}
+      propertyPath: m_Name
+      value: Graphics
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d3c9f1f891e8fd459852011d7d8c8d9, type: 3}

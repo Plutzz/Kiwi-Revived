@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Progress;
-
 // This script creates a dictonary of all items using the resources folder.
 public class ItemManager : MonoBehaviour
 {
