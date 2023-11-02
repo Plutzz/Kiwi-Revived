@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: 25
-  damage: 1
+  damage: 10
   maxRange: 0
   minRange: 0
 --- !u!212 &238782239006985811

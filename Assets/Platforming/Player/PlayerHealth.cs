@@ -22,8 +22,8 @@ public class PlayerHealth : DamageableEntity
     [SerializeField] private int hitStopRestoreSpeed = 10; // Speed at which time scale is restored
     [SerializeField] private float hitStopDelay = 0.1f;        // How much time before time begins to restore to normal
 
-    public ParticleSystem ImpactEffect;
-    private Animator anim;
+    [SerializeField] private ParticleSystem impactEffect;
+    [SerializeField] private Animator anim;
 
     private float speed;
     private bool restoreTime;
@@ -67,7 +67,7 @@ public class PlayerHealth : DamageableEntity
         if(currentHp > 0)
         {
             currentHp -= damage;
-            ImpactEffect.Play(true);
+            impactEffect.Play(true);
             CameraShakeManager.Instance.CameraShake(impulseSource);
             AudioManager.Instance.PlaySound(AudioManager.Sounds.PlayerDamaged);
             StopTime(hitStopTimeScale, hitStopRestoreSpeed, hitStopDelay);
