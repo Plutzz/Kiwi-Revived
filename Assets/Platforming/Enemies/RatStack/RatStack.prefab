@@ -346,7 +346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHp: 0
-  maxHp: 500
+  maxHp: 200
   collisionDamage: 10
 --- !u!1 &2368061374460400016
 GameObject:

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8368264374908150038}
   - component: {fileID: 1105474639}
   - component: {fileID: 1105474644}
+  - component: {fileID: 7223350499819967590}
   m_Layer: 9
   m_Name: Body
   m_TagString: Enemy
@@ -151,8 +152,23 @@ MonoBehaviour:
   velocityDecrease: 1
   rangeCheck: {fileID: 3877820676051271909}
   projectileSpawner: {fileID: 5976967802538950640}
-  parent: {fileID: 6857246909252084628}
+--- !u!114 &7223350499819967590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3585109664665116707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc01e5f05daf78c41801bd50dea10f10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHp: 0
+  maxHp: 100
+  collisionDamage: 10
   explosion: {fileID: 5911096276961778903, guid: 45374f6d8364375489347976c9beeaaf, type: 3}
+  parent: {fileID: 6857246909252084628}
 --- !u!1 &3877820676051271909
 GameObject:
   m_ObjectHideFlags: 0
