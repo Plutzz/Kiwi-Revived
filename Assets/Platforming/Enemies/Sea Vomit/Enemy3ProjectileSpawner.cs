@@ -12,9 +12,7 @@ public class Enemy3ProjectileSpawner : MonoBehaviour
     public void shoot()
     {
         num += 1;
-        Quaternion _rotation = transform.rotation;
-        _rotation.z += -45; // Shoot at a 45 degree angle
-        var newObject = Instantiate(WaterPrefab, this.transform.position, _rotation, this.transform);
+        var newObject = Instantiate(WaterPrefab, this.transform.position, transform.rotation, this.transform);
         newObject.GetComponentInChildren<ProjectileScript>().setVelocityDecrease(Enemy3.GetComponent<Enemy3AI>().velocityDecrease);
         //Debug.Log(rangeCheck.GetComponent<Enemy3CheckRange>().facingRight);
         newObject.GetComponentInChildren<ProjectileScript>().setDirection(rangeCheck.GetComponent<Enemy3CheckRange>().facingRight);
