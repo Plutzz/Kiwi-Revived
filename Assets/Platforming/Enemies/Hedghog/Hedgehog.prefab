@@ -252,7 +252,6 @@ GameObject:
   - component: {fileID: 5248694694386953750}
   - component: {fileID: 6953870028051915368}
   - component: {fileID: 1108986520}
-  - component: {fileID: 1108986521}
   m_Layer: 9
   m_Name: Hedgehog
   m_TagString: Enemy
@@ -363,21 +362,6 @@ MonoBehaviour:
   currentHp: 0
   maxHp: 500
   collisionDamage: 10
---- !u!114 &1108986521
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5248694694386953751}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d56313c7864e3c48b4631c19b12bd83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lootPrefab: {fileID: 2605321971612539940, guid: 2916d04157a089247a4f9f93a7246d16, type: 3}
-  lootList:
-  - {fileID: 11400000, guid: b5a9fdf8ff232b84ca5e0e4bc95c3187, type: 2}
 --- !u!1 &6523893968672440259
 GameObject:
   m_ObjectHideFlags: 0
