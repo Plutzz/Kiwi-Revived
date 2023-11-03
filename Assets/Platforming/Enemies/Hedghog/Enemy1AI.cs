@@ -20,6 +20,7 @@ public class Enemy1AI : MonoBehaviour
     private float distance = 999f;
     private bool canJump = true;
     private Vector3 currentVelocity;
+    [SerializeField] private GameObject PlayerScripts;
     
     public enum State {
         Idle,
@@ -36,12 +37,13 @@ public class Enemy1AI : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        if(PlayerScripts != null)
         player = PlayerMovement.Instance.transform;
     }
 
     void Update()
     {
-        distance = player.position.x - transform.position.x;
+        if(player != null) distance = player.position.x - transform.position.x;
 
         switch((int)currentState)
         {

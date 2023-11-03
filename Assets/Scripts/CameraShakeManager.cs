@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 
-public class CameraShakeManager : Singleton<CameraShakeManager>
+public class CameraShakeManager : SingletonPersistent<CameraShakeManager>
 {
     [SerializeField] private float globalShakeForce = 1f;
     public void CameraShake(CinemachineImpulseSource impulseSource)

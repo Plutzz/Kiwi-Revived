@@ -18,7 +18,7 @@ public class DamageableEntity : MonoBehaviour
         return currentHp;
     }
 
-    public virtual void OnDeath()
+    protected virtual void OnDeath()
     {
         Destroy(gameObject);
     }

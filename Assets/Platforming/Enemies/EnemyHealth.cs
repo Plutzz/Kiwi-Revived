@@ -14,7 +14,7 @@ public class EnemyHealth : DamageableEntity
     }
 
 
-    public override void OnDeath()
+    protected override void OnDeath()
     {
         Destroy(gameObject);
     }

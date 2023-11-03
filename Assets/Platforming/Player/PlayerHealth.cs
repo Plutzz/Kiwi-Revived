@@ -18,12 +18,14 @@ public class PlayerHealth : DamageableEntity
 
     private bool canTakeDamage;
 
+    [Header("HITSTUN")]
     [SerializeField] private float hitStopTimeScale = 0.05f;    // How slow the game slows down to when hit
     [SerializeField] private int hitStopRestoreSpeed = 10; // Speed at which time scale is restored
     [SerializeField] private float hitStopDelay = 0.1f;        // How much time before time begins to restore to normal
-
     [SerializeField] private ParticleSystem impactEffect;
     [SerializeField] private Animator anim;
+    [SerializeField] private GameObject deathHandler;
+    [SerializeField] private Rigidbody2D rb;
 
     private float speed;
     private bool restoreTime;
@@ -64,20 +66,25 @@ public class PlayerHealth : DamageableEntity
         canTakeDamage = false;
         StartCoroutine(Invincibility());
 
-        if(currentHp > 0)
+        currentHp -= damage;
+        impactEffect.Play(true);
+        CameraShakeManager.Instance.CameraShake(impulseSource);
+        AudioManager.Instance.PlaySound(AudioManager.Sounds.PlayerDamaged);
+        if (currentHp > 0)
         {
-            currentHp -= damage;
-            impactEffect.Play(true);
-            CameraShakeManager.Instance.CameraShake(impulseSource);
-            AudioManager.Instance.PlaySound(AudioManager.Sounds.PlayerDamaged);
             StopTime(hitStopTimeScale, hitStopRestoreSpeed, hitStopDelay);
+        }
+
+        if (currentHp <= 0)
+        {
+            OnDeath();
         }
         
         float fillvalue = (float)currentHp/(float)maxHp;
 
         // Debug.Log(fillvalue);
 
-        hpBar.value = fillvalue;
+        //hpBar.value = fillvalue;
     }
 
     private IEnumerator Invincibility()
@@ -118,4 +125,11 @@ public class PlayerHealth : DamageableEntity
         restoreTime = true;
     }
 
+    protected override void OnDeath()
+    {
+        Instantiate(deathHandler, transform.position, transform.rotation);
+        Destroy(graphics);
+        rb.bodyType = RigidbodyType2D.Static;
+        Destroy(gameObject);
+    }
 }

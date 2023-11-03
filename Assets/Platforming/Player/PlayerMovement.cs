@@ -32,6 +32,7 @@ public class PlayerMovement : Singleton<PlayerMovement>
     [SerializeField] private float maxFallSpeed = 3f;
     [SerializeField] private float fallClamp = -40f;
 
+    [SerializeField]
     private Rigidbody2D rb;
     private float targetVelocityX = 0f;
     private float currentVelocityX = 0f;
@@ -52,12 +53,6 @@ public class PlayerMovement : Singleton<PlayerMovement>
     public bool JumpUp { get; private set; }
     public bool IsGrounded { get; private set; }
     public bool HitHead { get; private set; }
-
-    private void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
-
     private void Update()
     {
         if (rb == null) return;
