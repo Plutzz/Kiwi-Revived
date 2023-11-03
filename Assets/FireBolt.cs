@@ -18,10 +18,11 @@ public class FireBolt : MonoBehaviour
         transform.position += transform.right * velocity * Time.deltaTime; 
     }
 
-    private void OnCollisionEnter2D(Collision2D other) {
+    private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.CompareTag("Player"))
         {
             other.gameObject.GetComponent<PlayerHealth>().takeDamage(damage);
+            Debug.Log("damagetaken");
         }
     }
 }

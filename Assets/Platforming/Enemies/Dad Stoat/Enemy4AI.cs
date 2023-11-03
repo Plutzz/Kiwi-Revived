@@ -25,6 +25,7 @@ public class Enemy4AI : MonoBehaviour
     [SerializeField] private float shadowFollowRadius;
     [SerializeField] private float shadowRetreatRadius;
     [SerializeField] private Tweener tweener;
+    [SerializeField] private float distanceToStartShooting = 10f;
     private float distance = 999f;
     private bool onTail = false;
     //private bool stanceChanged = false;
@@ -53,6 +54,14 @@ public class Enemy4AI : MonoBehaviour
         else if(distance < 0)
         {
             Graphics.transform.localScale = new Vector3(1, 1, 1);
+        }
+
+        if(Mathf.Abs(distance) > distanceToStartShooting)
+        {
+            ChangeState(KainState.Range);
+        } else if (Mathf.Abs(distance) < distanceToStartShooting)
+        {
+            ChangeState(KainState.Melee);
         }
 
 
