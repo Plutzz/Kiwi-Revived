@@ -329,6 +329,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  spriteTransform: {fileID: 2389281190044033280}
   leftGroundCheck: {fileID: 1273129623578047264}
   rightGroundCheck: {fileID: 3514094573314639936}
   attackCollider: {fileID: 2936570176551356525}
@@ -550,7 +551,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: f5a83cb7e52ca7f469ba7eaca9144871, type: 3}
       propertyPath: m_ConstrainProportionsScale
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 4843985084834002234, guid: f5a83cb7e52ca7f469ba7eaca9144871, type: 3}

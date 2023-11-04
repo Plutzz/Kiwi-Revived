@@ -8,7 +8,7 @@ public class EnemyMovement : MonoBehaviour
     // Variables
     [Header("MOVEMENT")]
     public float speed = 10f;
-    private float runSpeed = 20;
+    private readonly float runSpeed = 20;
     public float moveTime = 5f;
     public float visionRange = 40f;
     public float visionAngle = 45f;
@@ -17,6 +17,7 @@ public class EnemyMovement : MonoBehaviour
     [Header("GAMEOBJECTS")]
     public LayerMask groundLayer;                 // Layer mask for the ground
     private Transform playerTransform;
+    public Transform spriteTransform;
     private Rigidbody2D rb;
     [SerializeField] private EdgeCollider2D leftGroundCheck;
     [SerializeField] private EdgeCollider2D rightGroundCheck;
@@ -24,12 +25,13 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private CircleCollider2D escapeCollider; // Escape collider is used to check if the player is within minimum range (melee)
 
     // Private Variables
-    Vector2[] directions = { Vector2.left, Vector2.right, Vector2.zero};
+    Vector2[] directions = { Vector2.left, Vector2.right, Vector2.zero };
     private float timer = 0f;
     private Vector2 currentDirection;
     private Vector2 lastKnownPosition;
     private bool isLeftGrounded = false;
     private bool isRightGrounded = false;
+    private bool facingRight = false;
     // States
     private Enemy2AI enemy;
 
@@ -54,6 +56,8 @@ public class EnemyMovement : MonoBehaviour
 
     public void Move()
     {
+        facingRight = currentDirection.x > 0;
+        SpriteFlip();
         if (timer >= moveTime || !isLeftGrounded || !isRightGrounded)
         {
             currentDirection = directions[Random.Range(0, directions.Length)];
@@ -63,17 +67,17 @@ public class EnemyMovement : MonoBehaviour
         if (isLeftGrounded && isRightGrounded)
         {
             currentDirection.Normalize();
-            rb.position += currentDirection * speed * Time.deltaTime;
+            rb.position += speed * Time.deltaTime * currentDirection;
         }
         else if (!isLeftGrounded)
         {
             currentDirection = Vector2.right;
-            rb.position += currentDirection * speed * Time.deltaTime;
+            rb.position += speed * Time.deltaTime * currentDirection;
         }
         else if (!isRightGrounded)
         {
             currentDirection = Vector2.left;
-            rb.position += currentDirection * speed * Time.deltaTime;
+            rb.position += speed * Time.deltaTime * currentDirection;
         }
 
 
@@ -81,7 +85,8 @@ public class EnemyMovement : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(transform.position, currentDirection, 1f, groundLayer);
         Debug.DrawRay(transform.position, currentDirection * 3f, Color.magenta);
 
-        if (hit.collider != null) {
+        if (hit.collider != null)
+        {
             currentDirection *= -1;
             timer = 0f;
         }
@@ -90,6 +95,17 @@ public class EnemyMovement : MonoBehaviour
         timer += Time.deltaTime;
     }
 
+    public void SpriteFlip()
+    {
+        if (facingRight) {
+            spriteTransform.localPosition = new Vector3(Mathf.Abs(spriteTransform.localPosition.x), spriteTransform.localPosition.y, spriteTransform.localPosition.z);
+            spriteTransform.localScale = new Vector3(-Mathf.Abs(spriteTransform.localScale.x), 1, 1);
+        } else {
+            spriteTransform.localPosition = new Vector3(-Mathf.Abs(spriteTransform.localPosition.x), spriteTransform.localPosition.y, spriteTransform.localPosition.z);
+            spriteTransform.localScale = new Vector3(Mathf.Abs(spriteTransform.localScale.x), 1, 1);
+        }
+        facingRight = !facingRight;
+    }
     public void CheckVision()
     {
         Vector2 directionToPlayer = playerTransform.position - transform.position;
@@ -116,31 +132,36 @@ public class EnemyMovement : MonoBehaviour
                 // Move towards the last known position of the player if and only if the enemy is grounded
                 if (isLeftGrounded && isRightGrounded)
                     newPosition = Vector2.MoveTowards(transform.position, new Vector2(lastKnownPosition.x, transform.position.y), speed * Time.deltaTime);
-                
+
                 rb.MovePosition(newPosition);
 
                 if (newPosition == lastKnownPosition)
                     enemy.state = Enemy2AI.EnemyAIState.Patrol;
-                 else
+                else
                     StartCoroutine(GoBackToPatrol());
-            } else
+            }
+            else
                 enemy.state = Enemy2AI.EnemyAIState.Patrol;
-        } else if (distanceToPlayer <= visionRange && angleToPlayer <= visionAngle && enemy.state != Enemy2AI.EnemyAIState.Attack)
+        }
+        else if (distanceToPlayer <= visionRange && angleToPlayer <= visionAngle && enemy.state != Enemy2AI.EnemyAIState.Attack)
         {
             enemy.state = Enemy2AI.EnemyAIState.Chase;
             lastKnownPosition = playerTransform.position;
-        } 
+        }
 
-        if (distanceToPlayer < minimumDistance) {
+        if (distanceToPlayer < minimumDistance)
+        {
             // Add panic shooting if it is on the edge and cant go anywhere?
             enemy.state = Enemy2AI.EnemyAIState.Retreat;
             if (isLeftGrounded && isRightGrounded)
                 transform.position = Vector2.MoveTowards(transform.position, playerTransform.position, -speed * Time.deltaTime);
-        } else if (distanceToPlayer <= maximumDistance && distanceToPlayer > minimumDistance) {
+        }
+        else if (distanceToPlayer <= maximumDistance && distanceToPlayer > minimumDistance)
+        {
             enemy.state = Enemy2AI.EnemyAIState.Attack;
         }
 
-    }   
+    }
 
     public void CheckCollision()
     {
@@ -177,7 +198,7 @@ public class EnemyMovement : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, maximumDistance);
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, visionRange);
-        
+
     }
 
     /*
