@@ -34,6 +34,9 @@ public class Trap : MonoBehaviour
             PlayerHealth.Instance.takeDamage(damage);
             Destroy(gameObject);
 
+        } else if (collision.gameObject.CompareTag("WaterBullet"))
+        {
+            
         }
     }
 }
