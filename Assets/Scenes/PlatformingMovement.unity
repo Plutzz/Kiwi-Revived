@@ -561,7 +561,7 @@ GameObject:
   - component: {fileID: 190717723}
   - component: {fileID: 190717721}
   - component: {fileID: 190717722}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: bridge (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -580,7 +580,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 10
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -2077,7 +2077,7 @@ GameObject:
   - component: {fileID: 796174824}
   - component: {fileID: 796174826}
   - component: {fileID: 796174825}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EndingAnchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2298,7 +2298,7 @@ GameObject:
   - component: {fileID: 841297804}
   - component: {fileID: 841297802}
   - component: {fileID: 841297803}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: bridge (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2317,7 +2317,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 10
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -2999,7 +2999,7 @@ GameObject:
   - component: {fileID: 1128922497}
   - component: {fileID: 1128922495}
   - component: {fileID: 1128922496}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: bridge (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3018,7 +3018,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 10
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -3411,7 +3411,7 @@ GameObject:
   - component: {fileID: 1232625508}
   - component: {fileID: 1232625506}
   - component: {fileID: 1232625507}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: bridge (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3430,7 +3430,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 10
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -3747,7 +3747,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1314432839}
   - component: {fileID: 1314432838}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Startinganchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3865,7 +3865,7 @@ GameObject:
   - component: {fileID: 1379727819}
   - component: {fileID: 1379727817}
   - component: {fileID: 1379727818}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: bridge (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3884,7 +3884,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 10
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -4140,7 +4140,7 @@ GameObject:
   - component: {fileID: 1436189468}
   - component: {fileID: 1436189467}
   - component: {fileID: 1436189466}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: bridge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4198,7 +4198,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 10
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -4702,7 +4702,7 @@ GameObject:
   - component: {fileID: 1586650367}
   - component: {fileID: 1586650365}
   - component: {fileID: 1586650366}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: bridge (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4721,7 +4721,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 10
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -21122,7 +21122,7 @@ GameObject:
   - component: {fileID: 1714477376}
   - component: {fileID: 1714477375}
   - component: {fileID: 1714477374}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: bridge (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21180,7 +21180,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 10
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -22374,7 +22374,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2065688064}
   - component: {fileID: 2065688065}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: bridge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22389,7 +22389,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2065688063}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -26.95, y: -43, z: 0}
+  m_LocalPosition: {x: -26.95, y: -43.31, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -22704,6 +22704,10 @@ PrefabInstance:
       value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 9209858841393199061, guid: 98a2a549737e68d45ba3cb4c4891b781, type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9209858841393199061, guid: 98a2a549737e68d45ba3cb4c4891b781, type: 3}
       propertyPath: InitialModule.gravityModifier.scalar
       value: 0
       objectReference: {fileID: 0}
@@ -22754,6 +22758,10 @@ PrefabInstance:
     - target: {fileID: 9209858841483839046, guid: 98a2a549737e68d45ba3cb4c4891b781, type: 3}
       propertyPath: m_Name
       value: Ambient Particles
+      objectReference: {fileID: 0}
+    - target: {fileID: 9209858841573611302, guid: 98a2a549737e68d45ba3cb4c4891b781, type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9209858841573611302, guid: 98a2a549737e68d45ba3cb4c4891b781, type: 3}
       propertyPath: InitialModule.gravityModifier.scalar
