@@ -16,6 +16,7 @@ public class Enemy1AI : MonoBehaviour
     public State currentState = State.Idle;
     public bool grounded = true;
     public bool moveRight = false;
+    public Transform sprite;
 
     private float distance = 999f;
     private bool canJump = true;
@@ -67,12 +68,18 @@ public class Enemy1AI : MonoBehaviour
             }
         }
     }
-
+    void SpriteFlip() {
+        if (moveRight) {
+            sprite.localScale = new Vector3(-Mathf.Abs(sprite.localScale.x), sprite.localScale.y, sprite.localScale.z);
+        } else {
+            sprite.localScale = new Vector3(Mathf.Abs(sprite.localScale.x), sprite.localScale.y, sprite.localScale.z);
+        }
+    }
     void Patrol ()
     {
+        SpriteFlip();
         if(moveRight)
         {
-
             currentVelocity = rb.velocity;
             currentVelocity.x = speed;
             rb.velocity = currentVelocity;
@@ -85,6 +92,7 @@ public class Enemy1AI : MonoBehaviour
 
     void FollowPlayer ()
     {
+        SpriteFlip();
         if(distance > 0 && canJump)
         {
             currentVelocity = rb.velocity;

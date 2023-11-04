@@ -347,6 +347,8 @@ MonoBehaviour:
   currentState: 0
   grounded: 1
   moveRight: 0
+  sprite: {fileID: 1858288136077774268}
+  PlayerScripts: {fileID: 0}
 --- !u!114 &1108986520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -614,6 +616,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: enemy_hedgehog
       objectReference: {fileID: 0}
+    - target: {fileID: -8653719598885068355, guid: 6e5d1c0051541834cbfc86ba013fe67a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 6e5d1c0051541834cbfc86ba013fe67a, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -672,7 +678,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 6e5d1c0051541834cbfc86ba013fe67a, type: 3}
       propertyPath: m_ConstrainProportionsScale
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7045412299599219760, guid: 6e5d1c0051541834cbfc86ba013fe67a, type: 3}
       propertyPath: m_Bounds.m_Center.x
