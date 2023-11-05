@@ -52,6 +52,7 @@ public class PlayerHealth : DamageableEntity
             }
             else
             {
+                rb.bodyType = RigidbodyType2D.Dynamic;
                 Time.timeScale = 1f;
                 restoreTime = false;
                 anim.SetBool("Damaged", false);
@@ -73,6 +74,7 @@ public class PlayerHealth : DamageableEntity
         if (currentHp > 0)
         {
             StopTime(hitStopTimeScale, hitStopRestoreSpeed, hitStopDelay);
+            
         }
 
         if (currentHp <= 0)
@@ -106,13 +108,13 @@ public class PlayerHealth : DamageableEntity
 
         if(delay > 0)
         {
+            rb.bodyType = RigidbodyType2D.Kinematic;
             StopCoroutine(StartTimeAgain(delay));
             StartCoroutine(StartTimeAgain(delay));
         }
         else
         {
             restoreTime = true;
-            
         }
 
         Time.timeScale = changeTimeScale;
@@ -130,6 +132,7 @@ public class PlayerHealth : DamageableEntity
         Instantiate(deathHandler, transform.position, transform.rotation);
         Destroy(graphics);
         rb.bodyType = RigidbodyType2D.Static;
+        Destroy(rb.gameObject.GetComponent<Collider2D>());
         Destroy(gameObject);
     }
 }
