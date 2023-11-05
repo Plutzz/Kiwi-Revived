@@ -561,6 +561,7 @@ GameObject:
   - component: {fileID: 190717723}
   - component: {fileID: 190717721}
   - component: {fileID: 190717722}
+  - component: {fileID: 190717726}
   m_Layer: 6
   m_Name: bridge (7)
   m_TagString: Untagged
@@ -624,7 +625,7 @@ CapsuleCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.89}
   m_Size: {x: 2.69, y: 0.15}
@@ -696,6 +697,25 @@ Transform:
   m_Father: {fileID: 2065688064}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!251 &190717726
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 190717720}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1001 &208287743
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2298,6 +2318,7 @@ GameObject:
   - component: {fileID: 841297804}
   - component: {fileID: 841297802}
   - component: {fileID: 841297803}
+  - component: {fileID: 841297807}
   m_Layer: 6
   m_Name: bridge (3)
   m_TagString: Untagged
@@ -2361,7 +2382,7 @@ CapsuleCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.89}
   m_Size: {x: 2.69, y: 0.15}
@@ -2433,6 +2454,25 @@ Transform:
   m_Father: {fileID: 2065688064}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!251 &841297807
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 841297801}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1001 &871928336
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2999,6 +3039,7 @@ GameObject:
   - component: {fileID: 1128922497}
   - component: {fileID: 1128922495}
   - component: {fileID: 1128922496}
+  - component: {fileID: 1128922500}
   m_Layer: 6
   m_Name: bridge (5)
   m_TagString: Untagged
@@ -3062,7 +3103,7 @@ CapsuleCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.89}
   m_Size: {x: 2.69, y: 0.15}
@@ -3134,6 +3175,25 @@ Transform:
   m_Father: {fileID: 2065688064}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!251 &1128922500
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1128922494}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1001 &1149663202
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3411,6 +3471,7 @@ GameObject:
   - component: {fileID: 1232625508}
   - component: {fileID: 1232625506}
   - component: {fileID: 1232625507}
+  - component: {fileID: 1232625511}
   m_Layer: 6
   m_Name: bridge (4)
   m_TagString: Untagged
@@ -3474,7 +3535,7 @@ CapsuleCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.89}
   m_Size: {x: 2.69, y: 0.15}
@@ -3546,6 +3607,25 @@ Transform:
   m_Father: {fileID: 2065688064}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!251 &1232625511
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1232625505}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1001 &1240015459
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3865,6 +3945,7 @@ GameObject:
   - component: {fileID: 1379727819}
   - component: {fileID: 1379727817}
   - component: {fileID: 1379727818}
+  - component: {fileID: 1379727822}
   m_Layer: 6
   m_Name: bridge (2)
   m_TagString: Untagged
@@ -3928,7 +4009,7 @@ CapsuleCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.89}
   m_Size: {x: 2.69, y: 0.15}
@@ -4000,6 +4081,25 @@ Transform:
   m_Father: {fileID: 2065688064}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!251 &1379727822
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1379727816}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &1393154784
 GameObject:
   m_ObjectHideFlags: 0
@@ -4140,6 +4240,7 @@ GameObject:
   - component: {fileID: 1436189468}
   - component: {fileID: 1436189467}
   - component: {fileID: 1436189466}
+  - component: {fileID: 1436189470}
   m_Layer: 6
   m_Name: bridge
   m_TagString: Untagged
@@ -4218,7 +4319,7 @@ CapsuleCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.89}
   m_Size: {x: 2.69, y: 0.15}
@@ -4275,6 +4376,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!251 &1436189470
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1436189464}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1001 &1439733358
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4702,6 +4822,7 @@ GameObject:
   - component: {fileID: 1586650367}
   - component: {fileID: 1586650365}
   - component: {fileID: 1586650366}
+  - component: {fileID: 1586650370}
   m_Layer: 6
   m_Name: bridge (1)
   m_TagString: Untagged
@@ -4765,7 +4886,7 @@ CapsuleCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.89}
   m_Size: {x: 2.69, y: 0.15}
@@ -4837,6 +4958,25 @@ Transform:
   m_Father: {fileID: 2065688064}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!251 &1586650370
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586650364}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1001 &1599156426
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21122,6 +21262,7 @@ GameObject:
   - component: {fileID: 1714477376}
   - component: {fileID: 1714477375}
   - component: {fileID: 1714477374}
+  - component: {fileID: 1714477378}
   m_Layer: 6
   m_Name: bridge (6)
   m_TagString: Untagged
@@ -21200,7 +21341,7 @@ CapsuleCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.89}
   m_Size: {x: 2.69, y: 0.15}
@@ -21257,6 +21398,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!251 &1714477378
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1714477372}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &1754757504
 GameObject:
   m_ObjectHideFlags: 0
