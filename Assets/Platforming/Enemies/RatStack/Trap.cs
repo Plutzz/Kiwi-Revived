@@ -31,7 +31,7 @@ public class Trap : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             AudioManager.Instance.PlaySound(AudioManager.Sounds.Trap);
-            PlayerHealth.Instance.takeDamage(damage);
+            PlayerHealth.Instance.takeDamage(damage, transform);
             Destroy(gameObject);
 
         } else if (collision.gameObject.CompareTag("WaterBullet"))

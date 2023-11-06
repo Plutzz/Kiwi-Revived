@@ -51,7 +51,7 @@ public class PlayerMovement : Singleton<PlayerMovement>
     public float XAxis { get; private set; }
     public bool JumpDown { get; private set; }
     public bool JumpUp { get; private set; }
-    public bool IsGrounded { get; private set; }
+    public bool IsGrounded;
     public bool HitHead { get; private set; }
     private void Update()
     {
@@ -59,7 +59,7 @@ public class PlayerMovement : Singleton<PlayerMovement>
 
         //IF GAME IS PAUSED SKIP THIS FRAME
         //if (PauseMenu.getGameIsPaused()) return;
-
+        if (PlayerHealth.Instance.KnockbackEnabled()) return;
         // Get input for movement
         GetInputs();
         CollisionCheck();

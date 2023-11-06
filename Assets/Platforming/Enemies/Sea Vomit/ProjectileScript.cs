@@ -54,7 +54,7 @@ public class ProjectileScript : MonoBehaviour
     {
         if (collider.gameObject.CompareTag("Player"))
         {
-            PlayerHealth.Instance.takeDamage(damage);
+            PlayerHealth.Instance.takeDamage(damage, transform);
 
 
 

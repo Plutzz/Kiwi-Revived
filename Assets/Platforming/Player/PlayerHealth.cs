@@ -27,6 +27,13 @@ public class PlayerHealth : DamageableEntity
     [SerializeField] private GameObject deathHandler;
     [SerializeField] private Rigidbody2D rb;
 
+    [SerializeField] private PlayerMovement playerMovement;
+    [SerializeField] private float knockbackForce;
+    [SerializeField] private float knockbackCounter;
+    [SerializeField] private float knockbackTotalTime;
+
+    private bool knockedFromRight;
+
     private float speed;
     private bool restoreTime;
     void Awake ()
@@ -40,6 +47,7 @@ public class PlayerHealth : DamageableEntity
         impulseSource = GetComponent<CinemachineImpulseSource>();
         GetComponent<Slider>();
         currentHp = maxHp;
+        playerMovement = PlayerMovement.Instance;
     }
 
     private void Update()
@@ -52,17 +60,24 @@ public class PlayerHealth : DamageableEntity
             }
             else
             {
-                rb.bodyType = RigidbodyType2D.Dynamic;
+                playerMovement.enabled = true;
                 Time.timeScale = 1f;
                 restoreTime = false;
                 anim.SetBool("Damaged", false);
             }
         }
+
+        knockbackCounter -= Time.deltaTime;
     }
 
-    public override void takeDamage (int damage)
+    public void takeDamage (int damage, Transform hitSource)
     {
         if (!canTakeDamage) return;
+
+        knockedFromRight = hitSource.position.x > rb.position.x;
+        Debug.Log(knockedFromRight);
+        Debug.Log("hitSource x: " + hitSource.position.x);
+        Debug.Log("player x: " + rb.position.x);
 
         canTakeDamage = false;
         StartCoroutine(Invincibility());
@@ -73,8 +88,8 @@ public class PlayerHealth : DamageableEntity
         AudioManager.Instance.PlaySound(AudioManager.Sounds.PlayerDamaged);
         if (currentHp > 0)
         {
+            ApplyKnockback();
             StopTime(hitStopTimeScale, hitStopRestoreSpeed, hitStopDelay);
-            
         }
 
         if (currentHp <= 0)
@@ -87,6 +102,11 @@ public class PlayerHealth : DamageableEntity
         // Debug.Log(fillvalue);
 
         //hpBar.value = fillvalue;
+    }
+
+    public override void takeDamage(int damage)
+    {
+        takeDamage(damage, rb.transform);
     }
 
     private IEnumerator Invincibility()
@@ -108,7 +128,7 @@ public class PlayerHealth : DamageableEntity
 
         if(delay > 0)
         {
-            rb.bodyType = RigidbodyType2D.Kinematic;
+            playerMovement.enabled = false;
             StopCoroutine(StartTimeAgain(delay));
             StartCoroutine(StartTimeAgain(delay));
         }
@@ -134,5 +154,24 @@ public class PlayerHealth : DamageableEntity
         rb.bodyType = RigidbodyType2D.Static;
         Destroy(rb.gameObject.GetComponent<Collider2D>());
         Destroy(gameObject);
+    }
+
+    private void ApplyKnockback()
+    {
+        knockbackCounter = knockbackTotalTime;
+
+        if(knockedFromRight) // hit from right
+        {
+            rb.velocity = new Vector2(-knockbackForce, knockbackForce);
+        }
+        else
+        {
+            rb.velocity = new Vector2(knockbackForce, knockbackForce); 
+        }
+    }
+
+    public bool KnockbackEnabled()
+    {
+        return knockbackCounter > 0;
     }
 }
