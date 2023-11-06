@@ -46,8 +46,8 @@ public class WaterBullet : MonoBehaviour
         
 
         //speed of projectile
-        waterParticle.velocity = transform.right * (velocity + playerHorizontalMovementSpeed);
-        //Debug.Log(waterParticle.velocity);
+        waterParticle.velocity = transform.right * (velocity + Mathf.Abs(playerHorizontalMovementSpeed));
+        //Debug.Log(Mathf.Abs(waterParticle.velocity.x));
     }
 
 }
