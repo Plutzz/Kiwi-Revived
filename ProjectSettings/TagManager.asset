@@ -11,6 +11,7 @@ TagManager:
   - FireBullet
   - Enemy3Projectile
   - Ground
+  - KainProjectile
   layers:
   - Default
   - TransparentFX
@@ -47,6 +48,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Backdrop
+    uniqueID: 2759409709
     locked: 0
   - name: Background
     uniqueID: 265184161
