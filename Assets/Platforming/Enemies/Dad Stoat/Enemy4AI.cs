@@ -126,7 +126,7 @@ public class Enemy4AI : MonoBehaviour
             //ShadowPlayer();//////////////////////////////////////////////////////////////////////////////////
         }
         // if (Cooldown is ready attack)
-        StartCoroutine(Melee());
+        //StartCoroutine(Melee());
     }
 
     void ShootStance()
