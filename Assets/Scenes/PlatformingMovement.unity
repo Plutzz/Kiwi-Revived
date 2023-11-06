@@ -5674,8 +5674,8 @@ MonoBehaviour:
   shadowSpeed: 2
   shadowFollowRadius: 20
   shadowRetreatRadius: 15
-  distanceToStartShooting: 30
-  distanceToIdle: 35
+  distanceToStartShooting: 20
+  distanceToIdle: 40
 --- !u!61 &1172275762
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -30129,8 +30129,8 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1828863581}
   m_Enabled: 1
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1710612771
+  m_SortingLayer: 4
   m_SortingOrder: 0
 --- !u!95 &1828863585
 Animator:
