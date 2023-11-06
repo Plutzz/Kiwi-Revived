@@ -10,6 +10,7 @@ public class FireBolt : MonoBehaviour
     public int damage = 5;
     public float velocity = 10.0f;
     [SerializeField] private int playerScriptsChildNumber = 5;
+    private bool extinguished = false;
 
 
     void Start ()
@@ -23,14 +24,13 @@ public class FireBolt : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        Debug.Log("nohit");
-        if(other.gameObject.CompareTag("Player"))
+        if(!extinguished && other.gameObject.CompareTag("Player"))
         {
             other.gameObject.transform.GetChild(playerScriptsChildNumber).GetComponent<PlayerHealth>().takeDamage(damage);
+        } else if(other.gameObject.CompareTag("WaterBullet"))
+        {
             Extinguish();
-            Debug.Log("hit");
         }
-        Debug.Log("nohit2");
     }
 
     public void Extinguish()
@@ -39,5 +39,6 @@ public class FireBolt : MonoBehaviour
         particleSystem.Stop();
         spriteRenderer.color = Color.blue;
         gameObject.layer = LayerMask.NameToLayer("Ground");
+        extinguished = true;
     }
 }

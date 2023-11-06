@@ -5674,8 +5674,8 @@ MonoBehaviour:
   shadowSpeed: 2
   shadowFollowRadius: 20
   shadowRetreatRadius: 15
-  distanceToStartShooting: 15
-  distanceToIdle: 20
+  distanceToStartShooting: 30
+  distanceToIdle: 35
 --- !u!61 &1172275762
 BoxCollider2D:
   m_ObjectHideFlags: 0
