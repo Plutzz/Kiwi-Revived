@@ -8,7 +8,6 @@ public class Enemy4AI : MonoBehaviour
 {
     public float heightWhenOnTail = 4f;
     public KainState currentState = KainState.Idle;
-    public GameObject tailWhip;
     public GameObject tailEnd;
     public GameObject projectile;
     public GameObject Graphics;
@@ -154,16 +153,16 @@ public class Enemy4AI : MonoBehaviour
         }
     }
 
-    private IEnumerator Melee()
-    {
-        if(canMelee)
-        {
-            Instantiate(tailWhip, transform.position, transform.rotation);
-            canMelee = false;
-            yield return new WaitForSeconds(meleeCooldown);
-            canMelee = true;
-        }
-    }
+    // private IEnumerator Melee()
+    // {
+    //     if(canMelee)
+    //     {
+    //         Instantiate(tailWhip, transform.position, transform.rotation);
+    //         canMelee = false;
+    //         yield return new WaitForSeconds(meleeCooldown);
+    //         canMelee = true;
+    //     }
+    // }
 
     private void ShadowPlayer()
     {
