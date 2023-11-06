@@ -6,11 +6,12 @@ public class FireBolt : MonoBehaviour
 {
     public int damage = 5;
     public float velocity = 10.0f;
+    [SerializeField] private int playerScriptsChildNumber = 5;
 
 
     void Start ()
     {
-
+        Destroy(this.gameObject, 6f);
     }
 
     void Update ()
@@ -21,8 +22,7 @@ public class FireBolt : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.CompareTag("Player"))
         {
-            other.gameObject.GetComponent<PlayerHealth>().takeDamage(damage);
-            Debug.Log("damagetaken");
+            other.gameObject.transform.GetChild(playerScriptsChildNumber).GetComponent<PlayerHealth>().takeDamage(damage);
         }
     }
 }

@@ -17,6 +17,7 @@ public class Enemy4AI : MonoBehaviour
     public bool canShoot = true;
     public bool canMelee = true;
     public Vector3 shadowOffset;
+    public Animator animator;
 
 
     [SerializeField] private Transform player;
@@ -70,6 +71,8 @@ public class Enemy4AI : MonoBehaviour
             case (0):
                 {
                     // Idle
+                    ChangeState(KainState.Idle);
+                    animator.SetBool("isIdle", true);
                     break;
                 }
 
@@ -84,6 +87,7 @@ public class Enemy4AI : MonoBehaviour
                     //if(stanceChanged == false)
                     {
                         MeleeStance();
+                        animator.SetBool("isMelee", true);
                         //stanceChanged = true;
                     }
                     break;
@@ -94,6 +98,7 @@ public class Enemy4AI : MonoBehaviour
                     //if (stanceChanged == false)
                     {
                         ShootStance();
+                        animator.SetBool("isRanged", true);
                         //stanceChanged = true;
                     }
                     break;
@@ -104,6 +109,9 @@ public class Enemy4AI : MonoBehaviour
     private void ChangeState(KainState _state)
     {
         currentState = _state;
+        animator.SetBool("isMelee", false);
+        animator.SetBool("isRanged", false);
+        animator.SetBool("isIdle", false);
         //stanceChanged = false;
     }
 
@@ -116,7 +124,7 @@ public class Enemy4AI : MonoBehaviour
         }
         else
         {
-            ShadowPlayer();
+            //ShadowPlayer();//////////////////////////////////////////////////////////////////////////////////
         }
         // if (Cooldown is ready attack)
         StartCoroutine(Melee());
