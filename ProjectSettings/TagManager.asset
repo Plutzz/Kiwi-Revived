@@ -52,6 +52,9 @@ TagManager:
   - name: Backdrop
     uniqueID: 2759409709
     locked: 0
+  - name: Particles
+    uniqueID: 2532261995
+    locked: 0
   - name: Background
     uniqueID: 265184161
     locked: 0

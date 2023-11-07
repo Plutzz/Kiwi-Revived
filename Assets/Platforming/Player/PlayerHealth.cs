@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Cinemachine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class PlayerHealth : DamageableEntity
 {
@@ -18,7 +20,7 @@ public class PlayerHealth : DamageableEntity
 
     private bool canTakeDamage;
 
-    [Header("HITSTUN")]
+    [Header("Hit Effects")]
     [SerializeField] private float hitStopTimeScale = 0.05f;    // How slow the game slows down to when hit
     [SerializeField] private int hitStopRestoreSpeed = 10; // Speed at which time scale is restored
     [SerializeField] private float hitStopDelay = 0.1f;        // How much time before time begins to restore to normal
@@ -27,10 +29,17 @@ public class PlayerHealth : DamageableEntity
     [SerializeField] private GameObject deathHandler;
     [SerializeField] private Rigidbody2D rb;
 
+    [SerializeField] private VolumeProfile globalVolume;
+    private ChromaticAberration chromaticEffect;
+    [SerializeField] private float maxChromaticIntensity;
+    
+
+    [Header("Knockback")]
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private float knockbackForce;
     [SerializeField] private float knockbackCounter;
     [SerializeField] private float knockbackTotalTime;
+
 
     private bool knockedFromRight;
 
@@ -48,11 +57,26 @@ public class PlayerHealth : DamageableEntity
         GetComponent<Slider>();
         currentHp = maxHp;
         playerMovement = PlayerMovement.Instance;
+
+
+        globalVolume.TryGet(out chromaticEffect);
+        
     }
 
     private void Update()
     {
-        if(restoreTime)
+        // chromatic abberation effect
+        if (chromaticEffect.intensity.value > 0)
+        {
+            chromaticEffect.intensity.value -= Time.deltaTime * 2;
+        }
+        else
+        {
+            chromaticEffect.intensity.value = 0;
+        }
+
+        // Hit time stop
+        if (restoreTime)
         {
             if (Time.timeScale < 1f)
             {
@@ -138,6 +162,7 @@ public class PlayerHealth : DamageableEntity
         }
 
         Time.timeScale = changeTimeScale;
+        chromaticEffect.intensity.value = maxChromaticIntensity;
         anim.SetBool("Damaged", true);
     }
 
@@ -153,7 +178,7 @@ public class PlayerHealth : DamageableEntity
         Destroy(graphics);
         rb.bodyType = RigidbodyType2D.Static;
         Destroy(rb.gameObject.GetComponent<Collider2D>());
-        Destroy(gameObject);
+        Destroy(this.gameObject);
     }
 
     private void ApplyKnockback()
