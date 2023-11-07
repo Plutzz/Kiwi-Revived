@@ -9,8 +9,7 @@ using UnityEngine.Rendering.Universal;
 public class PlayerHealth : DamageableEntity
 {
     public int maxHp = 100;
-    public Image hpSliderFill;
-    public Slider hpBar;
+    private Slider hpBar;
     private CinemachineImpulseSource impulseSource;
     public static PlayerHealth Instance;
 
@@ -54,7 +53,7 @@ public class PlayerHealth : DamageableEntity
     private void Start()
     {
         impulseSource = GetComponent<CinemachineImpulseSource>();
-        GetComponent<Slider>();
+        hpBar = GameObject.Find("PlayerHealthBar").GetComponent<Slider>();
         currentHp = maxHp;
         playerMovement = PlayerMovement.Instance;
 
@@ -122,10 +121,7 @@ public class PlayerHealth : DamageableEntity
         }
         
         float fillvalue = (float)currentHp/(float)maxHp;
-
-        // Debug.Log(fillvalue);
-
-        //hpBar.value = fillvalue;
+        hpBar.value = fillvalue;
     }
 
     public override void takeDamage(int damage)
