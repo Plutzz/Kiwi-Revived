@@ -1,16 +1,19 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Enemy3AI : MonoBehaviour
 {
-    public int maxSize = 3;
+    public float maxSize = 2f;
     float cooldownTimer = 0f;
     float attackCooldown = 0.5f;
     public float velocityDecrease = 1.0f;
     public GameObject rangeCheck;
     public GameObject projectileSpawner;
     private EnemyHealth enemyHealth;
+    [SerializeField] private GameObject[] stages;
 
 
 
@@ -36,32 +39,30 @@ public class Enemy3AI : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "WaterBullet")
+        if (collision.gameObject.CompareTag("WaterBullet"))
         {
             int health = enemyHealth.currentHp;
-            
+
             // Calculate scale factor based on health
-            float scaleFactor = 1 + (1 - (float)health / enemyHealth.maxHp) * 2;
-            scaleFactor = Mathf.Min(scaleFactor, maxSize);
-            this.transform.localScale = new Vector3(scaleFactor, scaleFactor, 1);
-            float healthFactor = (float)health / enemyHealth.maxHp;
-            // enemy dies when scale reaches a certain amount
-            if (healthFactor <= 0.25)
+
+            int numStages = stages.Length;
+            int currentStage = Mathf.Clamp(Mathf.FloorToInt((1 - (float)health / enemyHealth.maxHp) * numStages), 0, numStages - 1);
+
+            for (int i = 0; i < numStages; i++)
             {
-                velocityDecrease = 0.3f;
-                attackCooldown = 2f;
-            }
-            else if (healthFactor <= 0.50)
-            {
-                velocityDecrease = 0.5f;
-                attackCooldown = 1f;
-            }
-            else if (healthFactor <= 0.75)
-            {
-                velocityDecrease = 0.7f;
-                attackCooldown = 0.7f;
+                bool isActive = i == currentStage;
+                stages[i].SetActive(isActive);
+                stages[i].GetComponent<BoxCollider2D>().enabled = isActive;
+
+                float scaleFactor = 1f + ((1 - (float)health / enemyHealth.maxHp) * 0.8f);
+                scaleFactor = Mathf.Min(scaleFactor, maxSize);
+
+                if (isActive)
+                    transform.localScale = new Vector3(scaleFactor, scaleFactor, 1);
             }
 
+            velocityDecrease = 1 - 0.2f * currentStage;
+            attackCooldown = 1 - 0.1f * currentStage;
 
         }
     }
