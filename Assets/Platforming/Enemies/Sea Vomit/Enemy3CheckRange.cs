@@ -7,7 +7,8 @@ public class Enemy3CheckRange : MonoBehaviour
     bool playerInRange = false;
     public bool facingRight = false;
     public GameObject parent;
-    
+    public float enterRangeDelay = 0.5f;
+    private bool canAttack = false;
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
@@ -40,8 +41,12 @@ public class Enemy3CheckRange : MonoBehaviour
     {
         if (playerInRange)
         {
-            return true;   
+            StartCoroutine(EnterRangeDelay());
+            if (canAttack) {
+                return true;
+            }
         }
+        canAttack = false;
         return false;
     }
 
@@ -52,5 +57,11 @@ public class Enemy3CheckRange : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    IEnumerator EnterRangeDelay()
+    {
+        yield return new WaitForSeconds(enterRangeDelay);
+        canAttack = true;
     }
 }

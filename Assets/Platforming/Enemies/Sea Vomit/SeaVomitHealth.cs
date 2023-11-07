@@ -11,10 +11,10 @@ public class SeaVomitHealth : EnemyHealth
     public float explosionRadius = 5f;
     public int explosionDamage = 10;
     [SerializeField] private CircleCollider2D deathCollider;
-    [SerializeField] private BoxCollider2D hitCollider;
+    [SerializeField] private BoxCollider2D rangeCollider;
 
     protected override void OnDeath() {
-        hitCollider.enabled = false;
+        rangeCollider.enabled = false;
         StartCoroutine(DelayExplosion());
     }
 

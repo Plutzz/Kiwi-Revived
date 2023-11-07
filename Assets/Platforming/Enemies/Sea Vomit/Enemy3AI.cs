@@ -21,21 +21,19 @@ public class Enemy3AI : MonoBehaviour
     {
         enemyHealth = GetComponent<EnemyHealth>();
     }
-    // Update is called once per frame
+
     void Update()
     {
-
         cooldownTimer += Time.deltaTime;
-        if (rangeCheck.GetComponent<Enemy3CheckRange>().isPlayerInRange())
-        {
-            if (cooldownTimer >= attackCooldown)
-            {
+        if (rangeCheck.GetComponent<Enemy3CheckRange>().isPlayerInRange()) {
+            if (cooldownTimer >= attackCooldown) {
                 cooldownTimer = 0;
                 projectileSpawner.GetComponent<Enemy3ProjectileSpawner>().shoot();
-
             }
         }
     }
+
+
 
     void OnCollisionEnter2D(Collision2D collision)
     {
