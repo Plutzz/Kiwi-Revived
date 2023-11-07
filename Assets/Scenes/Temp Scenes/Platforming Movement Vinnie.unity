@@ -105522,6 +105522,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1311568577}
     m_Modifications:
+    - target: {fileID: 6676475518569816008, guid: 9a91d7d76f283b44aac18ae879b32c26, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6857246909252084628, guid: 9a91d7d76f283b44aac18ae879b32c26, type: 3}
       propertyPath: m_Name
       value: SeaVomit
