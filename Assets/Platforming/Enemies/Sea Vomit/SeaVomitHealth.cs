@@ -8,7 +8,7 @@ public class SeaVomitHealth : EnemyHealth
     public GameObject parent;
     public float blinkDuration = 1f;
     public float blinkInterval = 0.1f;
-    public float explosionRadius = 5f;
+    public float explosionRadius = 1f;
     public int explosionDamage = 10;
     [SerializeField] private CircleCollider2D deathCollider;
     [SerializeField] private BoxCollider2D rangeCollider;
@@ -18,6 +18,10 @@ public class SeaVomitHealth : EnemyHealth
         StartCoroutine(DelayExplosion());
     }
 
+    void OnDrawGizmos() {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, explosionRadius);
+    }
     IEnumerator DelayExplosion() {
         float endTime = Time.time + blinkDuration;
 

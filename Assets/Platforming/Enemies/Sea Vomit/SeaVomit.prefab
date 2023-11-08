@@ -102,7 +102,7 @@ MonoBehaviour:
   parent: {fileID: 6857246909252084628}
   blinkDuration: 1
   blinkInterval: 0.1
-  explosionRadius: 8
+  explosionRadius: 4
   explosionDamage: 10
   deathCollider: {fileID: 7822509735115241874}
   rangeCollider: {fileID: 6676475518569816008}
