@@ -9,7 +9,7 @@ using UnityEngine.Rendering.Universal;
 public class PlayerHealth : DamageableEntity
 {
     public int maxHp = 100;
-    private Slider hpBar;
+    [SerializeField] private Slider hpBar;
     private CinemachineImpulseSource impulseSource;
     public static PlayerHealth Instance;
 
@@ -53,7 +53,6 @@ public class PlayerHealth : DamageableEntity
     private void Start()
     {
         impulseSource = GetComponent<CinemachineImpulseSource>();
-        hpBar = GameObject.Find("PlayerHealthBar").GetComponent<Slider>();
         currentHp = maxHp;
         playerMovement = PlayerMovement.Instance;
 

@@ -8,9 +8,16 @@ public class EnemyHealth : DamageableEntity
     public int maxHp = 100;
     public int collisionDamage = 10;
 
+    private DamageFlash damageFlash;
+
     void Awake ()
     {
         currentHp = maxHp;
+    }
+
+    private void Start()
+    {
+        damageFlash = GetComponent<DamageFlash>();
     }
 
 
@@ -29,6 +36,13 @@ public class EnemyHealth : DamageableEntity
         else if (other.gameObject.CompareTag("Player"))
             PlayerHealth.Instance.takeDamage(collisionDamage, transform);
 
+    }
+
+    public override void takeDamage(int _damage)
+    {
+        base.takeDamage(_damage);
+
+        damageFlash.CallDamageFlash();
     }
 
 
