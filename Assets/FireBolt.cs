@@ -11,6 +11,7 @@ public class FireBolt : MonoBehaviour
     public float velocity = 10.0f;
     [SerializeField] private int playerScriptsChildNumber = 5;
     private bool extinguished = false;
+    [SerializeField] private ParticleSystem.MinMaxGradient extinguishedGradient;
 
 
     void Start ()
@@ -36,8 +37,9 @@ public class FireBolt : MonoBehaviour
     public void Extinguish()
     {
         collider.isTrigger = false;
-        particleSystem.Stop();
-        spriteRenderer.color = Color.blue;
+        ParticleSystem.ColorOverLifetimeModule colorOverLifetime = particleSystem.colorOverLifetime;
+        colorOverLifetime.color = extinguishedGradient;
+        spriteRenderer.color = Color.black;
         gameObject.layer = LayerMask.NameToLayer("Ground");
         extinguished = true;
     }

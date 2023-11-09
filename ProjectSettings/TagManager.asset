@@ -61,11 +61,11 @@ TagManager:
   - name: Floor
     uniqueID: 1476593857
     locked: 0
-  - name: Walls
-    uniqueID: 2011738257
-    locked: 0
   - name: Entities
     uniqueID: 1710612771
+    locked: 0
+  - name: Walls
+    uniqueID: 2011738257
     locked: 0
   - name: Foreground
     uniqueID: 1863899945

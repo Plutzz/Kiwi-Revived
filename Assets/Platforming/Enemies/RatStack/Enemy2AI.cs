@@ -43,9 +43,6 @@ public class Enemy2AI : MonoBehaviour
         switch (_state)
         {
             case EnemyAIState.Patrol:
-                if (!isCoroutineRunning) {
-                    StartCoroutine(ShootTrap());
-                }
                 _enemyMovement.CheckCollision();
                 _enemyMovement.Move();
                 _enemyMovement.CheckVision();

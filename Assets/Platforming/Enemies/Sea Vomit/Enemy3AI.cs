@@ -20,6 +20,10 @@ public class Enemy3AI : MonoBehaviour
     void Start()
     {
         enemyHealth = GetComponent<EnemyHealth>();
+        for(int i = 1; i < stages.Length; i++)
+        {
+            stages[i].SetActive(false);
+        }
     }
 
     void Update()

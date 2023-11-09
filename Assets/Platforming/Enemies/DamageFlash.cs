@@ -9,7 +9,7 @@ public class DamageFlash : MonoBehaviour
     [SerializeField] private float flashTime = 0.25f;
     [SerializeField] private Material material;
 
-    private void Start()
+    private void Awake()
     {
         material = Instantiate(material);
 
