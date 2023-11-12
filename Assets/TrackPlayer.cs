@@ -7,7 +7,8 @@ public class TrackPlayer : MonoBehaviour
 
     void Update ()
     {
-        LookAt2D(transform, PlayerMovement.Instance.transform.position);
+        if(PlayerMovement.Instance != null)
+            LookAt2D(transform, PlayerMovement.Instance.transform.position);
     }
 
     public void LookAt2D(Transform transform, Vector2 target)
