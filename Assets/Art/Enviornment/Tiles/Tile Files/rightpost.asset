@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: rightpost
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: 21300000, guid: a69cb024ac198f648a8242928e5432ed, type: 3}
-  m_Color: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 1}
+  m_Color: {r: 0.49056602, g: 0.49056602, b: 0.49056602, a: 1}
   m_Transform:
     e00: 1
     e01: 0
