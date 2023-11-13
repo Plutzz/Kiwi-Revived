@@ -111,8 +111,8 @@ public class EnemyMovement : MonoBehaviour
         Vector2 directionToPlayer = playerTransform.position - transform.position;
         float distanceToPlayer = Vector2.Distance(transform.position, playerTransform.position);
         float angleToPlayer = Vector2.Angle(directionToPlayer, transform.right);
-        float minimumDistance = escapeCollider.radius;
-        float maximumDistance = attackCollider.radius;
+        float minimumDistance = escapeCollider.radius * transform.localScale.x;
+        float maximumDistance = attackCollider.radius * transform.localScale.x;
 
         // Flip the angle if the enemy is facing left
         if (currentDirection.x < 0)
@@ -151,6 +151,7 @@ public class EnemyMovement : MonoBehaviour
 
         if (distanceToPlayer < minimumDistance)
         {
+            Debug.Log("Flee");
             // Add panic shooting if it is on the edge and cant go anywhere?
             enemy.state = Enemy2AI.EnemyAIState.Retreat;
             if (isLeftGrounded && isRightGrounded)
@@ -189,8 +190,8 @@ public class EnemyMovement : MonoBehaviour
     void OnDrawGizmosSelected()
     {
 
-        float minimumDistance = escapeCollider.radius;
-        float maximumDistance = attackCollider.radius;
+        float minimumDistance = escapeCollider.radius * transform.localScale.x;
+        float maximumDistance = attackCollider.radius * transform.localScale.x;
 
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, minimumDistance);

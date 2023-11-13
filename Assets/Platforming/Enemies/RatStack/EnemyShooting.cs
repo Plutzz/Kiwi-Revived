@@ -18,9 +18,8 @@ public class EnemyShooting : MonoBehaviour
         GameObject spear = Instantiate(spearPrefab, transform.position + new Vector3(0, 1f, 0), Quaternion.LookRotation(Vector3.forward, player.position - transform.position));
         Rigidbody2D spearPrefab_rb = spear.GetComponent<Rigidbody2D>();
         Vector2 modifiedVelocity = spearPrefab_rb.velocity;
-        modifiedVelocity.x += enemyVelocity + 10f;
+        modifiedVelocity.x += enemyVelocity * 1.1f;
         spearPrefab_rb.velocity = modifiedVelocity;
-        
         spearPrefab_rb.AddForce((player.position - transform.position).normalized * force, ForceMode2D.Impulse);
     }
 

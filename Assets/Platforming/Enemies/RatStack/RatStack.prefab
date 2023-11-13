@@ -307,7 +307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd326c6e3d7fcb04aa40a6d633b63e16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 200
+  force: 100
   trapPrefab: {fileID: 6149180492314810455, guid: aae52d0425ea9a24dbec00438f0d060e, type: 3}
   spearPrefab: {fileID: 8855607371865432115, guid: cd0817a0e9c442f4a8cd4ef18dd4332a, type: 3}
 --- !u!114 &41963919
@@ -322,7 +322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19369ae8aeffc4f49afc8f8c09bab729, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 10
   moveTime: 5
   visionRange: 15
   visionAngle: 45
