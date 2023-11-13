@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Enemy4AI : MonoBehaviour
 {
-    public float heightWhenOnTail = 4f;
+
     public KainState currentState = KainState.Idle;
     public GameObject tailEnd;
     public GameObject projectile;
@@ -17,6 +17,8 @@ public class Enemy4AI : MonoBehaviour
     public bool canMelee = true;
     public Vector3 shadowOffset;
     public Animator animator;
+    public bool neutral = true;
+    public bool charging = false;
 
 
     [SerializeField] private Transform player;
@@ -26,86 +28,66 @@ public class Enemy4AI : MonoBehaviour
     [SerializeField] private float shadowRetreatRadius;
     [SerializeField] private Tweener tweener;
     [SerializeField] private float distanceToStartShooting = 10f;
-    [SerializeField] private float distanceToIdle = 15f;
+    private int test;
     private float distance = 999f;
-    private bool onTail = false;
     //private bool stanceChanged = false;
 
     public enum KainState {
         Idle,
-        Chase,
         Melee,
         Range
     }
 
     private void Start() {
-        //player = PlayerMovement.Instance.transform;
-        ChangeState(KainState.Melee);
+        player = PlayerMovement.Instance.transform;
     }
 
     void Update()
     {
-
+        
         distance = player.position.x - transform.position.x;
 
-        if(distance > 0)
+        if(!charging)
         {
-            Graphics.transform.localScale = new Vector3(-1, 1, 1);
-        }
-        else if(distance < 0)
-        {
-            Graphics.transform.localScale = new Vector3(1, 1, 1);
-        }
-
-        if(Mathf.Abs(distance) > distanceToStartShooting && Mathf.Abs(distance) < distanceToIdle)
-        {
-            ChangeState(KainState.Range);
-        } else if (Mathf.Abs(distance) < distanceToStartShooting)
-        {
-            ChangeState(KainState.Melee);
-        } else if (Mathf.Abs(distance) > distanceToIdle)
-        {
-            ChangeState(KainState.Idle);
+            if(distance > 0)
+            {
+                Graphics.transform.localScale = new Vector3(-1, 1, 1);
+            }
+            else if(distance < 0)
+            {
+                Graphics.transform.localScale = new Vector3(1, 1, 1);
+            }
         }
 
-
-        switch ((int)currentState)
+        if(neutral)
         {
-            case (0):
-                {
-                    // Idle
-                    ChangeState(KainState.Idle);
-                    animator.SetBool("isIdle", true);
-                    break;
-                }
+            neutral = false;
 
-            case (1):
-                {
-                    // Chase
-                    break;
-                }
+            int newState = 1; //Random.Range(0, 1);
 
-            case (2):
-                {
-                    //if(stanceChanged == false)
+            switch (newState)
+            {
+
+                case (0):
                     {
-                        MeleeStance();
-                        animator.SetBool("isMelee", true);
-                        //stanceChanged = true;
+                        {
+                            ChangeState(KainState.Melee);
+                            animator.SetBool("isMelee", true);
+                            MeleeStance();
+                        }
+                        break;
                     }
-                    break;
-                }
 
-            case (3):
-                {
-                    //if (stanceChanged == false)
+                case (1):
                     {
-                        ShootStance();
-                        animator.SetBool("isRanged", true);
-                        //stanceChanged = true;
+                        {
+                            ChangeState(KainState.Range);
+                            animator.SetBool("isRanged", true);
+                            ShootStance();
+                        }
+                        break;
                     }
-                    break;
-                }
+            }
         }
     }
 
@@ -115,95 +97,106 @@ public class Enemy4AI : MonoBehaviour
         animator.SetBool("isMelee", false);
         animator.SetBool("isRanged", false);
         animator.SetBool("isIdle", false);
-        //stanceChanged = false;
     }
 
     void MeleeStance()
     {
-        if(onTail)
-        {
-            transform.position -= new Vector3(0, heightWhenOnTail, 0);
-            onTail = false;
-        }
-        else
-        {
-            //ShadowPlayer();//////////////////////////////////////////////////////////////////////////////////
-        }
-        // if (Cooldown is ready attack)
-        //StartCoroutine(Melee());
+        int meleePattern = Random.Range(1, 2);
+        // switch (meleePattern)
+        // {
+        //     case (1):
+        //     {
+        //         StartCoroutine(Charge);
+        //         break;
+        //     }
+
+        //     case (2):
+        //     {
+        //         StartCoroutine(Sweep);
+        //         break;
+        //     }
+        // }
+
     }
 
     void ShootStance()
     {
-        
-
-        if(!onTail)
+        int shootingPattern = 1; //Random.Range(1, 3);
+        switch (shootingPattern)
         {
-            transform.position += new Vector3(0, heightWhenOnTail, 0);
-            onTail = true;
+            case (1):
+            {
+                FireBolt.bulletState = FireBolt.AttackPattern.Volley;
+                StartCoroutine(Volley());
+                break;
+            }
+
+            // case (2):
+            // {
+            //     FireBolt.bulletState = FireBolt.AttackPattern.Volley;
+            //     StartCoroutin(Homing())
+            //     break;
+            // }
+
+            // case (3):
+            // {
+            //     FireBolt.bulletState = FireBolt.AttackPattern.Rain;
+            //     StartCoroutine(Rain())
+            //     break;
+            // }
         }
-
-        StartCoroutine(Shoot());
     }
 
-    private IEnumerator Shoot()
+    private IEnumerator Volley()
     {
-        if(canShoot)
-        {
-            canShoot = false;
-            yield return new WaitForSeconds(shootCooldown);
-            Instantiate(projectile, tailEnd.transform.position, tailEnd.transform.rotation);
-            canShoot = true;
-        }
+        yield return new WaitForSeconds(shootCooldown);
+        Instantiate(projectile, tailEnd.transform.position, tailEnd.transform.rotation);
+        yield return new WaitForSeconds(shootCooldown);
+        Instantiate(projectile, tailEnd.transform.position, tailEnd.transform.rotation);
+        yield return new WaitForSeconds(shootCooldown);
+        Instantiate(projectile, tailEnd.transform.position, tailEnd.transform.rotation);
+        yield return new WaitForSeconds(shootCooldown);
+        Instantiate(projectile, tailEnd.transform.position, tailEnd.transform.rotation);
+        yield return new WaitForSeconds(shootCooldown);
+        Instantiate(projectile, tailEnd.transform.position, tailEnd.transform.rotation);
+        neutral = true;
     }
 
-    // private IEnumerator Melee()
-    // {
-    //     if(canMelee)
-    //     {
-    //         Instantiate(tailWhip, transform.position, transform.rotation);
-    //         canMelee = false;
-    //         yield return new WaitForSeconds(meleeCooldown);
-    //         canMelee = true;
-    //     }
-    // }
-
-    private void ShadowPlayer()
+    private IEnumerator Homing()
     {
-        //transform.position = player.transform.position + shadowOffset;
-        tweener = kain.DOMoveX(player.position.x, shadowSpeed).SetSpeedBased(true);
-        tweener.OnUpdate(delegate () {
-
-            if (currentState != KainState.Melee) tweener.Kill();
-
-            float _distance = Vector3.Distance(player.position, transform.position);
-
-            if (_distance > shadowFollowRadius)
-            {
-                tweener.ChangeEndValue(player.transform.position, shadowSpeed, true);
-            }
-            else if(_distance < shadowRetreatRadius)
-            {
-                tweener.ChangeEndValue(player.position + new Vector3(shadowFollowRadius * 2 * transform.localScale.x, 0, 0), shadowSpeed, true);
-            }
-            else
-            {
-                Debug.Log("Stop distance");
-                tweener.ChangeEndValue(player.position, 0.00000001f, true);
-            }
-        });
+        yield return new WaitForSeconds(shootCooldown);
+        Instantiate(projectile, tailEnd.transform.position, tailEnd.transform.rotation);
+        yield return new WaitForSeconds(shootCooldown);
+        Instantiate(projectile, tailEnd.transform.position, tailEnd.transform.rotation);
+        yield return new WaitForSeconds(shootCooldown);
+        Instantiate(projectile, tailEnd.transform.position, tailEnd.transform.rotation);
+        yield return new WaitForSeconds(shootCooldown);
+        Instantiate(projectile, tailEnd.transform.position, tailEnd.transform.rotation);
+        yield return new WaitForSeconds(shootCooldown);
+        Instantiate(projectile, tailEnd.transform.position, tailEnd.transform.rotation);
+        neutral = true;
     }
+
+    private IEnumerator Rain()
+    {
+        yield return new WaitForSeconds(shootCooldown);
+        Instantiate(projectile, tailEnd.transform.position, transform.rotation);
+        yield return new WaitForSeconds(shootCooldown);
+        Instantiate(projectile, tailEnd.transform.position, transform.rotation);
+        yield return new WaitForSeconds(shootCooldown);
+        Instantiate(projectile, tailEnd.transform.position, transform.rotation);
+        yield return new WaitForSeconds(shootCooldown);
+        Instantiate(projectile, tailEnd.transform.position, transform.rotation);
+        yield return new WaitForSeconds(shootCooldown);
+        Instantiate(projectile, tailEnd.transform.position, transform.rotation);
+        neutral = true;
+    }
+
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(this.transform.position, shadowFollowRadius);
-        Gizmos.DrawWireSphere(this.transform.position, shadowRetreatRadius);
+        Gizmos.DrawWireSphere(this.transform.position, distanceToStartShooting);
+        //Gizmos.DrawWireSphere(this.transform.position, distanceToIdle);
     }
-
-    private void Idle ()
-    {
-
-    }
-
 
 }

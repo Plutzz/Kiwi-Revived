@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FireBolt : MonoBehaviour
 {
+    public static AttackPattern bulletState;
     public new CircleCollider2D collider;
     public new ParticleSystem particleSystem;
     public SpriteRenderer spriteRenderer;
@@ -18,11 +19,12 @@ public class FireBolt : MonoBehaviour
     void Start ()
     {
         Destroy(this.gameObject, 5f);
+        transform.Rotate(new Vector3(0, 0, Random.Range(-10, 20)), Space.Self);
     }
 
     void Update ()
     {
-        transform.position += transform.right * velocity * Time.deltaTime; 
+        transform.position += transform.right * velocity * Time.deltaTime;
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
@@ -43,5 +45,12 @@ public class FireBolt : MonoBehaviour
         spriteRenderer.color = extinguishedColor;
         gameObject.layer = LayerMask.NameToLayer("Ground");
         extinguished = true;
+    }
+
+    public enum AttackPattern
+    {
+        Volley,
+        Homing,
+        Rain
     }
 }
