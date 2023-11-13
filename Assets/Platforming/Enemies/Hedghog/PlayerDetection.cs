@@ -6,9 +6,10 @@ public class PlayerDetection : MonoBehaviour
 {
     public Enemy1AI enemy1Movement;
 
-    private void OnTriggerEnter2D(Collider2D other) {
+    private void OnTriggerStay2D(Collider2D other) {
         if(other.CompareTag("Player"))
         {
+            if(enemy1Movement.state != Enemy1AI.State.Attack)
             enemy1Movement.state = Enemy1AI.State.Chase;
         }
     }
@@ -16,7 +17,10 @@ public class PlayerDetection : MonoBehaviour
     private void OnTriggerExit2D(Collider2D other) {
         if(other.CompareTag("Player"))
         {
-            enemy1Movement.state = Enemy1AI.State.Idle;
+            if(enemy1Movement.grounded == true)
+            {
+                enemy1Movement.state = Enemy1AI.State.Idle;
+            }
         }
     }
 }

@@ -11,7 +11,7 @@ public class EdgeDetection : MonoBehaviour
         if(other.CompareTag("Ground"))
         {
             enemy1Movement.moveRight = !enemy1Movement.moveRight;
-            enemy1Movement.currentState = Enemy1AI.State.Idle;
+            //enemy1Movement.currentState = Enemy1AI.State.Idle;
             //Debug.Log("change direction");
         }
 

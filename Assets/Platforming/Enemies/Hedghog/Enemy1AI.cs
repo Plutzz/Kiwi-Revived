@@ -13,6 +13,7 @@ public class Enemy1AI : MonoBehaviour
     public float jumpForce = 100;
     public float jumpCooldown = 1f;
     public float distanceToPounce = 5f;
+    public int verticalMultiplier = 5;
     public State currentState = State.Idle;
     public bool grounded = true;
     public bool moveRight = false;
@@ -94,13 +95,13 @@ public class Enemy1AI : MonoBehaviour
     void FollowPlayer ()
     {
         SpriteFlip();
-        if(distance > 0 && canJump)
+        if(distance > 0 && grounded && canJump)
         {
             currentVelocity = rb.velocity;
             currentVelocity.x = runSpeed;
             rb.velocity = currentVelocity;
             moveRight = true;
-        } else if(distance < 0 && canJump)
+        } else if(distance < 0 && grounded && canJump)
         {
             currentVelocity = rb.velocity;
             currentVelocity.x = -runSpeed;
@@ -119,7 +120,6 @@ public class Enemy1AI : MonoBehaviour
         if(grounded && canJump)
         {
             StartCoroutine(Jump());
-            grounded = false;
         }
 
         if(Mathf.Abs(distance) > distanceToPounce)
@@ -130,8 +130,9 @@ public class Enemy1AI : MonoBehaviour
 
     private IEnumerator Jump()
     {
-        rb.AddForce(new Vector2(rb.velocity.x, jumpForce));
+        grounded = false;
         canJump = false;
+        rb.AddForce(new Vector2(rb.velocity.x * verticalMultiplier, jumpForce));
         yield return new WaitForSeconds(jumpCooldown);
         canJump = true;
     }
