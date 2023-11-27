@@ -12,6 +12,7 @@ public class FireBolt : MonoBehaviour
     public new CircleCollider2D collider;
     public new ParticleSystem particleSystem;
     public SpriteRenderer spriteRenderer;
+    Transform player;
     [SerializeField] private int playerScriptsChildNumber = 5;
     private bool extinguished = false;
     [SerializeField] private ParticleSystem.MinMaxGradient extinguishedGradient;
@@ -22,8 +23,8 @@ public class FireBolt : MonoBehaviour
     void Start ()
     {
         spawnedState = bulletState;
-
-        switch(spawnedState)
+        player = PlayerMovement.Instance.transform;
+        switch (spawnedState)
         {
             case(AttackPattern.Volley):
             {
@@ -52,7 +53,8 @@ public class FireBolt : MonoBehaviour
 
     void Update ()
     {
-        switch(spawnedState)
+        if (player == null) return;
+        switch (spawnedState)
         {
             case(AttackPattern.Volley):
             {
@@ -62,7 +64,6 @@ public class FireBolt : MonoBehaviour
 
             case(AttackPattern.Homing):
             {
-                Transform player = PlayerMovement.Instance.transform;
 
                 Vector3 direction = player.transform.position - transform.position;
 
