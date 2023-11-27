@@ -23,6 +23,7 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private EdgeCollider2D rightGroundCheck;
     [SerializeField] private CircleCollider2D attackCollider; // Attack collider is used to check if the player is within attack range
     [SerializeField] private CircleCollider2D escapeCollider; // Escape collider is used to check if the player is within minimum range (melee)
+    [SerializeField] private Animator anim;
 
     // Private Variables
     Vector2[] directions = { Vector2.left, Vector2.right, Vector2.zero };
@@ -67,18 +68,20 @@ public class EnemyMovement : MonoBehaviour
         if (isLeftGrounded && isRightGrounded)
         {
             currentDirection.Normalize();
-            rb.position += speed * Time.deltaTime * currentDirection;
+            rb.velocity = speed * Time.deltaTime * currentDirection;
         }
         else if (!isLeftGrounded)
         {
             currentDirection = Vector2.right;
-            rb.position += speed * Time.deltaTime * currentDirection;
+            rb.velocity = speed * Time.deltaTime * currentDirection;
         }
         else if (!isRightGrounded)
         {
             currentDirection = Vector2.left;
-            rb.position += speed * Time.deltaTime * currentDirection;
+            rb.velocity = speed * Time.deltaTime * currentDirection;
         }
+
+        anim.SetBool("isWalking", rb.velocity.x != 0);
 
 
         // Check if the direction that the enemy is facing is not moving into a wall
