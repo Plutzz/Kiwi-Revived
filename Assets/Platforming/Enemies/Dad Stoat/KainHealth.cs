@@ -21,4 +21,16 @@ public class KainHealth : EnemyHealth
     {
         Destroy(transform.parent.gameObject);
     }
+
+    protected void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("WaterBullet"))
+            takeDamage(collision.gameObject.GetComponent<WaterBullet>().damage);
+        else if (collision.gameObject.CompareTag("PoisonBullet"))
+            takeDamage(collision.gameObject.GetComponent<PoisonBullet>().damage);
+        else if (collision.gameObject.CompareTag("FireBullet"))
+            takeDamage(collision.gameObject.GetComponent<FireBullet>().damage);
+        else if (collision.gameObject.CompareTag("Player"))
+            PlayerHealth.Instance.takeDamage(collisionDamage, transform);
+    }
 }
