@@ -10,7 +10,7 @@ public class EnemyHealth : DamageableEntity
 
     [SerializeField] private DamageFlash damageFlash;
 
-    void Awake ()
+    protected void Awake ()
     {
         currentHp = maxHp;
     }
