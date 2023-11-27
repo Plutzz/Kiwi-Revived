@@ -1,13 +1,15 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using System.Collections;
 
 //This script controlls the timer
 public class Timer : Singleton<Timer>
 {
     [Header("Time Varibles (Seconds)")]
     [Tooltip("How long the timer lasts in the resource run")]
-    public float TimeLeft;
+    private float TimeElapsed;
     public bool TimerOn = false;
 
     public TextMeshProUGUI TimerTxt;
@@ -21,17 +23,9 @@ public class Timer : Singleton<Timer>
         // Checks if time is up and stops the timer if it has
         if (TimerOn)
         {
-            if (TimeLeft > 0)
-            {
-                TimeLeft -= Time.deltaTime;
-                updateTimer(TimeLeft);
-            }
-            else
-            {
-                Debug.Log("Time is UP!");
-                TimeLeft = 0;
-                TimerOn = false;
-            }
+            TimeElapsed += Time.deltaTime;
+            updateTimer(TimeElapsed);
+            
         }
     }
 
@@ -44,6 +38,17 @@ public class Timer : Singleton<Timer>
         float seconds = Mathf.FloorToInt(currentTime % 60);
 
         TimerTxt.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
+
+    public void CallLoadStartScene()
+    {
+        StartCoroutine(LoadStartScene());
+    }
+
+    public IEnumerator LoadStartScene()
+    {
+        yield return new WaitForSeconds(5f);
+        SceneManager.LoadScene(0);
     }
 
 }

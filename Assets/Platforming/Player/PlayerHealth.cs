@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Cinemachine;
@@ -172,6 +171,8 @@ public class PlayerHealth : DamageableEntity
         Instantiate(deathHandler, transform.position, transform.rotation);
         Destroy(graphics);
         rb.bodyType = RigidbodyType2D.Static;
+        Timer.Instance.CallLoadStartScene();
+        //Timer.Instance.LoadStartScene();
         Destroy(rb.gameObject.GetComponent<Collider2D>());
         Destroy(this.gameObject);
     }

@@ -50,7 +50,7 @@ public class Enemy4AI : MonoBehaviour
 
     void Update()
     {
-        
+        if (player == null) return;
         distance = player.position.x - transform.position.x;
 
         if(!charging)
@@ -142,6 +142,7 @@ public class Enemy4AI : MonoBehaviour
 
     void ShootStance()
     {
+        if (player == null) return;
         int shootingPattern = Random.Range(1, 4);
         switch (shootingPattern)
         {
@@ -242,7 +243,8 @@ public class Enemy4AI : MonoBehaviour
         for(int i = 0; i < howManyRangedShots; i++)
         {
             yield return new WaitForSeconds(shootCooldown);
-            Instantiate(projectile, new Vector3(player.position.x + Random.Range(-10f, 10f), player.position.y + 20, 0), transform.rotation);
+            if(player != null)
+                Instantiate(projectile, new Vector3(player.position.x + Random.Range(-10f, 10f), player.position.y + 20, 0), transform.rotation);
         }
 
         yield return new WaitForSeconds(secondsBeforeNextAttack);
