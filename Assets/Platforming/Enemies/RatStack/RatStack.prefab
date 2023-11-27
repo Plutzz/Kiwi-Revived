@@ -350,6 +350,7 @@ MonoBehaviour:
   currentHp: 0
   maxHp: 200
   collisionDamage: 10
+  damageFlash: {fileID: 0}
 --- !u!114 &5882566422224295451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -773,6 +774,27 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: -8653719598885068355, guid: f5a83cb7e52ca7f469ba7eaca9144871, type: 3}
   m_PrefabInstance: {fileID: 3893283392821467358}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &4782088682318446315
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3594003626073504099}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 88c80b7adfc227b43aea9c138310fe40, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!210 &782082979789705690
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -784,24 +806,3 @@ SortingGroup:
   m_SortingLayerID: 1710612771
   m_SortingLayer: 5
   m_SortingOrder: 0
---- !u!95 &4782088682318446315
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3594003626073504099}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
