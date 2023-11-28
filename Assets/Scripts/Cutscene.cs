@@ -8,6 +8,7 @@ public class Cutscene : MonoBehaviour
     private VideoPlayer video;
 
     [SerializeField] private GameObject startMenu;
+    [SerializeField] private GameObject menuMusic;
 
     private void Start()
     {
@@ -27,5 +28,6 @@ public class Cutscene : MonoBehaviour
     {
         startMenu.SetActive(true);
         gameObject.SetActive(false);
+        menuMusic.SetActive(true);
     }
 }

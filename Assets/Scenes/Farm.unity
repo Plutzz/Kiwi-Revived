@@ -175,7 +175,7 @@ MonoBehaviour:
   m_Intensity: 1.3
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000c108035891b0e877f5c66d0923e1f565a163ce0f
+  m_ApplyToSortingLayers: 00000000c108035891b0e87723e1f565a163ce0fcbe740fb
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -359,8 +359,8 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 69215294}
   m_Enabled: 1
-  m_SortingLayerID: 1710612771
-  m_SortingLayer: 5
+  m_SortingLayerID: -79632437
+  m_SortingLayer: 7
   m_SortingOrder: 0
 --- !u!1 &84819176
 GameObject:
@@ -754,8 +754,8 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 206493690}
   m_Enabled: 1
-  m_SortingLayerID: 1710612771
-  m_SortingLayer: 5
+  m_SortingLayerID: -79632437
+  m_SortingLayer: 7
   m_SortingOrder: 0
 --- !u!1 &301912697 stripped
 GameObject:
@@ -2327,8 +2327,8 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 839299236}
   m_Enabled: 1
-  m_SortingLayerID: 1710612771
-  m_SortingLayer: 5
+  m_SortingLayerID: -79632437
+  m_SortingLayer: 7
   m_SortingOrder: 1
 --- !u!1 &859022817
 GameObject:
@@ -6710,7 +6710,7 @@ MonoBehaviour:
   m_Intensity: 0.12
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000c108035891b0e877f5c66d0923e1f565a163ce0f
+  m_ApplyToSortingLayers: 00000000c108035891b0e87723e1f565a163ce0fcbe740fb
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -7395,7 +7395,7 @@ GameObject:
   - component: {fileID: 1137643981}
   - component: {fileID: 1137643980}
   m_Layer: 0
-  m_Name: bouncy
+  m_Name: Music
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7786,8 +7786,8 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1183405108}
   m_Enabled: 1
-  m_SortingLayerID: 2011738257
-  m_SortingLayer: 6
+  m_SortingLayerID: -79632437
+  m_SortingLayer: 7
   m_SortingOrder: 1
 --- !u!1 &1217104741
 GameObject:
@@ -11194,8 +11194,8 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1376064158}
   m_Enabled: 1
-  m_SortingLayerID: 1710612771
-  m_SortingLayer: 5
+  m_SortingLayerID: -79632437
+  m_SortingLayer: 7
   m_SortingOrder: 0
 --- !u!1 &1517237906
 GameObject:
@@ -19914,8 +19914,8 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1663293737}
   m_Enabled: 1
-  m_SortingLayerID: 1710612771
-  m_SortingLayer: 5
+  m_SortingLayerID: -79632437
+  m_SortingLayer: 7
   m_SortingOrder: 0
 --- !u!1 &1710796148
 GameObject:
@@ -20782,7 +20782,7 @@ MonoBehaviour:
   m_Intensity: 0.6
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000c108035891b0e877f5c66d0923e1f565a163ce0f
+  m_ApplyToSortingLayers: 00000000c108035891b0e87723e1f565a163ce0fcbe740fb
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -33656,28 +33656,8 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 341202322}
     m_Modifications:
-    - target: {fileID: 579266043444867775, guid: 9852cb297b2cc1e45a429aa90f9cf1ae, type: 3}
-      propertyPath: m_Intensity
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 579266043444867775, guid: 9852cb297b2cc1e45a429aa90f9cf1ae, type: 3}
-      propertyPath: m_FalloffIntensity
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4285875808432198749, guid: 9852cb297b2cc1e45a429aa90f9cf1ae, type: 3}
       propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4285875808432198749, guid: 9852cb297b2cc1e45a429aa90f9cf1ae, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4285875808432198749, guid: 9852cb297b2cc1e45a429aa90f9cf1ae, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4285875808432198749, guid: 9852cb297b2cc1e45a429aa90f9cf1ae, type: 3}
-      propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4285875808432198749, guid: 9852cb297b2cc1e45a429aa90f9cf1ae, type: 3}
@@ -33723,38 +33703,6 @@ PrefabInstance:
     - target: {fileID: 4285875808432198751, guid: 9852cb297b2cc1e45a429aa90f9cf1ae, type: 3}
       propertyPath: m_Name
       value: Round_lamp_post_lit (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 4285875810049453010, guid: 9852cb297b2cc1e45a429aa90f9cf1ae, type: 3}
-      propertyPath: m_Intensity
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4285875810049453010, guid: 9852cb297b2cc1e45a429aa90f9cf1ae, type: 3}
-      propertyPath: m_FalloffIntensity
-      value: 0.682
-      objectReference: {fileID: 0}
-    - target: {fileID: 4285875810049453010, guid: 9852cb297b2cc1e45a429aa90f9cf1ae, type: 3}
-      propertyPath: m_OverlapOperation
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4285875810049453010, guid: 9852cb297b2cc1e45a429aa90f9cf1ae, type: 3}
-      propertyPath: m_PointLightInnerRadius
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4285875810049453010, guid: 9852cb297b2cc1e45a429aa90f9cf1ae, type: 3}
-      propertyPath: m_PointLightOuterRadius
-      value: 8.23
-      objectReference: {fileID: 0}
-    - target: {fileID: 4285875810049453010, guid: 9852cb297b2cc1e45a429aa90f9cf1ae, type: 3}
-      propertyPath: m_LightVolumeIntensityEnabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4285875810049453021, guid: 9852cb297b2cc1e45a429aa90f9cf1ae, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.19
-      objectReference: {fileID: 0}
-    - target: {fileID: 4285875810049453021, guid: 9852cb297b2cc1e45a429aa90f9cf1ae, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.45
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9852cb297b2cc1e45a429aa90f9cf1ae, type: 3}

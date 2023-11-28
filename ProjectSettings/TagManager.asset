@@ -67,6 +67,9 @@ TagManager:
   - name: Walls
     uniqueID: 2011738257
     locked: 0
+  - name: Isometric
+    uniqueID: 4215334859
+    locked: 0
   - name: Foreground
     uniqueID: 1863899945
     locked: 0
