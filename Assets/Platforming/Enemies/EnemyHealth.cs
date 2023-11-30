@@ -7,7 +7,6 @@ public class EnemyHealth : DamageableEntity
 {
     public int maxHp = 100;
     public int collisionDamage = 10;
-
     [SerializeField] private DamageFlash damageFlash;
 
     protected void Awake ()
@@ -21,7 +20,7 @@ public class EnemyHealth : DamageableEntity
         {
             damageFlash = GetComponent<DamageFlash>();
         }
-            
+
     }
 
 

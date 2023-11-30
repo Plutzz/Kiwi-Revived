@@ -251,8 +251,8 @@ GameObject:
   - component: {fileID: 5248694694386953749}
   - component: {fileID: 5248694694386953750}
   - component: {fileID: 6953870028051915368}
-  - component: {fileID: 1108986520}
   - component: {fileID: 2282019596663869774}
+  - component: {fileID: -2111810443716561042}
   m_Layer: 9
   m_Name: Hedgehog
   m_TagString: Enemy
@@ -350,21 +350,6 @@ MonoBehaviour:
   grounded: 1
   moveRight: 0
   sprite: {fileID: 1858288136077774268}
---- !u!114 &1108986520
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5248694694386953751}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ed6f6857a5298c4385c4a2ccf697cf1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentHp: 0
-  maxHp: 300
-  collisionDamage: 10
 --- !u!114 &2282019596663869774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -380,6 +365,23 @@ MonoBehaviour:
   flashColor: {r: 1, g: 1, b: 1, a: 1}
   flashTime: 0.25
   material: {fileID: 2100000, guid: 5657e0f500905d942a210f3e9c37336c, type: 2}
+--- !u!114 &-2111810443716561042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5248694694386953751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1333e3678b6540f4883c7148e9d32c55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHp: 0
+  maxHp: 300
+  collisionDamage: 10
+  damageFlash: {fileID: 2282019596663869774}
+  deathParticles: {fileID: 3239399441340693908, guid: f3ce3ae141e0577419897ca324947b5e, type: 3}
 --- !u!1 &6523893968672440259
 GameObject:
   m_ObjectHideFlags: 0

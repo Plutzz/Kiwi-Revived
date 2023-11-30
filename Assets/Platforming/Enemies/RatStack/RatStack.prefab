@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 3001957700144258607}
   - component: {fileID: 1605176852}
   - component: {fileID: 41963919}
-  - component: {fileID: 9205784123346453071}
+  - component: {fileID: 611552899111174287}
   - component: {fileID: 5882566422224295451}
   - component: {fileID: 1372090327782984690}
   m_Layer: 9
@@ -337,7 +337,7 @@ MonoBehaviour:
   attackCollider: {fileID: 2936570176551356525}
   escapeCollider: {fileID: 8535110332777968611}
   anim: {fileID: 1372090327782984690}
---- !u!114 &9205784123346453071
+--- !u!114 &611552899111174287
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -346,13 +346,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1978452687989836291}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ed6f6857a5298c4385c4a2ccf697cf1, type: 3}
+  m_Script: {fileID: 11500000, guid: 178e4ca9038b3a44299353910b456c11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   currentHp: 0
   maxHp: 200
   collisionDamage: 10
-  damageFlash: {fileID: 0}
+  damageFlash: {fileID: 5882566422224295451}
+  deathParticles: {fileID: 3239399441340693908, guid: f3ce3ae141e0577419897ca324947b5e, type: 3}
 --- !u!114 &5882566422224295451
 MonoBehaviour:
   m_ObjectHideFlags: 0
