@@ -9,36 +9,36 @@ public class AudioManager : SingletonPersistent<AudioManager>
 {
     public SoundAudioClip[] soundAudioClipsArray;
 
-
-    //private GameObject[] soundAudioClips;
-
     [SerializeField]
     private Queue<GameObject> soundAudioClipsQueue;
 
     [SerializeField]
     private int maxAudioSources = 10;
 
-    private void Start()
-    {
-        //soundAudioClips = new GameObject[maxAudioSources];
-
-        soundAudioClipsQueue = new Queue<GameObject>(maxAudioSources);
-    }
-
     public enum Sounds
     {
         PlayerDamaged,
         Trap,
-        SeafoamExplosion
+        SeafoamExplosion,
+        WaterGun,
+        Jump,
+        EnemyHit,
+        SpearShot,
+        SeafoamShot
     }
 
     //Use this for sounds that may be repeated very quickly Ex: a bunch of towers shooting
     public void PlaySound(Sounds _sound)
     {
+        if (soundAudioClipsQueue == null)
+        {
+            soundAudioClipsQueue = new Queue<GameObject>(maxAudioSources);
+        }
+
         GameObject soundGameObject;
         AudioSource audioSource;
         //Create Audio Source Game Object
-        if (soundAudioClipsQueue.Count <= maxAudioSources)
+        if (soundAudioClipsQueue.Count < maxAudioSources)
         {
             soundGameObject = new GameObject("Sound");
             soundAudioClipsQueue.Enqueue(soundGameObject);

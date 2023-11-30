@@ -181,6 +181,8 @@ public class PlayerMovement : Singleton<PlayerMovement>
         // Jump if: grounded or within coyote threshold || sufficient jump buffer
         if (JumpDown && CanUseCoyote || HasBufferedJump)
         {
+            AudioManager.Instance.PlaySound(AudioManager.Sounds.Jump);
+            
             currentVelocityY = jumpHeight;
             endedJumpEarly = false;
             coyoteUsable = false;

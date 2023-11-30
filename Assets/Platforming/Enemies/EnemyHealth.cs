@@ -44,7 +44,7 @@ public class EnemyHealth : DamageableEntity
     public override void takeDamage(int _damage)
     {
         base.takeDamage(_damage);
-
+        AudioManager.Instance.PlaySound(AudioManager.Sounds.EnemyHit);
         damageFlash.CallDamageFlash();
     }
 

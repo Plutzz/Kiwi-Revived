@@ -265,6 +265,7 @@ public class Enemy4AI : MonoBehaviour
     public void EndCharge()
     {
         charging = false;
+        kain.position -= transform.right * 2;
         newState = Random.Range(0, 2);
     }
 
