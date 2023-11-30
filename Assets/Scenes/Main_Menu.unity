@@ -664,7 +664,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 688317509}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: StartGame
+        m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -900,7 +900,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 231008966}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 978f4fd9e0ccc774fbc252d613c28b8e, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: b46220c3db1d7de4ea5f0ccfb99ae198, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 1993602468}

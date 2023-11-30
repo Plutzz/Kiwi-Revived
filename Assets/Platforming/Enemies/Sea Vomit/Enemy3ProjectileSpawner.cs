@@ -16,5 +16,6 @@ public class Enemy3ProjectileSpawner : MonoBehaviour
         newObject.GetComponentInChildren<ProjectileScript>().setVelocityDecrease(Enemy3.GetComponent<Enemy3AI>().velocityDecrease);
         //Debug.Log(rangeCheck.GetComponent<Enemy3CheckRange>().facingRight);
         newObject.GetComponentInChildren<ProjectileScript>().setDirection(rangeCheck.GetComponent<Enemy3CheckRange>().facingRight);
+        AudioManager.Instance.PlaySound(AudioManager.Sounds.SeafoamShot);
     } 
 }

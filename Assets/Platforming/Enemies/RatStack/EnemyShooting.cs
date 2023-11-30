@@ -21,6 +21,8 @@ public class EnemyShooting : MonoBehaviour
         modifiedVelocity.x += enemyVelocity * 1.1f;
         spearPrefab_rb.velocity = modifiedVelocity;
         spearPrefab_rb.AddForce((player.position - transform.position).normalized * force, ForceMode2D.Impulse);
+
+        AudioManager.Instance.PlaySound(AudioManager.Sounds.SpearShot);
     }
 
 
