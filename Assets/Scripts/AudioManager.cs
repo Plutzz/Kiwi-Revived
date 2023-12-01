@@ -3,17 +3,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.Pool;
 
 public class AudioManager : SingletonPersistent<AudioManager>
 {
+    [SerializeField]
+    private AudioMixerGroup AudioMixerGroup;
+
+    [SerializeField]
+    private int maxAudioSources = 10;
+
     public SoundAudioClip[] soundAudioClipsArray;
 
     [SerializeField]
     private Queue<GameObject> soundAudioClipsQueue;
 
-    [SerializeField]
-    private int maxAudioSources = 10;
+    
 
     public enum Sounds
     {
@@ -53,6 +59,7 @@ public class AudioManager : SingletonPersistent<AudioManager>
         }
         audioSource.clip = GetAudioClip(_sound).audioClip;
         audioSource.volume = GetAudioClip(_sound).volume;
+        audioSource.outputAudioMixerGroup = AudioMixerGroup;
         audioSource.PlayOneShot(audioSource.clip);
     }
 
@@ -65,6 +72,7 @@ public class AudioManager : SingletonPersistent<AudioManager>
         AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
         audioSource.clip = GetAudioClip(_sound).audioClip;
         audioSource.volume = GetAudioClip(_sound).volume;
+        audioSource.outputAudioMixerGroup = AudioMixerGroup;
         audioSource.priority = 50;
         audioSource.PlayOneShot(audioSource.clip);
         Destroy(soundGameObject, audioSource.clip.length);
